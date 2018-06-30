@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	name = oky-123
+	email = oky123.ia@gmail.com
+[core]
+	editor = vi
+[alias]
+	ps = !git push origin `git rev-parse --abbrev-ref HEAD`
+	pl = !git pull origin `git rev-parse --abbrev-ref HEAD`
+	co = checkout
+	graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	diffw = diff --word-diff
+	difff = diff --name-only
