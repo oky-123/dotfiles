@@ -1,0 +1,49 @@
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_source = '''
+  let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python', 'ruby']}
+  let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+  let g:syntastic_ruby_checkers = ['rubocop']
+  let g:syntastic_check_on_open = 1
+'''
+
+[[plugins]]
+repo = 'rhysd/nyaovim-markdown-preview'
+on_ft = ['markdown', 'mkd']
+hook_source = '''
+ let g:markdown_preview_auto = 1
+ let g:markdown_preview_eager = get(g:, 'markdown_preview_eager', 1)
+'''
+
+[[plugins]]
+repo = 'rhysd/nyaovim-popup-tooltip'
+
+[[plugins]]
+repo = 'rhysd/nyaovim-markdown-preview'
+on_ft = ['markdown', 'md', 'mkd']
+hook_source = '''
+ let g:markdown_preview_auto = 1
+ let g:markdown_preview_eager = get(g:, 'markdown_preview_eager', 1)
+'''
+
+[[plugins]]
+repo = 'rhysd/nyaovim-mini-browser'
+
+# Rust
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+hook_source = '''
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+'''
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = ['rust']
+hook_source = '''
+    " racerバイナリ指定
+    let g:racer_cmd = "$HOME/.cargo/bin/racer"
+    " rust本体のソースコードパス指定
+    let $RUST_SRC_PATH= '$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+'''

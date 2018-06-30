@@ -1,0 +1,119 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# [[plugins]] # color scheme
+# repo = 'tomasr/molokai'
+# hook_add = '''
+# colorscheme molokai
+# '''
+
+[[plugins]] # color scheme
+repo = 'jdkanani/vim-material-theme'
+hook_add = '''
+syntax enable
+set background=dark
+colorscheme material-theme
+'''
+
+[[plugins]] # serch files
+repo   = 'Shougo/unite.vim'
+hook_add = '''
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+'''
+
+[[plugins]]
+repo   = 'Shougo/neomru.vim'
+
+[[plugins]] # completion
+repo = 'Shougo/deoplete.nvim'
+if = 'has("nvim")'
+on_i = 1
+hook_add = '''
+call dein#add('roxma/nvim-yarp')
+call dein#add('roxma/vim-hug-neovim-rpc')
+let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+# C language
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+hook_add = '''
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/5.0.0/lib/clang/5.0.0/include'
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+let g:lightline = { 'active': { 'right': [ [ 'lineinfo' ], [ 'percent' ],[ 'fileformat', 'fileencoding', 'filetype' ]]}}
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+" LaTeX Quickrun
+let g:quickrun_config = {}
+let g:quickrun_config['tex'] = {
+\ 'command' : 'latexmk',
+\ 'outputter' : 'error',
+\ 'outputter/error/success' : 'null',
+\ 'outputter/error/error' : 'quickfix',
+\ 'srcfile' : expand("%"),
+\ 'cmdopt': '-pdfdvi',
+\ 'hook/sweep/files' : [
+\                      '%S:p:r.aux',
+\                      '%S:p:r.bbl',
+\                      '%S:p:r.blg',
+\                      '%S:p:r.dvi',
+\                      '%S:p:r.fdb_latexmk',
+\                      '%S:p:r.fls',
+\                      '%S:p:r.log',
+\                      '%S:p:r.out'
+\                      ],
+\ 'exec': '%c %o %a %s',
+\}
+'''
+
+# MarkDown
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'shime/vim-livedown'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# Indent
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_source = '''
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+'''
+
+## Git gutter
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_source = '''
+    nmap <Leader>h] <Plug>GitGutterNextHunk
+    nmap <Leader>h[ <Plug>GitGutterPrevHunk
+    set updatetime=250
+'''
+
+## Git fugitive
+[[plugins]]
+repo = 'tpope/vim-fugitive'
