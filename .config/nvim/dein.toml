@@ -117,3 +117,7 @@ hook_source = '''
 ## Git fugitive
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+# Golang
+[[plugins]]
+repo = 'tpope/fatih/vim-go'

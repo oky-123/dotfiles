@@ -294,3 +294,6 @@ alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*
 ## rbenv
 export PATH=${HOME}/.rbenv/bin:${PATH}
 eval "$(rbenv init -)"
+
+# Go
+export PATH=/usr/local/go/bin:${PATH}
