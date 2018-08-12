@@ -120,4 +120,4 @@ repo = 'tpope/vim-fugitive'
 
 # Golang
 [[plugins]]
-repo = 'tpope/fatih/vim-go'
+repo = 'fatih/vim-go'
