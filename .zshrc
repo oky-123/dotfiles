@@ -213,9 +213,6 @@ ress() {
 alias la='ls -a'
 alias vi='nvim'
 
-# PATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 alias sshi='ssh okino@ai.soc.i.kyoto-u.ac.jp'
 
 # PATH Rust
@@ -295,5 +292,9 @@ alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*
 export PATH=${HOME}/.rbenv/bin:${PATH}
 eval "$(rbenv init -)"
 
-# Go
-export PATH=/Users/oky123/.config/go/bin:${PATH}
+# golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH

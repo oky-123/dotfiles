@@ -47,3 +47,10 @@ hook_source = '''
     " rust本体のソースコードパス指定
     let $RUST_SRC_PATH= '$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 '''
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'IN3D/vim-raml'
