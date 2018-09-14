@@ -63,6 +63,7 @@ if has("autocmd")
   autocmd FileType yaml        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType mkd         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go          setlocal ts=4 sts=4 noet
+  autocmd FileType sql         setlocal sw=4 sts=4 ts=4 et
 endif
 
 set hidden
