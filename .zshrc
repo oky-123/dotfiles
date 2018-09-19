@@ -210,6 +210,7 @@ ress() {
   }
 
 # alias
+alias ls='ls -G'
 alias la='ls -a'
 alias vi='nvim'
 
@@ -298,3 +299,4 @@ export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/nvim-osx64/bin:$PATH
