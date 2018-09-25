@@ -304,3 +304,6 @@ export PATH=$HOME/nvim-osx64/bin:$PATH
 # of
 export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
+alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"

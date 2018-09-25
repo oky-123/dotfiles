@@ -40,14 +40,6 @@ let g:deoplete#enable_at_startup = 1
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-# C language
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-hook_add = '''
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/5.0.0/lib/clang/5.0.0/include'
-'''
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
