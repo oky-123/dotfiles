@@ -28,12 +28,14 @@ nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> <C-s> :Unite <CR>
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
+inoremap ( ()<Left>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap < <><ESC>i
+inoremap [ []<Left>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap < <><Left>
 inoremap <<space> <<space>
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
+inoremap ' ''<Left>
+inoremap " ""<Left>
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -46,7 +48,7 @@ if has("autocmd")
   filetype indent on
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType cpp           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim
   autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
