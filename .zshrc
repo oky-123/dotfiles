@@ -307,3 +307,6 @@ export PG_OF_ROOT=$OF_ROOT
 alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# opam
+test -r /Users/admin/.opam/opam-init/init.zsh && . /Users/admin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

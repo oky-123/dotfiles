@@ -46,6 +46,7 @@ if has("autocmd")
   filetype plugin on
   "ファイルタイプに合わせたインデントを利用
   filetype indent on
+  au BufRead,BufNewFile *.v set filetype=coq
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim
