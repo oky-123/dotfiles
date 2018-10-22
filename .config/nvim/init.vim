@@ -39,6 +39,7 @@ inoremap < <><Left>
 inoremap <<space> <<space>
 inoremap ' ''<Left>
 inoremap " ""<Left>
+nnoremap <Space> q:k<Cr>
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
