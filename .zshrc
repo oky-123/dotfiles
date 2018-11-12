@@ -310,3 +310,6 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # opam
 test -r /Users/admin/.opam/opam-init/init.zsh && . /Users/admin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# python
+export PATH="$HOME/.pyenv/shims:$PATH"
