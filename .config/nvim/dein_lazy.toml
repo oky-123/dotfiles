@@ -68,3 +68,7 @@ on_ft = "coq"
 depends = ["vimbufsync"]
 hook_source = """
 """
+
+[[plugins]]
+repo='zah/nim.vim'
+on_ft = "nim"

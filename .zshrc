@@ -313,3 +313,6 @@ test -r /Users/admin/.opam/opam-init/init.zsh && . /Users/admin/.opam/opam-init/
 
 # python
 export PATH="$HOME/.pyenv/shims:$PATH"
+
+# nim
+export PATH=/Users/admin/.nimble/bin:$PATH
