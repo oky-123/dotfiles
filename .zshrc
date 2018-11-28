@@ -112,8 +112,8 @@ zstyle ':completion:*' recent-dirs-insert both
 ### _ignored: 補完候補にださないと指定したものも補完候補とする。
 ### _approximate: 似ている補完候補も補完候補とする。
 ### _prefix: カーソル以降を無視してカーソル位置までで補完する。
-#zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
-zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
+#zstyle ':completion:*' completer _complete _ignored
 
 ## 補完候補をキャッシュする。
 zstyle ':completion:*' use-cache yes
