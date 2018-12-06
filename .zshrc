@@ -3,6 +3,8 @@ source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
+
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook is-at-least
@@ -64,13 +66,19 @@ zstyle ':vcs_info:bzr:*' use-simple true
 # PROMPj="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
 # else
 # PROMPT="%u@%F{green}%~%f %{$fg[white]%}"
-PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# '
+# PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# '
 # RPROMPT='[%F{yellow}%?%f]'
-RPROMPT="%1(v|%F{yellow}%1v%f|)"
+# RPROMPT="%1(v|%F{yellow}%1v%f|)"
+
+# .zshrc
+ln -sf /Users/admin/.zplug/repos/denysdovhan/spaceship-prompt/spaceship.zsh "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
+autoload -U promptinit; promptinit
+prompt spaceship
 
 ### history 設定
 HISTFILE=~/.zsh_historyx
 HISTSIZE=100000
+
 SAVEHIST=100000
 
 autoload history-search-end
