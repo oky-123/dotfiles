@@ -58,25 +58,20 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 zstyle ':vcs_info:bzr:*' use-simple true
 
-function toon {
-  echo -n ""
-}
-
 ### プロンプト設定
-if [ $EMACS ]; then
-    export TERM=xterm-256color
-    PROMPT="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
-else
-    PROMPT="%F{green}%~%f %{$fg[white]%}$(toon)%{$reset_color%} "
-fi
-PROMPT2="%_%% "
-SPROMPT="%r is correct? [n,y,a,e]: "
-RPROMPT="%1(v|%F{yellow}%1v%f|)%F{red}%T%f"
+# if [ $EMACS ]; then
+#     export TERM=xterm-256color
+# PROMPj="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
+# else
+# PROMPT="%u@%F{green}%~%f %{$fg[white]%}"
+PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# '
+# RPROMPT='[%F{yellow}%?%f]'
+RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
 ### history 設定
 HISTFILE=~/.zsh_historyx
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
