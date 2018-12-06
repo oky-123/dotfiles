@@ -4,6 +4,9 @@
 
 module.exports = {
   config: {
+    hyperMarkdownPreview: {
+      stylesheet: 'github' // github | none
+    },
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
@@ -133,7 +136,8 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyperterm-gooey',
-    'hyper-tab-icons'
+    'hyper-active-tab',
+    'hyper-tabs-enhanced'
   ],
 
   // in development, you can create a directory under

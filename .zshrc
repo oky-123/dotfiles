@@ -319,3 +319,6 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
+
+LANG=ja.UTF-8
+LC_ALL=UTF-8
