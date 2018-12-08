@@ -320,5 +320,8 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
 
-LANG=ja.UTF-8
-LC_ALL=UTF-8
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+
+## custom function
+alias 'init_project'='source sh/init_terminal.sh'

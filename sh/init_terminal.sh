@@ -18,4 +18,5 @@ if cd "$DIRECTORY"; then
   # return to window1
   tmux previous-window
   tmux select-pane -U
+  cd "$DIRECTORY"
 fi
