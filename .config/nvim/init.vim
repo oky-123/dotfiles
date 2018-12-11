@@ -41,6 +41,9 @@ inoremap ' ''<Left>
 inoremap " ""<Left>
 nnoremap <Space> q:k<Cr>
 
+" markdown
+command! Mdprev !/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window %
+
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -62,6 +65,7 @@ if has("autocmd")
   filetype indent on
   au BufRead,BufNewFile *.v set filetype=coq
   au BufRead,BufNewFile *.nim set filetype=nim
+  au BufRead,BufNewFile *.md set filetype=mkd
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim
