@@ -210,6 +210,7 @@ ress() {
   }
 
 # alias
+alias ls='ls -G'
 alias la='ls -a'
 alias vi='nvim'
 
