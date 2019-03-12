@@ -312,7 +312,7 @@ alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Con
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # opam
-test -r /Users/admin/.opam/opam-init/init.zsh && . /Users/admin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 
 # python
 export PATH="$HOME/.pyenv/shims:$PATH"
