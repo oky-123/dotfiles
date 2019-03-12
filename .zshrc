@@ -3,6 +3,8 @@ source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
+
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook is-at-least
@@ -58,25 +60,26 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 zstyle ':vcs_info:bzr:*' use-simple true
 
-function toon {
-  echo -n ""
-}
-
 ### プロンプト設定
-if [ $EMACS ]; then
-    export TERM=xterm-256color
-    PROMPT="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
-else
-    PROMPT="%F{green}%~%f %{$fg[white]%}$(toon)%{$reset_color%} "
-fi
-PROMPT2="%_%% "
-SPROMPT="%r is correct? [n,y,a,e]: "
-RPROMPT="%1(v|%F{yellow}%1v%f|)%F{red}%T%f"
+# if [ $EMACS ]; then
+#     export TERM=xterm-256color
+# PROMPj="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
+# else
+# PROMPT="%u@%F{green}%~%f %{$fg[white]%}"
+# PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# '
+# RPROMPT='[%F{yellow}%?%f]'
+# RPROMPT="%1(v|%F{yellow}%1v%f|)"
+
+# .zshrc
+ln -sf /Users/admin/.zplug/repos/denysdovhan/spaceship-prompt/spaceship.zsh "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
+autoload -U promptinit; promptinit
+prompt spaceship
 
 ### history 設定
 HISTFILE=~/.zsh_historyx
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+
+SAVEHIST=100000
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -112,8 +115,8 @@ zstyle ':completion:*' recent-dirs-insert both
 ### _ignored: 補完候補にださないと指定したものも補完候補とする。
 ### _approximate: 似ている補完候補も補完候補とする。
 ### _prefix: カーソル以降を無視してカーソル位置までで補完する。
-#zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
-zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
+#zstyle ':completion:*' completer _complete _ignored
 
 ## 補完候補をキャッシュする。
 zstyle ':completion:*' use-cache yes
@@ -299,3 +302,26 @@ export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/nvim-osx64/bin:$PATH
+
+# of
+export OF_ROOT=$HOME/of
+export PG_OF_ROOT=$OF_ROOT
+alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# opam
+export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
+
+# python
+export PATH="$HOME/.pyenv/shims:$PATH"
+
+# nim
+export PATH=/Users/admin/.nimble/bin:$PATH
+
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+
+## custom function
+alias 'init_project'='source sh/init_terminal.sh'

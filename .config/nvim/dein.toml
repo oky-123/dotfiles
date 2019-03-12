@@ -40,14 +40,6 @@ let g:deoplete#enable_at_startup = 1
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-# C language
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-hook_add = '''
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/5.0.0/lib/clang/5.0.0/include'
-'''
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -86,9 +78,11 @@ repo = 'godlygeek/tabular'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
-
-[[plugins]]
-repo = 'shime/vim-livedown'
+hook_add = '''
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_auto_insert_bullets = 0
+    let g:vim_markdown_new_list_item_indent = 0
+'''
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
@@ -117,3 +111,46 @@ hook_source = '''
 ## Git fugitive
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+## Clang
+[[plugins]]
+repo='prabirshrestha/async.vim'
+
+[[plugins]]
+repo='prabirshrestha/vim-lsp'
+hook_add='''
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '‼'}
+'''
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-neosnippet.vim'
+hook_add='''
+call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+    \ 'name': 'neosnippet',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+    \ }))
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+'''
+
+[[plugins]]
+repo='w0rp/ale'

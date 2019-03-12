@@ -25,27 +25,51 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> <C-s> :Unite <CR>
+nnoremap <silent> ,cl :CoqLaunch<CR>
+nnoremap <silent> ,cn :CoqNext<CR>
+nnoremap <silent> ,cu :CoqUndo<CR>
+nnoremap <silent> ,ct :CoqToCursor<CR>
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
+inoremap ( ()<Left>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap < <><ESC>i
+inoremap [ []<Left>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap < <><Left>
 inoremap <<space> <<space>
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
+inoremap ' ''<Left>
+inoremap " ""<Left>
+nnoremap <Space> q:k<Cr>
 
+" markdown
+command! Mdprev !/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window %
+
+let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_sign_column_always = 1
 
 if has("autocmd")
   "ファイルタイプの検索を有効にする
   filetype plugin on
   "ファイルタイプに合わせたインデントを利用
   filetype indent on
+  au BufRead,BufNewFile *.v set filetype=coq
+  au BufRead,BufNewFile *.nim set filetype=nim
+  au BufRead,BufNewFile *.md set filetype=mkd
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim
+  autocmd FileType coq         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
@@ -64,6 +88,7 @@ if has("autocmd")
   autocmd FileType mkd         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go          setlocal ts=4 sts=4 noet
   autocmd FileType sql         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType nim         setlocal sw=2 sts=2 ts=2 et
 endif
 
 set hidden
