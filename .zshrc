@@ -71,7 +71,6 @@ zstyle ':vcs_info:bzr:*' use-simple true
 # RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
 # .zshrc
-ln -sf /Users/admin/.zplug/repos/denysdovhan/spaceship-prompt/spaceship.zsh "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
 autoload -U promptinit; promptinit
 prompt spaceship
 
