@@ -10,7 +10,6 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 " 行数
 set number
 set noswapfile
-set termguicolors
 set clipboard+=unnamed
 set mouse=a
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
