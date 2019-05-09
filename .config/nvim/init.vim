@@ -131,3 +131,7 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+augroup MyAutoCmd
+  autocmd!
+augroup END

@@ -3,7 +3,6 @@ source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
 
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
@@ -59,20 +58,6 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 zstyle ':vcs_info:bzr:*' use-simple true
-
-### プロンプト設定
-# if [ $EMACS ]; then
-#     export TERM=xterm-256color
-# PROMPj="%F{green}%~%f %{$fg[red]%}>%{$reset_color%} "
-# else
-# PROMPT="%u@%F{green}%~%f %{$fg[white]%}"
-# PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# '
-# RPROMPT='[%F{yellow}%?%f]'
-# RPROMPT="%1(v|%F{yellow}%1v%f|)"
-
-# .zshrc
-autoload -U promptinit; promptinit
-prompt spaceship
 
 ### history 設定
 HISTFILE=~/.zsh_historyx
@@ -222,7 +207,7 @@ alias sshi='ssh okino@ai.soc.i.kyoto-u.ac.jp'
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # tmux
-alias t="tmux"
+alias t="tmux -u"
 
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }
@@ -277,9 +262,9 @@ function tmux_automatically_attach_session()
                 # on OS X force tmux's default command
                 # to spawn a shell in the user's namespace
                 tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+                t -u -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
             else
-                tmux new-session && echo "tmux created new session"
+                t new-session && echo "tmux created new session"
             fi
         fi
     fi
@@ -324,3 +309,4 @@ export LC_ALL=ja_JP.UTF-8
 
 ## custom function
 alias 'init_project'='source sh/init_terminal.sh'
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"

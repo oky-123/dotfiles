@@ -1,18 +1,11 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# [[plugins]] # color scheme
-# repo = 'tomasr/molokai'
-# hook_add = '''
-# colorscheme molokai
-# '''
-
 [[plugins]] # color scheme
-repo = 'jdkanani/vim-material-theme'
+repo = 'w0ng/vim-hybrid'
 hook_add = '''
-syntax enable
 set background=dark
-colorscheme material-theme
+colorscheme hybrid
 '''
 
 [[plugins]] # serch files
