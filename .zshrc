@@ -1,3 +1,6 @@
+### TERM設定
+export TERM=xterm-256color
+
 ### zplug
 source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-completions'
