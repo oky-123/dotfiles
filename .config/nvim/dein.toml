@@ -147,3 +147,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 [[plugins]]
 repo='w0rp/ale'
+
+[[plugins]]
+repo='jalvesaq/Nvim-R'
