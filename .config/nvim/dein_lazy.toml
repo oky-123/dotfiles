@@ -1,3 +1,7 @@
+[[plugins]] # TOMLのシンタックスハイライト
+repo  = 'cespare/vim-toml'
+on_ft = 'toml'
+
 [[plugins]]
 repo = 'scrooloose/syntastic'
 hook_source = '''
@@ -54,6 +58,11 @@ hook_source = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+hook_add = '''
+    let g:go_fmt_command = "goimports"
+    let g:go_def_mapping_enabled = 0
+    let g:go_doc_keywordprg_enabled = 0
+'''
 
 [[plugins]]
 repo = 'IN3D/vim-raml'

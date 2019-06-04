@@ -43,15 +43,6 @@ let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'rust': ['rustfmt'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_sign_column_always = 1
 
 if has("autocmd")
   "ファイルタイプの検索を有効にする
@@ -114,11 +105,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-   if exists('g:nyaovim_version')
-    call dein#add('rhysd/nyaovim-popup-tooltip')
-    call dein#add('rhysd/nyaovim-markdown-preview')
-    call dein#add('rhysd/nyaovim-mini-browser')
-  endif " 設定終了
   call dein#end()
   call dein#save_state()
 endif

@@ -117,48 +117,22 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-## Clang
-[[plugins]]
-repo='prabirshrestha/async.vim'
-
-[[plugins]]
-repo='prabirshrestha/vim-lsp'
-hook_add='''
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
-
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
-'''
-
-[[plugins]]
-repo='prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo='prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo='prabirshrestha/asyncomplete-neosnippet.vim'
-hook_add='''
-call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-    \ 'name': 'neosnippet',
-    \ 'whitelist': ['*'],
-    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-    \ }))
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-'''
-
 [[plugins]]
 repo='w0rp/ale'
+hook_add='''
+    let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \   'rust': ['rustfmt'],
+    \}
+    let g:ale_linters = {
+    \   'go': ['gopls'],
+    \}
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_sign_error = '>>'
+    let g:ale_sign_warning = '--'
+    let g:ale_sign_column_always = 1
+'''
 
 [[plugins]]
 repo='jalvesaq/Nvim-R'
