@@ -22,22 +22,7 @@ inoremap <silent> <C-k> k
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-inoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<Left>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap [ []<Left>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
-inoremap < <><Left>
-inoremap <<space> <<space>
-inoremap ' ''<Left>
-inoremap " ""<Left>
-nnoremap <Space> q:k<Cr>
-
-" markdown
-command! Mdprev !/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window %
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1

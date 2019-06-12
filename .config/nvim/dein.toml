@@ -136,3 +136,14 @@ hook_add='''
 
 [[plugins]]
 repo='jalvesaq/Nvim-R'
+
+[[plugins]]
+repo='easymotion/vim-easymotion'
+hook_add='''
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+map s <Plug>(easymotion-overwin-f)
+map s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+'''

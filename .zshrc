@@ -296,19 +296,14 @@ export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
 alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
 
+# llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # opam
 export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 
-# python
-export PATH="$HOME/.pyenv/shims:$PATH"
-
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
-
-# pipenv
-PATH="${HOME}/.local/bin:${PATH}"
 
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
