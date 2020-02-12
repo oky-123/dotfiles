@@ -209,7 +209,7 @@ alias vi='nvim'
 alias sshi='ssh okino@ai.soc.i.kyoto-u.ac.jp'
 
 # PATH Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/env:$PATH"
 
 # tmux
 alias t="tmux -u"
