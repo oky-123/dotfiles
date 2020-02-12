@@ -1,0 +1,2 @@
+command alias brl breakpoint set -l %1
+command alias brfl breakpoint set -f %1 -l %2
