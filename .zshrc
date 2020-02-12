@@ -6,6 +6,7 @@ source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug "felixr/docker-zsh-completion"
 
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
@@ -75,7 +76,8 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 ### 補完
-autoload -U compinit; compinit -C
+fpath=(~/.config/zsh/completion $fpath)
+autoload -Uz compinit; compinit -Ci
 
 ### 補完方法毎にグループ化する。
 zstyle ':completion:*' format '%B%F{blue}%d%f%b'
@@ -305,9 +307,15 @@ export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
 
+# python
+export PATH="/Users/oky123/anaconda3/bin:$PATH"
+
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
 ## custom function
 alias 'init_project'='source sh/init_terminal.sh'
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+# pg
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
