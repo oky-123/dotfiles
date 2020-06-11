@@ -15,6 +15,16 @@ set mouse=a
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 
+" 検索
+set incsearch
+set ignorecase
+set smartcase
+set wrapscan
+
+" 外観
+set ruler
+set showmatch
+
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>

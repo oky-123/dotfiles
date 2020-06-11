@@ -185,11 +185,11 @@ alias -g T='| tail'
 alias -g S='| sed'
 alias -g C='| cat'
 alias -g P='| peco'
-alias -g h="history | awk '{\$1=\"\"; print \$0}'"
-alias -g ha="history -1000 | awk '{\$1=\"\"; print \$0}'"
-alias -g hp="\"\$(ha | peco)\""
+alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
+alias -g ha="history -1000 | sort -r | awk '{\$1=\"\"; print \$0}'"
+alias -g hp="zsh -c \`ha | peco\`"
 alias -g cdf="cd \"\$(find . -type d | peco)\""
-alias -g cdl"cd \"\$(ls -d */ | peco)\""
+alias -g cdl="cd \"\$(ls -d */ | peco)\""
 function peco_cdr() {
     target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | peco`
     target_dir=`echo ${target_dir/\~/$HOME}`
