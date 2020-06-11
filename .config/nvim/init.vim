@@ -37,6 +37,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.v set filetype=coq
   au BufRead,BufNewFile *.nim set filetype=nim
   au BufRead,BufNewFile *.md set filetype=mkd
+  au BufRead,BufNewFile *.jb set filetype=ruby
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim

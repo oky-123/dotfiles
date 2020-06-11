@@ -66,14 +66,7 @@ zstyle ':vcs_info:bzr:*' use-simple true
 ### history 設定
 HISTFILE=~/.zsh_historyx
 HISTSIZE=100000
-
 SAVEHIST=100000
-
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
 
 ### 補完
 fpath=(~/.config/zsh/completion $fpath)
@@ -179,6 +172,7 @@ function zaw-src-gitdir-cd () {
 
 zaw-register-src -n gitdir zaw-src-gitdir
 
+## Aliases
 alias '..'='cd ..'
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -190,6 +184,20 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sed'
 alias -g C='| cat'
+alias -g P='| peco'
+alias -g h="history | awk '{\$1=\"\"; print \$0}'"
+alias -g ha="history -1000 | awk '{\$1=\"\"; print \$0}'"
+alias -g hp="\"\$(ha | peco)\""
+alias -g cdf="cd \"\$(find . -type d | peco)\""
+alias -g cdl"cd \"\$(ls -d */ | peco)\""
+function peco_cdr() {
+    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | peco`
+    target_dir=`echo ${target_dir/\~/$HOME}`
+    if [ -n "$target_dir" ]; then
+        cd $target_dir
+    fi
+}
+alias -g cdh="peco_cdr"
 
 # markdownをw3mで見る
 ress() {
