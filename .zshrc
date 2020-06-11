@@ -186,8 +186,14 @@ alias -g S='| sed'
 alias -g C='| cat'
 alias -g P='| peco'
 alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
-alias -g ha="history -1000 | sort -r | awk '{\$1=\"\"; print \$0}'"
-alias -g hp="zsh -c \`ha | peco\`"
+alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey 'hh' peco-history-selection
 alias -g cdf="cd \"\$(find . -type d | peco)\""
 alias -g cdl="cd \"\$(ls -d */ | peco)\""
 function peco_cdr() {
@@ -198,6 +204,20 @@ function peco_cdr() {
     fi
 }
 alias -g cdh="peco_cdr"
+alias ls='ls -G'
+alias la='ls -a'
+alias vi='nvim'
+function launch_workspace() {
+    tmux split-window -v -c '#{pane_current_path}' &&
+    tmux resize-pane -D 13 &&
+    tmux new-window -c "#{pane_current_path}" &&
+    tmux split-window -c "#{pane_current_path}" &&
+    tmux select-pane -U &&
+    tmux next-window &&
+    tmux select-pane -U &&
+    vi
+}
+alias lw='launch_workspace'
 
 # markdownをw3mで見る
 ress() {
@@ -208,11 +228,6 @@ ress() {
         github-markup $FILENAME | w3m -T text/html
     fi
   }
-
-# alias
-alias ls='ls -G'
-alias la='ls -a'
-alias vi='nvim'
 
 alias sshi='ssh okino@ai.soc.i.kyoto-u.ac.jp'
 
