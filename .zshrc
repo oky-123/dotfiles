@@ -218,6 +218,25 @@ function launch_workspace() {
     vi
 }
 alias lw='launch_workspace'
+ch() {
+  local cols sep google_history open
+  cols=$(( COLUMNS / 3 ))
+  sep='{::}'
+
+  if [ "$(uname)" = "Darwin" ]; then
+    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+    open=open
+  else
+    google_history="$HOME/.config/google-chrome/Default/History"
+    open=xdg-open
+  fi
+  cp -f "$google_history" /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+  peco | sed 's#.*\(https*://\)#\2#' | xargs $open > /dev/null 2> /dev/null
+ }
 
 # markdownをw3mで見る
 ress() {
@@ -225,7 +244,7 @@ ress() {
     if [ $# -lt 1 ]; then
         echo "Usage: $0 FILENAME"
     else
-        github-markup $FILENAME | w3m -T text/html
+        showdown makehtml -m -i $FILENAME -o | w3m -T text/html
     fi
   }
 
@@ -342,3 +361,5 @@ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 # pg
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
