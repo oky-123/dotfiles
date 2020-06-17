@@ -178,6 +178,7 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 
+alias -g 'sed'='gsed'
 alias -g G='| grep'
 alias -g L='| less'
 alias -g H='| head'
@@ -218,25 +219,23 @@ function launch_workspace() {
     vi
 }
 alias lw='launch_workspace'
-ch() {
-  local cols sep google_history open
+
+# Open google chrome from history
+function ch {
   cols=$(( COLUMNS / 3 ))
   sep='{::}'
 
-  if [ "$(uname)" = "Darwin" ]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-    open=open
-  else
-    google_history="$HOME/.config/google-chrome/Default/History"
-    open=xdg-open
-  fi
-  cp -f "$google_history" /tmp/h
-  sqlite3 -separator $sep /tmp/h \
+  cp -p $HOME/Library/Application\ Support/Google/Chrome/Default/History /tmp/chrome_history
+
+  local c=`sqlite3 -separator $sep /tmp/chrome_history \
     "select substr(title, 1, $cols), url
      from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  peco | sed 's#.*\(https*://\)#\2#' | xargs $open > /dev/null 2> /dev/null
- }
+  peco | sed 's#.*\(https*://\)#\1#'`
+  if [ -n "$c" ]; then
+    open -a '/Applications/Google Chrome.app' "$c"
+  fi
+}
 
 # markdownをw3mで見る
 ress() {
@@ -319,7 +318,7 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 ## tree
-alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
+# alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
 
 
 # Ruby
@@ -362,4 +361,8 @@ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 # pg
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
+# w3m
 export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
+
+# gnu-sed
+export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
