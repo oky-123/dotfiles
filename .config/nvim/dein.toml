@@ -126,6 +126,8 @@ hook_add='''
     \}
     let g:ale_linters = {
     \   'go': ['gopls'],
+    \   'mkd': ['textlint'],
+    \   'markdown': ['textlint'],
     \}
     let g:ale_fix_on_save = 1
     let g:ale_completion_enabled = 1

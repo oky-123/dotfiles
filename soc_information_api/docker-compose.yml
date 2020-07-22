@@ -1,23 +1,29 @@
-version: '3'
+version: '2'
 services:
   db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - db-data:/var/lib/postgresql/data
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    container_name: soc_information_api_db
     environment:
-      POSTGRES_DATABASE: app
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: password
-    restart: always
+      MYSQL_DATABASE: app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
   app:
     tty: true
     stdin_open: true
-    build: .
+    build:
+      context: .
+      dockerfile: containers/app/Dockerfile
     container_name: soc_information_api_rails
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
+      - tmp-data:/app/tmp
     ports:
       - "3000:3000"
     links:
@@ -25,6 +31,20 @@ services:
     environment:
       ENVIRONMENT: development
       TZ: Asia/Tokyo
+    mem_limit: 250m
+  nginx:
+    build:
+      context: .
+      dockerfile: containers/nginx/Dockerfile
+    container_name: soc_information_api_nginx
+    volumes:
+      - tmp-data:/app/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    mem_limit: 250m
 volumes:
-  db-data:
+  mysql-data:
     driver: local
+  tmp-data:

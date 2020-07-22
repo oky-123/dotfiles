@@ -210,7 +210,7 @@ alias la='ls -a'
 alias vi='nvim'
 function launch_workspace() {
     tmux split-window -v -c '#{pane_current_path}' &&
-    tmux resize-pane -D 13 &&
+    tmux resize-pane -D 11 &&
     tmux new-window -c "#{pane_current_path}" &&
     tmux split-window -c "#{pane_current_path}" &&
     tmux select-pane -U &&
