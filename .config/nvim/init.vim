@@ -47,6 +47,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.v set filetype=coq
   au BufRead,BufNewFile *.nim set filetype=nim
   au BufRead,BufNewFile *.md set filetype=mkd
+  au BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
   au BufRead,BufNewFile *.jb set filetype=ruby
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
@@ -114,3 +115,14 @@ endif
 augroup MyAutoCmd
   autocmd!
 augroup END
+
+" 空白削除
+autocmd BufWritePre * call s:remove_unnecessary_space()
+function! s:remove_unnecessary_space()
+    " delete last spaces
+    %s/\s\+$//ge
+    " delete last blank lines
+    while getline('$') == ""
+            $delete _
+    endwhile
+endfunction

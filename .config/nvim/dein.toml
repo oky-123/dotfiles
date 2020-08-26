@@ -36,8 +36,6 @@ repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim")'
 on_i = 1
 hook_add = '''
-call dein#add('roxma/nvim-yarp')
-call dein#add('roxma/vim-hug-neovim-rpc')
 let g:deoplete#enable_at_startup = 1
 '''
 
@@ -77,18 +75,6 @@ let g:quickrun_config['tex'] = {
 \}
 '''
 
-# MarkDown
-[[plugins]]
-repo = 'godlygeek/tabular'
-
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-hook_add = '''
-    let g:vim_markdown_folding_disabled = 1
-    let g:vim_markdown_auto_insert_bullets = 0
-    let g:vim_markdown_new_list_item_indent = 0
-'''
-
 [[plugins]]
 repo = 'slim-template/vim-slim'
 
@@ -118,25 +104,6 @@ hook_source = '''
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo='w0rp/ale'
-hook_add='''
-    let g:ale_fixers = {
-    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \   'rust': ['rustfmt'],
-    \}
-    let g:ale_linters = {
-    \   'go': ['gopls'],
-    \   'mkd': ['textlint'],
-    \   'markdown': ['textlint'],
-    \}
-    let g:ale_fix_on_save = 1
-    let g:ale_completion_enabled = 1
-    let g:ale_sign_error = '>>'
-    let g:ale_sign_warning = '--'
-    let g:ale_sign_column_always = 1
-'''
-
-[[plugins]]
 repo='jalvesaq/Nvim-R'
 
 [[plugins]]
@@ -149,3 +116,32 @@ map s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 '''
+
+[[plugins]]
+repo='prabirshrestha/vim-lsp'
+merged='0'
+hook_add='''
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlights_enabled = 0
+let g:lsp_preview_float = 1
+let g:lsp_text_edit_enabled = 0
+let g:lsp_async_completion = 1
+let g:lsp_diagnostics_float_cursor = 1
+'''
+
+[[plugins]]
+repo='mattn/vim-goimports'
+hook_add='''
+let g:goimports = 1
+let g:goimports_simplify = 1
+'''
+merged='0'
+
+[[plugins]]
+repo='mattn/vim-lsp-settings'
+merged='0'
+
+[[plugins]]
+repo='lighttiger2505/deoplete-vim-lsp'

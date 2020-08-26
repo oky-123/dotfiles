@@ -12,23 +12,7 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'rhysd/nyaovim-markdown-preview'
-on_ft = ['markdown', 'mkd']
-hook_source = '''
- let g:markdown_preview_auto = 1
- let g:markdown_preview_eager = get(g:, 'markdown_preview_eager', 1)
-'''
-
-[[plugins]]
 repo = 'rhysd/nyaovim-popup-tooltip'
-
-[[plugins]]
-repo = 'rhysd/nyaovim-markdown-preview'
-on_ft = ['markdown', 'md', 'mkd']
-hook_source = '''
- let g:markdown_preview_auto = 1
- let g:markdown_preview_eager = get(g:, 'markdown_preview_eager', 1)
-'''
 
 [[plugins]]
 repo = 'rhysd/nyaovim-mini-browser'
@@ -56,20 +40,52 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = '''
-    let g:go_fmt_command = "goimports"
-    let g:go_def_mapping_enabled = 0
-    let g:go_doc_keywordprg_enabled = 0
+repo = 'IN3D/vim-raml'
+
+[[plugins]]
+repo = "let-def/vimbufsync"
+on_ft = "coq"
+
+[[plugins]]
+repo = "the-lambda-church/coquille"
+on_ft = "coq"
+depends = ["vimbufsync"]
+hook_source = """
+"""
+
+[[plugins]]
+repo='zah/nim.vim'
+on_ft="nim"
+
+
+# MarkDown
+[[plugins]]
+repo='plasticboy/vim-markdown'
+on_ft = ['markdown', 'mkd']
+hook_add='''
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_auto_insert_bullets = 0
+    let g:vim_markdown_new_list_item_indent = 0
 '''
 
 [[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-on_ft = 'go'
-hook_add = '''
-    let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-    let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+on_ft = ['markdown', 'mkd']
+hook_source = '''
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+'''
+
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+on_ft = 'rust'
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#rust#racer_binary="$HOME/.cargo/bin/racer"
+    let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
+    let g:deoplete#sources#rust#show_duplicates=1
+    let g:deoplete#sources#rust#disable_keymap=1
+    nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
+    nmap <buffer> K  <plug>DeopleteRustShowDocumentation
 '''
 
 [[plugins]]
@@ -88,4 +104,22 @@ hook_source = """
 
 [[plugins]]
 repo='zah/nim.vim'
-on_ft = "nim"
+on_ft="nim"
+
+
+# MarkDown
+[[plugins]]
+repo='plasticboy/vim-markdown'
+on_ft='markdown'
+hook_add='''
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_auto_insert_bullets = 0
+    let g:vim_markdown_new_list_item_indent = 0
+'''
+
+[[plugins]]
+on_ft='markdown'
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo='mattn/vim-goimports'
