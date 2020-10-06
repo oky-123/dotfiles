@@ -119,10 +119,10 @@ augroup END
 " 空白削除
 autocmd BufWritePre * call s:remove_unnecessary_space()
 function! s:remove_unnecessary_space()
-    " delete last spaces
-    %s/\s\+$//ge
-    " delete last blank lines
-    while getline('$') == ""
-            $delete _
-    endwhile
+   " delete last spaces
+   %s/\s\+$//ge
+   " delete last blank lines
+   while getline('$') == "" && len(join(getline(0, '$')))
+           $delete _
+   endwhile
 endfunction

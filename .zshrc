@@ -366,3 +366,6 @@ export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
 
 # gnu-sed
 export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
+
+# go-mod
+export GO111MODULE=on
