@@ -3,15 +3,6 @@ repo  = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
-hook_source = '''
-  let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python', 'ruby']}
-  let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-  let g:syntastic_ruby_checkers = ['rubocop']
-  let g:syntastic_check_on_open = 1
-'''
-
-[[plugins]]
 repo = 'rhysd/nyaovim-popup-tooltip'
 
 [[plugins]]
@@ -24,19 +15,6 @@ on_ft = ['rust']
 hook_source = '''
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
-'''
-
-[[plugins]]
-repo = 'sebastianmarkow/deoplete-rust'
-on_ft = 'rust'
-depends = ['deoplete.nvim']
-hook_source = '''
-    let g:deoplete#sources#rust#racer_binary="$HOME/.cargo/bin/racer"
-    let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
-    let g:deoplete#sources#rust#show_duplicates=1
-    let g:deoplete#sources#rust#disable_keymap=1
-    nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
-    nmap <buffer> K  <plug>DeopleteRustShowDocumentation
 '''
 
 [[plugins]]

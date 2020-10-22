@@ -19,9 +19,8 @@ let g:unite_source_file_mru_limit = 200
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+let NERDTreeShowHidden = 1
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 '''
 
@@ -47,32 +46,6 @@ build = 'make'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 let g:lightline = { 'active': { 'right': [ [ 'lineinfo' ], [ 'percent' ],[ 'fileformat', 'fileencoding', 'filetype' ]]}}
-'''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-" LaTeX Quickrun
-let g:quickrun_config = {}
-let g:quickrun_config['tex'] = {
-\ 'command' : 'latexmk',
-\ 'outputter' : 'error',
-\ 'outputter/error/success' : 'null',
-\ 'outputter/error/error' : 'quickfix',
-\ 'srcfile' : expand("%"),
-\ 'cmdopt': '-pdfdvi',
-\ 'hook/sweep/files' : [
-\                      '%S:p:r.aux',
-\                      '%S:p:r.bbl',
-\                      '%S:p:r.blg',
-\                      '%S:p:r.dvi',
-\                      '%S:p:r.fdb_latexmk',
-\                      '%S:p:r.fls',
-\                      '%S:p:r.log',
-\                      '%S:p:r.out'
-\                      ],
-\ 'exec': '%c %o %a %s',
-\}
 '''
 
 [[plugins]]
@@ -129,6 +102,25 @@ let g:lsp_preview_float = 1
 let g:lsp_text_edit_enabled = 0
 let g:lsp_async_completion = 1
 let g:lsp_diagnostics_float_cursor = 1
+
+nnoremap gd :<C-u>LspDefinition<CR>
+nnoremap gr :<C-u>LspReferences<CR>
+nnoremap gi :<C-u>LspImplementation<CR>
+nnoremap gt :<C-u>LspTypeDefinition<CR>
+nnoremap <leader>rn :<C-u>LspRename<CR>
+nnoremap [g :<C-u>LspPreviousDiagnostic<CR>
+nnoremap ]g :<C-u>LspNextDiagnostic<CR>
+nnoremap K :<C-u>LspHover<CR>
+
+"python
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
 '''
 
 [[plugins]]

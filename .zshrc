@@ -1,5 +1,7 @@
 ### TERM設定
 export TERM=xterm-256color
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 
 ### zplug
 source ~/.zplug/init.zsh
@@ -247,7 +249,8 @@ ress() {
     fi
   }
 
-alias sshi='ssh okino@ai.soc.i.kyoto-u.ac.jp'
+# python
+export PATH="/usr/local/Cellar/python@3.8/3.8.6/bin:$PATH"
 
 # PATH Rust
 export PATH="$HOME/.cargo/env:$PATH"
@@ -348,12 +351,6 @@ export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
 
-# python
-export PATH="/Users/oky123/anaconda3/bin:$PATH"
-
-export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
-
 ## custom function
 alias 'init_project'='source sh/init_terminal.sh'
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -369,3 +366,8 @@ export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
 
 # go-mod
 export GO111MODULE=on
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
