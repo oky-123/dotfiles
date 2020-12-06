@@ -137,3 +137,6 @@ merged='0'
 
 [[plugins]]
 repo='lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo='leafgarland/typescript-vim'
