@@ -29,10 +29,8 @@ inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
-nnoremap <silent> <Leader>uy :<C-u>Unite history/unite<CR>
-nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Leader>uu :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Leader>u :<C-u>Unite file_mru buffer<CR>
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
