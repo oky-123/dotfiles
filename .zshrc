@@ -396,7 +396,7 @@ aws_mfa() {
         return 0
     fi
     SERIAL_NUMBER=`aws iam list-mfa-devices --query "MFADevices[0].SerialNumber" --output text`
-    TOKEN=`aws sts get-session-token --serial-number $SERIAL_NUMBER --token-code $1`
+    TOKEN=`aws sts get-session-token --serial-number $SERIAL_NUMBER --token-code $1 --duration-seconds 129600`
     export AWS_ACCESS_KEY_ID=`echo $TOKEN | jq -r '.Credentials.AccessKeyId'`
     export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
     export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
