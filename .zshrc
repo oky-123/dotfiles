@@ -4,7 +4,8 @@ export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
 ### zplug
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
@@ -326,8 +327,8 @@ tmux_automatically_attach_session
 
 # Ruby
 ## rbenv
-export PATH=${HOME}/.rbenv/bin:${PATH}
-eval "$(rbenv init -)"
+# export PATH=${HOME}/.rbenv/bin:${PATH}
+# eval "$(rbenv init -)"
 
 # golang
 export GOPATH=$HOME/go
@@ -352,8 +353,8 @@ export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 export PATH=/Users/admin/.nimble/bin:$PATH
 
 ## custom function
-alias 'init_project'='source sh/init_terminal.sh'
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# alias 'init_project'='source sh/init_terminal.sh'
+# source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 # pg
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
@@ -371,3 +372,32 @@ export GO111MODULE=on
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# jdk
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home"
+
+export HTTP_PROXY=http://proxy.nintendo.co.jp:8080
+export HTTPS_PROXY=$HTTP_PROXY export FTP_PROXY=$HTTP_PROXY
+export NO_PROXY=localhost
+export http_proxy=$HTTP_PROXY
+export https_proxy=$HTTP_PROXY
+export ftp_proxy=$HTTP_PROXY
+
+# パスワード表示
+password() {
+    FILE=~/Documents/Accounts.yml
+    cat $FILE G "PASSWORD" | sed -z 's/PASSWORD: //g' | sed -z 's/\n//g' | pbcopy
+}
+
+# MFA認証
+aws_mfa() {
+    if [ "${1}" = "" ]; then
+        echo "Give arguments"
+        return 0
+    fi
+    SERIAL_NUMBER=`aws iam list-mfa-devices --query "MFADevices[0].SerialNumber" --output text`
+    TOKEN=`aws sts get-session-token --serial-number $SERIAL_NUMBER --token-code $1`
+    export AWS_ACCESS_KEY_ID=`echo $TOKEN | jq -r '.Credentials.AccessKeyId'`
+    export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
+    export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
+}
