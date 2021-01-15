@@ -25,12 +25,13 @@ set wrapscan
 set ruler
 set showmatch
 
+" <Leader>
+let mapleader = "\<space>"
+
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
-nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Leader>u :<C-u>Unite file_mru buffer<CR>
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
