@@ -44,13 +44,13 @@ let g:deoplete#enable_at_startup = 1
 '''
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-let g:lightline = { 'active': { 'right': [ [ 'lineinfo' ], [ 'percent' ],[ 'fileformat', 'fileencoding', 'filetype' ]]}}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 '''
 
 [[plugins]]
