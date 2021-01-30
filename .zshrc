@@ -355,9 +355,6 @@ export PATH=/Users/admin/.nimble/bin:$PATH
 alias 'init_project'='source sh/init_terminal.sh'
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-# pg
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
 # w3m
 export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
 
