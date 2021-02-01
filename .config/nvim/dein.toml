@@ -110,16 +110,6 @@ nnoremap <leader>rn :<C-u>LspRename<CR>
 nnoremap [g :<C-u>LspPreviousDiagnostic<CR>
 nnoremap ]g :<C-u>LspNextDiagnostic<CR>
 nnoremap K :<C-u>LspHover<CR>
-
-"python
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
 '''
 
 [[plugins]]
