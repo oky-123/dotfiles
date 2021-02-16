@@ -66,6 +66,7 @@ if has("autocmd")
   autocmd FileType sass            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType php             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType java            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType rust            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml            setlocal sw=2 sts=2 ts=2 et
   autocmd FileType mkd             setlocal sw=2 sts=2 ts=2 et
