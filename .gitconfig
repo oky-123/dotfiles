@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-	name = oky-123
-	email = oky123.ia@gmail.com
+	name = okino_yuya
+	email = nsd-intern25@nintendo.co.jp
 [core]
 	editor = nvim
 [alias]
