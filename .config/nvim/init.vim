@@ -38,6 +38,10 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+" python
+let g:python3_host_prog = expand('~/nvim_python3/bin/python3')
+let g:python_host_prog = expand('~/nvim_python2/bin/python2')
+
 if has("autocmd")
   "ファイルタイプの検索を有効にする
   filetype plugin on

@@ -1,5 +1,4 @@
 ### TERM設定
-export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
@@ -9,6 +8,9 @@ zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug "felixr/docker-zsh-completion"
+
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
@@ -25,7 +27,6 @@ zplug load
 bindkey -v
 bindkey -a '^[[3~' delete-char
 bindkey -M viins 'jj' vi-cmd-mode
-
 
 ### 色付けで色の名前が使えたりとか
 autoload -Uz add-zsh-hook
@@ -365,6 +366,6 @@ eval "$(pyenv init -)"
 
 # java
 # 15, 11, 1.8
-JAVA_VERSION=1.8
+JAVA_VERSION=15
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}

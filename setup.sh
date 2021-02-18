@@ -17,7 +17,7 @@ brew install zsh
 sudo sh -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
 
 # iTerm2
-brew install --cask iterm2
+# brew install --cask iterm2
 
 # NeoVim
 brew install neovim
@@ -54,32 +54,32 @@ pyenv global 3.8.3
 
 # java
 brew install java java11
-brew tap homebrew/cask-versions
-brew install --cask corretto8
+# brew tap homebrew/cask-versions
+# brew install --cask corretto8
 sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
 # Docker
 brew install docker
-brew install --cask docker
+# brew install --cask docker
 
 # Google Chrome
-brew install --cask google-chrome
+# brew install --cask google-chrome
 
 # IME
-brew install --cask google-japanese-ime
+# brew install --cask google-japanese-ime
 
 # tmux
 brew install tmux
 
 # etc...
-brew install --cask deepl
-brew install --cask slack
-brew install --cask zoom
-brew install --cask discord
-brew install --cask dropbox
-brew install --cask spectacle
-brew install --cask karabiner-elements
+# brew install --cask deepl
+# brew install --cask slack
+# brew install --cask zoom
+# brew install --cask discord
+# brew install --cask dropbox
+# brew install --cask spectacle
+# brew install --cask karabiner-elements
 
 # Create symbolic links
 OLDIFS=$IFS
