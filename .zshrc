@@ -250,7 +250,9 @@ ress() {
   }
 
 # python
-export PATH="/usr/local/Cellar/python@3.8/3.8.6/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # PATH Rust
 export PATH="$HOME/.cargo/env:$PATH"
@@ -323,7 +325,6 @@ tmux_automatically_attach_session
 ## tree
 # alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
 
-
 # Ruby
 ## rbenv
 export PATH=${HOME}/.rbenv/bin:${PATH}
@@ -351,13 +352,6 @@ export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
 
-## custom function
-alias 'init_project'='source sh/init_terminal.sh'
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# w3m
-export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
-
 # gnu-sed
 export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
 
@@ -368,3 +362,9 @@ export GO111MODULE=on
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# java
+# 15, 11, 1.8
+JAVA_VERSION=1.8
+export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
+PATH=${JAVA_HOME}/bin:${PATH}
