@@ -1,6 +1,7 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
+dotfiles
 # Create symbolic links
 OLDIFS=$IFS
 IFS=$'\n'

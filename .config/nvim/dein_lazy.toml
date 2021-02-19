@@ -35,7 +35,6 @@ hook_source = """
 repo='zah/nim.vim'
 on_ft="nim"
 
-
 # MarkDown
 [[plugins]]
 repo='plasticboy/vim-markdown'

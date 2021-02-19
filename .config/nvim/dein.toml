@@ -35,14 +35,6 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 [[plugins]]
 repo   = 'Shougo/neomru.vim'
 
-[[plugins]] # completion
-repo = 'Shougo/deoplete.nvim'
-if = 'has("nvim")'
-on_i = 1
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-'''
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -125,7 +117,16 @@ repo='mattn/vim-lsp-settings'
 merged='0'
 
 [[plugins]]
-repo='lighttiger2505/deoplete-vim-lsp'
+repo='leafgarland/typescript-vim'
 
 [[plugins]]
-repo='leafgarland/typescript-vim'
+repo='prabirshrestha/asyncomplete.vim'
+hook_add='''
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+'''
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-lsp.vim'
