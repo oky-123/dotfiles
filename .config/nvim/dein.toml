@@ -102,6 +102,33 @@ nnoremap <leader>rn :<C-u>LspRename<CR>
 nnoremap [g :<C-u>LspPreviousDiagnostic<CR>
 nnoremap ]g :<C-u>LspNextDiagnostic<CR>
 nnoremap K :<C-u>LspHover<CR>
+
+let s:lombok_path = $HOME . '/.lsp/lombok.jar'
+if executable('java') && filereadable(expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar')) && filereadable(expand(s:lombok_path))
+    " vim-lsp の設定
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'eclipse.jdt.ls',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '-javaagent:' . s:lombok_path,
+        \     '-Xbootclasspath/a:' . s:lombok_path,
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar'),
+        \     '-configuration',
+        \     expand('~/.lsp/eclipse.jdt.ls/config_mac'),
+        \     '-data',
+        \     getcwd()
+        \ ]},
+        \ 'whitelist': ['java'],
+        \ })
+endif
 '''
 
 [[plugins]]
