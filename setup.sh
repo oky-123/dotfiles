@@ -54,8 +54,8 @@ pyenv global 3.8.3
 
 # java
 brew install java java11
-# brew tap homebrew/cask-versions
-# brew install --cask corretto8
+brew tap homebrew/cask-versions
+brew install --cask corretto8
 sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
@@ -67,7 +67,7 @@ brew install docker
 # brew install --cask google-chrome
 
 # IME
-# brew install --cask google-japanese-ime
+brew install --cask google-japanese-ime
 
 # tmux
 brew install tmux

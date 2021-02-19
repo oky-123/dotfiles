@@ -1,4 +1,5 @@
 ### TERM設定
+export TERM=screen-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
@@ -188,26 +189,26 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sed'
 alias -g C='| cat'
-alias -g P='| peco'
+alias -g F='| fzf'
 alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+function fzf-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey 'hh' peco-history-selection
-alias -g cdf="cd \"\$(find . -type d | peco)\""
-alias -g cdl="cd \"\$(ls -d */ | peco)\""
-function peco_cdr() {
-    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | peco`
+zle -N fzf-history-selection
+bindkey 'hh' fzf-history-selection
+alias -g cdf="cd \"\$(find . -type d | fzf)\""
+alias -g cdl="cd \"\$(ls -d */ | fzf)\""
+function fzf_cdr() {
+    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf`
     target_dir=`echo ${target_dir/\~/$HOME}`
     if [ -n "$target_dir" ]; then
         cd $target_dir
     fi
 }
-alias -g cdh="peco_cdr"
+alias -g cdh="fzf_cdr"
 alias ls='ls -G'
 alias la='ls -a'
 alias vi='nvim'
@@ -234,7 +235,7 @@ function ch {
     "select substr(title, 1, $cols), url
      from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  peco | sed 's#.*\(https*://\)#\1#'`
+  fzf | sed 's#.*\(https*://\)#\1#'`
   if [ -n "$c" ]; then
     open -a '/Applications/Google Chrome.app' "$c"
   fi
@@ -392,6 +393,6 @@ aws_mfa() {
 
 # java
 # 15, 11, 1.8
-JAVA_VERSION=15
+JAVA_VERSION=1.8
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
