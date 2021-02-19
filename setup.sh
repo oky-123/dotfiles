@@ -101,4 +101,5 @@ brew install --cask dropbox
 brew install --cask spectacle
 brew install --cask karabiner-elements
 
+ssh-keygen -t rsa -b 4096 -C "oky123.ia@example.com"
 echo "Setup finidhed."
