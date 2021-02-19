@@ -34,10 +34,13 @@ inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
 
+" fzf
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>e :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>a :Ag<CR>
+let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'down': '~40%' }
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
@@ -47,7 +50,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 " python
 let g:python3_host_prog = expand('~/nvim_python3/bin/python3')
 let g:python_host_prog = expand('~/nvim_python2/bin/python2')
-
 if has("autocmd")
   "ファイルタイプの検索を有効にする
   filetype plugin on
