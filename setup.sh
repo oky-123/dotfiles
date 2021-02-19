@@ -21,7 +21,6 @@ if [ $? == 1 ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-
 # git
 brew install git
 
@@ -85,6 +84,7 @@ brew install --cask google-japanese-ime
 
 # tmux
 brew install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # fzf
 brew install fzf
