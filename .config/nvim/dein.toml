@@ -14,6 +14,11 @@ hook_add = '''
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
+
+nnoremap <silent> <Leader>e :<C-u>Unite file<CR>
+nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
+nnoremap <silent> <Leader>y :<C-u>Unite history/unite<CR>
+nnoremap <silent> <Leader>u :<C-u>Unite file_mru buffer<CR>
 '''
 
 [[plugins]]
@@ -39,20 +44,14 @@ let g:deoplete#enable_at_startup = 1
 '''
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-let g:lightline = { 'active': { 'right': [ [ 'lineinfo' ], [ 'percent' ],[ 'fileformat', 'fileencoding', 'filetype' ]]}}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 '''
-
-[[plugins]]
-repo = 'slim-template/vim-slim'
-
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
 
 # Indent
 [[plugins]]
@@ -111,16 +110,6 @@ nnoremap <leader>rn :<C-u>LspRename<CR>
 nnoremap [g :<C-u>LspPreviousDiagnostic<CR>
 nnoremap ]g :<C-u>LspNextDiagnostic<CR>
 nnoremap K :<C-u>LspHover<CR>
-
-"python
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
 '''
 
 [[plugins]]
@@ -137,3 +126,6 @@ merged='0'
 
 [[plugins]]
 repo='lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo='leafgarland/typescript-vim'

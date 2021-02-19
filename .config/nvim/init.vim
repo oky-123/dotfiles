@@ -5,7 +5,7 @@ scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+set ambiwidth=single " □や○文字が崩れる問題を解決
 
 " 行数
 set number
@@ -25,19 +25,22 @@ set wrapscan
 set ruler
 set showmatch
 
+" <Leader>
+let mapleader = "\<space>"
+
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
-nnoremap <silent> <Leader>uy :<C-u>Unite history/unite<CR>
-nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Leader>uu :<C-u>Unite file_mru buffer<CR>
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+" python
+let g:python3_host_prog = expand('~/nvim_python3/bin/python3')
+let g:python_host_prog = expand('~/nvim_python2/bin/python2')
 
 if has("autocmd")
   "ファイルタイプの検索を有効にする
@@ -49,30 +52,33 @@ if has("autocmd")
   au BufRead,BufNewFile *.md set filetype=mkd
   au BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
   au BufRead,BufNewFile *.jb set filetype=ruby
-  "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
-  autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType cpp         source ~/.config/nvim/ftplugin/cpp.vim
-  autocmd FileType coq         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType php         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType rust        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType yaml        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType mkd         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType go          setlocal sw=4 ts=4 sts=4
-  autocmd FileType sql         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType nim         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType xml         setlocal sw=2 sts=2 ts=2 et
+  au BufRead,BufNewFile *.{tsx,jsx} set filetype=typescript
+  "sw=softtabstop, sts=shiftwidth    , ts=tabstop, et=expandtabの略
+  autocmd FileType c               setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType cpp             source ~/.config/nvim/ftplugin/cpp.vim
+  autocmd FileType coq             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType html            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType ruby            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType js              setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType zsh             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType python          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scala           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType json            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType css             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scss            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sass            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType javascript      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType php             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType java            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType rust            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType yaml            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType mkd             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType go              setlocal sw=4 sts=4 ts=4
+  autocmd FileType sql             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType nim             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType xml             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
 endif
 
 set hidden

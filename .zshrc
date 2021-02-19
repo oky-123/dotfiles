@@ -1,5 +1,4 @@
 ### TERM設定
-export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
@@ -10,6 +9,8 @@ zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug "felixr/docker-zsh-completion"
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
@@ -26,7 +27,6 @@ zplug load
 bindkey -v
 bindkey -a '^[[3~' delete-char
 bindkey -M viins 'jj' vi-cmd-mode
-
 
 ### 色付けで色の名前が使えたりとか
 autoload -Uz add-zsh-hook
@@ -251,7 +251,9 @@ ress() {
   }
 
 # python
-export PATH="/usr/local/Cellar/python@3.8/3.8.6/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # PATH Rust
 export PATH="$HOME/.cargo/env:$PATH"
@@ -324,7 +326,6 @@ tmux_automatically_attach_session
 ## tree
 # alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
 
-
 # Ruby
 ## rbenv
 # export PATH=${HOME}/.rbenv/bin:${PATH}
@@ -352,16 +353,6 @@ export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 # nim
 export PATH=/Users/admin/.nimble/bin:$PATH
 
-## custom function
-# alias 'init_project'='source sh/init_terminal.sh'
-# source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# pg
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# w3m
-export PATH="/usr/local/Cellar/w3m/0.5.3_6/bin:$PATH"
-
 # gnu-sed
 export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
 
@@ -372,9 +363,6 @@ export GO111MODULE=on
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-# jdk
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home"
 
 export HTTP_PROXY=http://proxy.nintendo.co.jp:8080
 export HTTPS_PROXY=$HTTP_PROXY export FTP_PROXY=$HTTP_PROXY
@@ -401,3 +389,9 @@ aws_mfa() {
     export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
     export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
 }
+
+# java
+# 15, 11, 1.8
+JAVA_VERSION=15
+export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
+PATH=${JAVA_HOME}/bin:${PATH}
