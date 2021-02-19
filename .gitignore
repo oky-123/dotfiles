@@ -1,5 +1,3 @@
 .DS_Store
 psysh
 configstore
-.lsp/eclipse.jdt.ls/*/.tmp*
-.lsp/eclipse.jdt.ls/*/.file*

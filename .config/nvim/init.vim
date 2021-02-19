@@ -6,6 +6,7 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
+set completeopt=menuone,preview,noinsert
 
 " 行数
 set number
@@ -32,6 +33,11 @@ inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
+
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>e :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>a :Ag<CR>
 
 let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
@@ -101,6 +107,10 @@ if dein#load_state(s:dein_dir)
 
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  " fzf
+  call dein#add('junegunn/fzf', {'build': './install --all'})
+  call dein#add('junegunn/fzf.vim')
 
   call dein#end()
   call dein#save_state()

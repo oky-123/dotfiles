@@ -377,3 +377,7 @@ aws_mfa() {
 JAVA_VERSION=1.8
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
