@@ -132,6 +132,25 @@ endif
 '''
 
 [[plugins]]
+repo='mattn/vim-lsp-settings'
+merged='0'
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete.vim'
+hook_add='''
+let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_enable_for_all = 1
+set completeopt+=preview
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+'''
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-lsp.vim'
+
+
+[[plugins]]
 repo='mattn/vim-goimports'
 hook_add='''
 let g:goimports = 1
@@ -140,20 +159,11 @@ let g:goimports_simplify = 1
 merged='0'
 
 [[plugins]]
-repo='mattn/vim-lsp-settings'
-merged='0'
-
-[[plugins]]
 repo='leafgarland/typescript-vim'
 
 [[plugins]]
-repo='prabirshrestha/asyncomplete.vim'
-hook_add='''
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_smart_completion = 1
-let g:asyncomplete_auto_popup = 1
-'''
+repo='codota/tabnine-vim'
 
 [[plugins]]
-repo='prabirshrestha/asyncomplete-lsp.vim'
+repo='kitagry/asyncomplete-tabnine.vim'
+build='./install.sh'
