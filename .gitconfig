@@ -19,3 +19,6 @@
 	branch = auto
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[ghq]
+	root = ~/ghq
+	root = ~/go/src

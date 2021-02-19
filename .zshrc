@@ -212,17 +212,7 @@ alias -g cdh="fzf_cdr"
 alias ls='ls -G'
 alias la='ls -a'
 alias vi='nvim'
-function launch_workspace() {
-    tmux split-window -v -c '#{pane_current_path}' &&
-    tmux resize-pane -D 11 &&
-    tmux new-window -c "#{pane_current_path}" &&
-    tmux split-window -c "#{pane_current_path}" &&
-    tmux select-pane -U &&
-    tmux next-window &&
-    tmux select-pane -U &&
-    vi
-}
-alias lw='launch_workspace'
+alias -g cdg="cd \"\$(ghq list -p | fzf)\""
 
 # Open google chrome from history
 function ch {
@@ -362,13 +352,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# パスワード表示
-password() {
-    FILE=~/Documents/Accounts.yml
-    cat $FILE G "PASSWORD" | sed -z 's/PASSWORD: //g' | sed -z 's/\n//g' | pbcopy
-}
-
-# MFA認証
+# AWS MFA認証
 aws_mfa() {
     if [ "${1}" = "" ]; then
         echo "Give arguments"

@@ -8,7 +8,7 @@ files=(`cat ./dotfiles`)
 
 for file in "${files[@]}"; do
 	rm -rf ~/$file
-	ln -fs ~/dotfiles/$file ~/$file
+	ln -fs $PWD/$file ~/$file
 done
 IFS=$OLDIFS
 
