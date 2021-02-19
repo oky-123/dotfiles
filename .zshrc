@@ -327,8 +327,8 @@ tmux_automatically_attach_session
 
 # Ruby
 ## rbenv
-export PATH=${HOME}/.rbenv/bin:${PATH}
-eval "$(rbenv init -)"
+# export PATH=${HOME}/.rbenv/bin:${PATH}
+# eval "$(rbenv init -)"
 
 # golang
 export GOPATH=$HOME/go
