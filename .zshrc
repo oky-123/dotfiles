@@ -213,6 +213,13 @@ alias ls='ls -G'
 alias la='ls -a'
 alias vi='nvim'
 alias -g cdg="cd \"\$(ghq list -p | fzf)\""
+function open_ghq_with_fzf() {
+    selected_repo="$(ghq list | fzf)"
+    if [ -n "$selected_repo" ]; then
+      open https://${selected_repo}
+    fi
+}
+alias -g openg="open_ghq_with_fzf"
 
 # Open google chrome from history
 function ch {
