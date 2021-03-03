@@ -88,8 +88,9 @@ nnoremap ]g :<C-u>LspNextDiagnostic<CR>
 nnoremap K :<C-u>LspHover<CR>
 
 let s:lombok_path = $HOME . '/.lsp/lombok.jar'
+
+" java
 if executable('java') && filereadable(expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar')) && filereadable(expand(s:lombok_path))
-    " vim-lsp の設定
     au User lsp_setup call lsp#register_server({
         \ 'name': 'eclipse.jdt.ls',
         \ 'cmd': {server_info->[

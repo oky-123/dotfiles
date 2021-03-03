@@ -73,6 +73,13 @@ brew install --cask corretto8
 sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
+# node
+brew install nodebrew
+mkdir -p ~/.nodebrew/src
+nodebrew install-binary v14.15.5
+nodebrew use v14.15.5
+$HOME/.nodebrew/current/bin/npm install -g typescript typescript-language-server
+
 # Docker
 brew install docker
 brew install --cask docker

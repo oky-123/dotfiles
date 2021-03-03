@@ -1,7 +1,6 @@
 " エンコード
 set encoding=utf-8
 scriptencoding utf-8
-
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
@@ -81,6 +80,7 @@ if has("autocmd")
   autocmd FileType java            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType rust            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType toml            setlocal sw=2 sts=2 ts=2 et
   autocmd FileType mkd             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go              setlocal sw=4 sts=4 ts=4
   autocmd FileType sql             setlocal sw=4 sts=4 ts=4 et

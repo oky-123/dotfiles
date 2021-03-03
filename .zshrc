@@ -332,7 +332,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH=$HOME/nvim-osx64/bin:$PATH
 
 # of
 export OF_ROOT=$HOME/of
