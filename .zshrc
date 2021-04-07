@@ -4,7 +4,7 @@ export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
 ### zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=~/.zplug
 source $ZPLUG_HOME/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
@@ -370,12 +370,6 @@ aws_mfa() {
     export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
     export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
 }
-
-# java
-# 15, 11, 1.8
-JAVA_VERSION=1.8
-export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
-PATH=${JAVA_HOME}/bin:${PATH}
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
