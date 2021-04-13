@@ -69,6 +69,11 @@ map <Leader>k <Plug>(easymotion-k)
 repo='prabirshrestha/vim-lsp'
 merged='0'
 hook_add='''
+" for log
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/.log/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/.log/asyncomplete.log')
+
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
@@ -88,32 +93,39 @@ nnoremap ]g :<C-u>LspNextDiagnostic<CR>
 nnoremap K :<C-u>LspHover<CR>
 
 let s:lombok_path = $HOME . '/.lsp/lombok.jar'
+let s:eclipse_jdt_ls_jar_path = $HOME . '/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar'
+let s:eclipse_jdt_ls_config_path = $HOME . '/.lsp/eclipse.jdt.ls/config_mac'
 
-" java
-if executable('java') && filereadable(expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar')) && filereadable(expand(s:lombok_path))
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'eclipse.jdt.ls',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '-javaagent:' . s:lombok_path,
-        \     '-Xbootclasspath/a:' . s:lombok_path,
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar'),
-        \     '-configuration',
-        \     expand('~/.lsp/eclipse.jdt.ls/config_mac'),
-        \     '-data',
-        \     getcwd()
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
-endif
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'eclipse.jdt.ls',
+    \ 'cmd': {server_info->[
+    \     'java',
+    \     '-javaagent:' . expand(s:lombok_path),
+    \     '-Xbootclasspath/a:' . expand(s:lombok_path),
+    \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+    \     '-Dosgi.bundles.defaultStartLevel=4',
+    \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+    \     '-Dlog.protocol=true',
+    \     '-Dlog.level=ALL',
+    \     '-noverify',
+    \     '-Dfile.encoding=UTF-8',
+    \     '-Xms1g',
+    \     '-Xmx2G',
+    \     '-jar',
+    \     expand(s:eclipse_jdt_ls_jar_path),
+    \     '-configuration',
+    \     expand(s:eclipse_jdt_ls_config_path),
+    \     '-data',
+    \     expand('~/.lsp/eclipse.jdt.ls/workspace'),
+    \     '--add-modules=ALL-SYSTEM',
+    \     '--add-opens',
+    \     'java.base/java.util=ALL-UNNAMED',
+    \     '--add-opens',
+    \     'java.base/java.lang=ALL-UNNAMED'
+    \ ]},
+    \ 'whitelist': ['java'],
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
+    \ })
 '''
 
 [[plugins]]
@@ -122,13 +134,6 @@ merged='0'
 
 [[plugins]]
 repo='prabirshrestha/asyncomplete.vim'
-hook_add='''
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_smart_completion = 1
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_enable_for_all = 1
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-'''
 
 [[plugins]]
 repo='prabirshrestha/asyncomplete-lsp.vim'
@@ -143,10 +148,3 @@ merged='0'
 
 [[plugins]]
 repo='leafgarland/typescript-vim'
-
-[[plugins]]
-repo='codota/tabnine-vim'
-
-[[plugins]]
-repo='kitagry/asyncomplete-tabnine.vim'
-build='./install.sh'

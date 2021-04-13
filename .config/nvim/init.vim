@@ -5,7 +5,6 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set completeopt=menuone,preview,noinsert
 
 " 行数
 set number
@@ -89,6 +88,17 @@ if has("autocmd")
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
 endif
 
+"バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）
+augroup BinaryXXD
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | silent %!xxd -g 1
+  autocmd BufReadPost * set ft=xxd | endif
+  autocmd BufWritePre * if &binary | %!xxd -r
+  autocmd BufWritePre * set ft=xxd | endif
+  autocmd BufWritePost * if &binary | silent %!xxd -g 1
+  autocmd BufWritePost * set nomod | endif
+augroup END
+
 set hidden
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -122,10 +132,6 @@ endif
 if dein#check_install()
   call dein#install()
 endif
-
-augroup MyAutoCmd
-  autocmd!
-augroup END
 
 " 空白削除
 autocmd BufWritePre * call s:remove_unnecessary_space()

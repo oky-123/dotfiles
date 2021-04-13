@@ -3,6 +3,9 @@ export TERM=screen-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
+### vagrant設定
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
 ### zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -373,7 +376,7 @@ aws_mfa() {
 
 # java
 # 15, 11, 1.8
-JAVA_VERSION=1.8
+JAVA_VERSION=11
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
 
