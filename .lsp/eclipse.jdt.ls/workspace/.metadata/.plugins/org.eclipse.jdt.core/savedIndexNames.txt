@@ -1,3 +1,0 @@
-INDEX VERSION 1.130+/Users/oky123/ghq/github.com/oky-123/dotfiles/.lsp/eclipse.jdt.ls/workspace/.metadata/.plugins/org.eclipse.jdt.core
-955584578.index
-3842426239.index
