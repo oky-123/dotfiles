@@ -78,7 +78,7 @@ brew install nodebrew
 mkdir -p ~/.nodebrew/src
 nodebrew install-binary v14.15.5
 nodebrew use v14.15.5
-$HOME/.nodebrew/current/bin/npm install -g typescript typescript-language-server
+$HOME/.nodebrew/current/bin/npm install -g typescript typescript-language-server diagnostic-languageserver eslint_d eslint prettier eslint-plugin-prettier eslint-config-prettier
 
 # Docker
 brew install docker

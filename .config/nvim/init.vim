@@ -59,6 +59,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
   au BufRead,BufNewFile *.jb set filetype=ruby
   au BufRead,BufNewFile *.{tsx,jsx} set filetype=typescript
+  au BufRead,BufNewFile *.kt set filetype=kotlin
   "sw=softtabstop, sts=shiftwidth    , ts=tabstop, et=expandtabの略
   autocmd FileType c               setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp             source ~/.config/nvim/ftplugin/cpp.vim
@@ -86,6 +87,7 @@ if has("autocmd")
   autocmd FileType nim             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType xml             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
 endif
 
 "バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）

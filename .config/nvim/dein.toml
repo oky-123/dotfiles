@@ -66,6 +66,23 @@ map <Leader>k <Plug>(easymotion-k)
 '''
 
 [[plugins]]
+repo='prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo='mattn/vim-goimports'
+hook_add='''
+let g:goimports = 1
+let g:goimports_simplify = 1
+'''
+merged='0'
+
+[[plugins]]
+repo='leafgarland/typescript-vim'
+
+[[plugins]]
+repo='peitalin/vim-jsx-typescript'
+
+[[plugins]]
 repo='prabirshrestha/vim-lsp'
 merged='0'
 hook_add='''
@@ -97,35 +114,55 @@ let s:eclipse_jdt_ls_jar_path = $HOME . '/.lsp/eclipse.jdt.ls/plugins/org.eclips
 let s:eclipse_jdt_ls_config_path = $HOME . '/.lsp/eclipse.jdt.ls/config_mac'
 
 au User lsp_setup call lsp#register_server({
-    \ 'name': 'eclipse.jdt.ls',
-    \ 'cmd': {server_info->[
-    \     'java',
-    \     '-javaagent:' . expand(s:lombok_path),
-    \     '-Xbootclasspath/a:' . expand(s:lombok_path),
-    \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    \     '-Dosgi.bundles.defaultStartLevel=4',
-    \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    \     '-Dlog.protocol=true',
-    \     '-Dlog.level=ALL',
-    \     '-noverify',
-    \     '-Dfile.encoding=UTF-8',
-    \     '-Xms1g',
-    \     '-Xmx2G',
-    \     '-jar',
-    \     expand(s:eclipse_jdt_ls_jar_path),
-    \     '-configuration',
-    \     expand(s:eclipse_jdt_ls_config_path),
-    \     '-data',
-    \     expand('~/.lsp/eclipse.jdt.ls/workspace'),
-    \     '--add-modules=ALL-SYSTEM',
-    \     '--add-opens',
-    \     'java.base/java.util=ALL-UNNAMED',
-    \     '--add-opens',
-    \     'java.base/java.lang=ALL-UNNAMED'
-    \ ]},
-    \ 'whitelist': ['java'],
-    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
+    \   'name': 'eclipse.jdt.ls',
+    \   'cmd': {server_info->[
+    \       'java',
+    \       '-javaagent:' . expand(s:lombok_path),
+    \       '-Xbootclasspath/a:' . expand(s:lombok_path),
+    \       '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+    \       '-Dosgi.bundles.defaultStartLevel=4',
+    \       '-Declipse.product=org.eclipse.jdt.ls.core.product',
+    \       '-Dlog.protocol=true',
+    \       '-Dlog.level=ALL',
+    \       '-noverify',
+    \       '-Dfile.encoding=UTF-8',
+    \       '-Xms1g',
+    \       '-Xmx2G',
+    \       '-jar',
+    \       expand(s:eclipse_jdt_ls_jar_path),
+    \       '-configuration',
+    \       expand(s:eclipse_jdt_ls_config_path),
+    \       '-data',
+    \       expand('~/.lsp/eclipse.jdt.ls/workspace'),
+    \       '--add-modules=ALL-SYSTEM',
+    \       '--add-opens',
+    \       'java.base/java.util=ALL-UNNAMED',
+    \       '--add-opens',
+    \       'java.base/java.lang=ALL-UNNAMED'
+    \   ]},
+    \   'whitelist': ['java'],
+    \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
     \ })
+
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+    \   'name': 'typescript-language-server',
+    \   'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \   'whitelist': ['typescript', 'typescriptreact'],
+    \ })
+endif
+
+if executable('efm-langserver')
+  au User lsp_setup call lsp#register_server({
+    \   'name': 'efm-langserver',
+    \   'cmd': {server_info->['efm-langserver', '-c=/Users/oky123/.config/efm-langserver/config.yaml']},
+    \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \   'whitelist': ['typescript', 'typescriptreact'],
+    \ })
+
+  autocmd BufWritePre *.ts,*.tsx call execute('LspDocumentFormatSync --server=efm-langserver')
+endif
 '''
 
 [[plugins]]
@@ -133,18 +170,4 @@ repo='mattn/vim-lsp-settings'
 merged='0'
 
 [[plugins]]
-repo='prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
 repo='prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo='mattn/vim-goimports'
-hook_add='''
-let g:goimports = 1
-let g:goimports_simplify = 1
-'''
-merged='0'
-
-[[plugins]]
-repo='leafgarland/typescript-vim'
