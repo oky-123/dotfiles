@@ -1,3 +1,96 @@
+[[plugins]]
+repo='prabirshrestha/vim-lsp'
+merged='0'
+on_ft = ['go', 'typescript', 'typescriptreact', 'javascript', 'javascriptreact']
+hook_add='''
+" for log
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/.log/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/.log/asyncomplete.log')
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlights_enabled = 0
+let g:lsp_preview_float = 1
+let g:lsp_text_edit_enabled = 0
+let g:lsp_async_completion = 1
+let g:lsp_diagnostics_float_cursor = 1
+
+nnoremap gd :<C-u>LspDefinition<CR>
+nnoremap gr :<C-u>LspReferences<CR>
+nnoremap gi :<C-u>LspImplementation<CR>
+nnoremap gt :<C-u>LspTypeDefinition<CR>
+nnoremap <leader>rn :<C-u>LspRename<CR>
+nnoremap [g :<C-u>LspPreviousDiagnostic<CR>
+nnoremap ]g :<C-u>LspNextDiagnostic<CR>
+nnoremap K :<C-u>LspHover<CR>
+
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+    \   'name': 'typescript-language-server',
+    \   'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \   'whitelist': ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
+    \ })
+endif
+
+if executable('efm-langserver')
+  au User lsp_setup call lsp#register_server({
+    \   'name': 'efm-langserver',
+    \   'cmd': {server_info->['efm-langserver', '-c=/Users/oky123/.config/efm-langserver/config.yaml']},
+    \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \   'whitelist': ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
+    \ })
+
+  autocmd BufWritePre *.ts,*.tsx,*js,*.jsx call execute('LspDocumentFormatSync --server=efm-langserver')
+endif
+
+autocmd BufWritePre *.go call execute('LspDocumentFormatSync')
+'''
+
+[[plugins]]
+repo='mattn/vim-lsp-settings'
+merged='0'
+on_ft = ['go', 'typescript', 'typescriptreact', 'javascript', 'javascriptreact']
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-lsp.vim'
+on_ft = ['go', 'typescript', 'typescriptreact', 'javascript', 'javascriptreact']
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+source = 'release'
+build = 'coc#util#install()'
+on_ft = ['scala', 'java']
+hook_source = '''
+set nobackup
+set nowritebackup
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+'''
+
 [[plugins]] # TOMLのシンタックスハイライト
 repo  = 'cespare/vim-toml'
 on_ft = 'toml'
