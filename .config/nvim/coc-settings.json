@@ -1,14 +1,9 @@
 {
   "languageserver": {
-    "java": {
-      "command": "coc-java",
-      "filetypes": ["java"]
-    },
-    "scala": {
+    "metals": {
       "command": "metals-vim",
       "rootPatterns": ["build.sbt"],
       "filetypes": ["scala", "sbt"]
     }
-  },
-  "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar"
+  }
 }
