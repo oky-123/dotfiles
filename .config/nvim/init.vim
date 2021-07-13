@@ -24,6 +24,9 @@ set wrapscan
 set ruler
 set showmatch
 
+" Scroll Out
+set so=999
+
 " <Leader>
 let mapleader = "\<space>"
 

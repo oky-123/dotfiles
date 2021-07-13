@@ -149,7 +149,7 @@ if executable('typescript-language-server')
     \   'name': 'typescript-language-server',
     \   'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
     \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-    \   'whitelist': ['typescript', 'typescriptreact'],
+    \   'whitelist': ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
     \ })
 endif
 
@@ -158,11 +158,13 @@ if executable('efm-langserver')
     \   'name': 'efm-langserver',
     \   'cmd': {server_info->['efm-langserver', '-c=/Users/oky123/.config/efm-langserver/config.yaml']},
     \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-    \   'whitelist': ['typescript', 'typescriptreact'],
+    \   'whitelist': ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
     \ })
 
-  autocmd BufWritePre *.ts,*.tsx call execute('LspDocumentFormatSync --server=efm-langserver')
+  autocmd BufWritePre *.ts,*.tsx,*js,*.jsx call execute('LspDocumentFormatSync --server=efm-langserver')
 endif
+
+autocmd BufWritePre *.go call execute('LspDocumentFormatSync')
 '''
 
 [[plugins]]
