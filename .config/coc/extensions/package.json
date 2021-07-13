@@ -1,8 +1,1 @@
-{
-  "dependencies": {
-    "coc-eslint": ">=1.4.5",
-    "coc-java": ">=1.5.3",
-    "coc-metals": ">=1.0.6",
-    "coc-tsserver": ">=1.7.0"
-  }
-}
+{"dependencies":{}}
