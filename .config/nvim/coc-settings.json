@@ -1,9 +1,20 @@
 {
-  "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    }
-  }
+    "languageserver": {
+        "metals": {
+            "command": "metals-vim",
+            "rootPatterns": [
+                "build.sbt"
+            ],
+            "filetypes": [
+                "scala",
+                "sbt"
+            ]
+        }
+    },
+    "coc.preferences.formatOnSaveFiletypes": [
+        "cpp",
+        "json",
+        "python"
+    ],
+    "clangd.path": "~/ghq/github.com/oky-123/dotfiles/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
