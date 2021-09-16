@@ -383,3 +383,8 @@ PATH=${JAVA_HOME}/bin:${PATH}
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# llvm@8
+export PATH="/usr/local/opt/llvm@8/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm@8/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm@8/include"

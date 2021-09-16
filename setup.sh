@@ -103,6 +103,9 @@ brew install gsed
 # reattach-to-user-namespace
 brew install reattach-to-user-namespace
 
+# llvm
+brew install llvm@8
+
 # etc...
 brew install --cask deepl
 brew install --cask slack
