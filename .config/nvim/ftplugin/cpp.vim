@@ -1,4 +1,4 @@
-setlocal sw=4 sts=4 ts=4 et
+setlocal sw=2 sts=2 ts=2 et
 inoremap << <<
 
 function! CPPCodeCleanup()
