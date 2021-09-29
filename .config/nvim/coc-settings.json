@@ -15,5 +15,6 @@
         "cpp",
         "json",
         "python"
-    ]
+    ],
+    "clangd.path": "~/ghq/github.com/oky-123/dotfiles/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
