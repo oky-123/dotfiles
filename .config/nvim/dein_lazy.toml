@@ -89,7 +89,6 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 xmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction)
 '''
 
 [[plugins]] # TOMLのシンタックスハイライト

@@ -388,3 +388,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export PATH="/usr/local/opt/llvm@8/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm@8/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm@8/include"
+
+# debugserver for llvm(ref: https://codehex.hateblo.jp/entry/2020/04/29/191555)
+export LLDB_DEBUGSERVER_PATH=/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/Current/Resources/debugserver
