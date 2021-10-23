@@ -257,7 +257,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # PATH Rust
-export PATH="$HOME/.cargo/env:$PATH"
+export PAHT="$HOME/.cargo/bin"
 
 # tmux
 alias t="tmux -u"
