@@ -117,3 +117,5 @@ brew install --cask karabiner-elements
 
 ssh-keygen -t rsa -b 4096 -C "oky123.ia@gmail.com"
 echo "Setup finidhed."
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

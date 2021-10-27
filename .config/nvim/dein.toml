@@ -66,18 +66,36 @@ map <Leader>k <Plug>(easymotion-k)
 '''
 
 [[plugins]]
-repo='prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo='mattn/vim-goimports'
-hook_add='''
-let g:goimports = 1
-let g:goimports_simplify = 1
-'''
+repo = 'neoclide/coc.nvim'
+rev = 'release'
 merged='0'
+hook_add = '''
+set nobackup
+set nowritebackup
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> K :call <SID>show_documentation()<CR>
 
-[[plugins]]
-repo='leafgarland/typescript-vim'
-
-[[plugins]]
-repo='peitalin/vim-jsx-typescript'
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>ca  <Plug>(coc-codeaction-selected)
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+'''
