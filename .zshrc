@@ -1,5 +1,5 @@
 ### TERM設定
-export TERM=screen-256color
+# export TERM=screen-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
@@ -182,6 +182,9 @@ function zaw-src-gitdir-cd () {
 
 zaw-register-src -n gitdir zaw-src-gitdir
 
+## Aliases replacement of Unix commands
+alias ls='exa'
+
 ## Aliases
 alias '..'='cd ..'
 alias -g ...='../..'
@@ -195,37 +198,36 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sed'
 alias -g C='| cat'
-alias -g F='| fzf'
+alias -g F='| sk'
 alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
-function fzf-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
+function sk-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | sk`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N fzf-history-selection
-bindkey 'hh' fzf-history-selection
-alias -g cdf="cd \"\$(find . -type d | fzf)\""
-alias -g cdl="cd \"\$(ls -d */ | fzf)\""
-function fzf_cdr() {
-    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf`
+zle -N sk-history-selection
+bindkey 'hh' sk-history-selection
+alias -g cdf="cd \"\$(find . -type d | sk)\""
+alias -g cdl="cd \"\$(ls -d */ | sk)\""
+function sk_cdr() {
+    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | sk`
     target_dir=`echo ${target_dir/\~/$HOME}`
     if [ -n "$target_dir" ]; then
         cd $target_dir
     fi
 }
-alias -g cdh="fzf_cdr"
-alias ls='ls -G'
-alias la='ls -a'
+alias -g cdh="sk_cdr"
+alias la='exa -a'
 alias vi='nvim'
-alias -g cdg="cd \"\$(ghq list -p | fzf)\""
-function open_ghq_with_fzf() {
-    selected_repo="$(ghq list | fzf)"
+alias -g cdg="cd \"\$(ghq list -p | sk)\""
+function open_ghq_with_sk() {
+    selected_repo="$(ghq list | sk)"
     if [ -n "$selected_repo" ]; then
       open https://${selected_repo}
     fi
 }
-alias -g openg="open_ghq_with_fzf"
+alias -g openg="open_ghq_with_sk"
 
 # Open google chrome from history
 function ch {
@@ -238,7 +240,7 @@ function ch {
     "select substr(title, 1, $cols), url
      from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  fzf | sed 's#.*\(https*://\)#\1#'`
+  sk | sed 's#.*\(https*://\)#\1#'`
   if [ -n "$c" ]; then
     open -a '/Applications/Google Chrome.app' "$c"
   fi
@@ -386,10 +388,6 @@ aws_mfa() {
 JAVA_VERSION=11
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # llvm@8
 export PATH="/usr/local/opt/llvm@8/bin:$PATH"

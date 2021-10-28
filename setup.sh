@@ -76,8 +76,8 @@ brew install python
 brew install java java11
 brew tap homebrew/cask-versions
 brew install --cask corretto8
-sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # node
 curl -L git.io/nodebrew | perl - setup
@@ -105,6 +105,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # fzf
 brew install fzf
+brew install sk
+
+# Unix commands wrapped rust
+brew install ripgrep
+brew install exa
 
 # gsed
 brew install gsed
@@ -113,7 +118,10 @@ brew install gsed
 brew install reattach-to-user-namespace
 
 # llvm
-brew install llvm@8
+# brew install llvm@8
+
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # etc...
 # brew install --cask deepl
@@ -123,6 +131,7 @@ brew install llvm@8
 # brew install --cask dropbox
 # brew install --cask spectacle
 # brew install --cask karabiner-elements
+
 
 # ssh-keygen -t rsa -b 4096 -C "oky123.ia@gmail.com"
 echo "Setup finidhed."

@@ -40,6 +40,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>e :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>a :Ag<CR>
+nnoremap <silent> <Leader>r :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
 
@@ -126,8 +127,10 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " fzf
-  call dein#add('junegunn/fzf', {'build': './install --all'})
-  call dein#add('junegunn/fzf.vim')
+  " call dein#add('junegunn/fzf', {'build': './install --all'})
+  " call dein#add('junegunn/fzf.vim')
+  call dein#add('lotabout/skim', { 'dir': '~/.skim', 'do': './install' })
+  call dein#add('lotabout/skim.vim')
 
   call dein#end()
   call dein#save_state()
