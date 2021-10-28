@@ -7,7 +7,7 @@ export LC_ALL=ja_JP.UTF-8
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
 ### zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
@@ -74,6 +74,9 @@ zstyle ':vcs_info:bzr:*' use-simple true
 HISTFILE=~/.zsh_historyx
 HISTSIZE=100000
 SAVEHIST=100000
+
+### Brew PATH
+export PATH=/opt/homebrew/bin:$PATH
 
 ### 補完
 fpath=(~/.config/zsh/completion $fpath)
@@ -252,9 +255,13 @@ ress() {
   }
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
 eval "$(pyenv init -)"
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 # PATH Rust
 export PAHT="$HOME/.cargo/bin"
