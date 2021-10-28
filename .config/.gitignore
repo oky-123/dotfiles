@@ -1,2 +1,5 @@
-.DS_Store
-iterm2/
+*
+!nvim/
+!kararbiner/
+!efm-languageserver/
+!alacritty/
