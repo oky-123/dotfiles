@@ -1,61 +1,57 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
+repo='Shougo/dein.vim'
 
 [[plugins]] # color scheme
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
+repo='w0ng/vim-hybrid'
+hook_add='''
 set background=dark
 colorscheme hybrid
 '''
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
+repo='scrooloose/nerdtree'
+hook_add='''
 let NERDTreeShowHidden = 1
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 '''
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
+repo='Xuyuanp/nerdtree-git-plugin'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
+repo='itchyny/lightline.vim'
+hook_add='''
 let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
-      \ }
-      \ }
+  \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+  \ }
+\ }
 '''
 
 # Indent
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_source = '''
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+repo='nathanaelkane/vim-indent-guides'
+hook_source='''
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 '''
 
 ## Git gutter
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo= 'airblade/vim-gitgutter'
 hook_source = '''
-    nmap <Leader>h] <Plug>GitGutterNextHunk
-    nmap <Leader>h[ <Plug>GitGutterPrevHunk
-    set updatetime=250
+let g:gitgutter_map_keys = 0
+set updatetime=250
 '''
 
 ## Git fugitive
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo= 'tpope/vim-fugitive'
 
 [[plugins]]
-repo='jalvesaq/Nvim-R'
-
-[[plugins]]
-repo='easymotion/vim-easymotion'
+repo= 'easymotion/vim-easymotion'
 hook_add='''
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
@@ -66,10 +62,10 @@ map <Leader>k <Plug>(easymotion-k)
 '''
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
+repo='neoclide/coc.nvim'
+rev='release'
 merged='0'
-hook_add = '''
+hook_add='''
 set nobackup
 set nowritebackup
 nmap <silent> gd <Plug>(coc-definition)
@@ -99,3 +95,12 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 '''
+
+[[plugins]]
+repo='simeji/winresizer'
+hook_add='''
+let g:winresizer_start_key = '<C-t>'
+'''
+
+[[plugins]]
+repo='jeetsukumaran/vim-markology'

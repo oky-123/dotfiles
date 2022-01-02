@@ -390,11 +390,13 @@ export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
 
 # llvm@8
-export PATH="/usr/local/opt/llvm@8/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm@8/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm@8/include"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # debugserver for llvm(ref: https://codehex.hateblo.jp/entry/2020/04/29/191555)
 export LLDB_DEBUGSERVER_PATH=/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/Current/Resources/debugserver
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH=$PATH:/usr/local/CrossPack-AVR/bin/

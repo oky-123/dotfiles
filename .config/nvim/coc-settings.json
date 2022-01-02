@@ -1,5 +1,19 @@
 {
-    "languageserver": {},
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json"
+            ],
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ]
+        }
+    },
     "coc.preferences.formatOnSaveFiletypes": [
         "cpp",
         "json",
@@ -7,5 +21,15 @@
         "java",
         "rust"
     ],
-    "clangd.path": "~/ghq/github.com/oky-123/dotfiles/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
+    "java.configuration.runtimes": [
+        {
+            "name": "OpenJDK 11",
+            "path": "/opt/homebrew/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home"
+        },
+        {
+            "name": "OpenJDK 17",
+            "path": "/opt/homebrew/Cellar/openjdk/17/libexec/openjdk.jdk/Contents/Home"
+        }
+    ],
+    "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar"
 }

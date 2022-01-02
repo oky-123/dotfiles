@@ -94,17 +94,17 @@ tabspaces: 4
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-  family: Monaco
+    family: Source Han Code JP
 
     # The `style` can be specified to pick a specific face.
-    # style: Regular
+    style: R
 
   # Bold font face
   bold:
@@ -112,10 +112,10 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Monaco
+    # family: Source Han Code JP
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    style: B
 
   # Italic font face
   italic:
@@ -123,13 +123,13 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Monaco
+    # family: Monaco
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: It
 
   # Point size
-  size: 15.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

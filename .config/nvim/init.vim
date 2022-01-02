@@ -5,6 +5,7 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
+set signcolumn=auto:5
 
 " 行数
 set number
@@ -49,9 +50,10 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
-" python
-let g:python3_host_prog = expand('~/nvim_python3/bin/python3')
-let g:python_host_prog = expand('~/nvim_python2/bin/python2')
+" python extension
+let g:python3_host_prog = expand('/opt/homebrew/bin/python3')
+let g:python_host_prog = expand('/usr/bin/python')
+
 if has("autocmd")
   "ファイルタイプの検索を有効にする
   filetype plugin on
