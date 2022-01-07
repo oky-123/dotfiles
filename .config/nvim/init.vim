@@ -94,6 +94,7 @@ if has("autocmd")
   autocmd FileType xml             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
 endif
 
 "バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）
@@ -129,8 +130,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " fzf
-  " call dein#add('junegunn/fzf', {'build': './install --all'})
-  " call dein#add('junegunn/fzf.vim')
   call dein#add('lotabout/skim', { 'dir': '~/.skim', 'do': './install' })
   call dein#add('lotabout/skim.vim')
 
@@ -152,4 +151,21 @@ function! s:remove_unnecessary_space()
    while getline('$') == "" && len(join(getline(0, '$')))
            $delete _
    endwhile
+endfunction
+
+" vimscriptを再ロードする
+nnoremap <silent> <C-r> :source ~/.config/nvim/init.vim<CR>
+
+" ファイルごとのマークリストを取得する
+function! s:get_mark_list_in_current_buffer()
+    let current_buf = bufnr('%')
+    let mark_list = getmarklist(current_buf)
+    for m in mark_list
+        echo m
+    endfor
+    return []
+endfunction
+
+function! EchoMarkList()
+    echo s:get_mark_list_in_current_buffer()
 endfunction
