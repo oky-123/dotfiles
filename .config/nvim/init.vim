@@ -5,7 +5,7 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set signcolumn=yes:3
+set signcolumn=yes:4
 set updatetime=100
 
 " 行数
@@ -96,6 +96,9 @@ if has("autocmd")
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
+
+  " plugin file types
+  autocmd FileType nerdtree        setlocal signcolumn=no
 endif
 
 "バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）
@@ -159,13 +162,19 @@ nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
 
 
 " ************************************************
-" * ファイルごとのマークリストを取得する
+"  ファイルごとのマークリストを取得する
+" # 特徴
+" - 軽量
+" - 表示するマークを選べる
+" - 表示するマークの優先順位を決められる
+" - 表示するマークの個数を指定できる
 " ************************************************
-let s:signs_to_show = "abcdefghijklmnopqrstuvwxyz.'<>^ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let s:signs_to_show = "abcdefghijklmnopqrstuvwxyz.'^ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let s:sign_text_hl = 'Label'
 let s:refresh_signs_on_cursor_hold = 1
+let s:signs_priority = 0
 
-" Define signs used in ShowMarks
+" Define signs used in VisibleMark
 function! s:define_signs()
     " White list letters
     let sign_list = []
@@ -182,6 +191,12 @@ call s:define_signs()
 
 " Refresh the display of signs
 function! s:refresh_signs()
+    " If current_buf is not writable, place no sign.
+    let writable_current_buffer = &modifiable && !&readonly
+    if !writable_current_buffer
+        return
+    endif
+
     " Get current buffer
     let current_buf = bufnr('%')
 
@@ -191,9 +206,8 @@ function! s:refresh_signs()
     " Dict for placed sign
     let lnum_sign_placed = {}
 
-    " Get global marks (high priority)
+    " Get marks
     let global_mark_list = getmarklist()
-    " Get local marks (low priority)
     let local_mark_list = getmarklist(current_buf)
 
     call s:place_sign_from_existing_marks(current_buf, global_mark_list + local_mark_list, lnum_sign_placed)
@@ -216,9 +230,6 @@ endfunction
 
 " Place signs (Only marks defined in s:signs_to_show)
 function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_placed)
-    " Set priority
-    let priority = 0
-
     for m in a:mark_list
         let mark = m['mark'][1]
         let lnum = m['pos'][1]
@@ -230,12 +241,12 @@ function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_pla
 
         " If no sign has placed at the lnum, place the sign
         if !has_key(a:lnum_sign_placed, lnum)
-            call sign_place(0, 'ShowMarks', 'ShowMarks_' . mark . '_txt', a:current_buf, {'lnum' : lnum, 'priority': priority})
+            call sign_place(0, 'ShowMarks', 'ShowMarks_' . mark . '_txt', a:current_buf, {'lnum' : lnum, 'priority': s:signs_priority})
             let a:lnum_sign_placed[lnum] = 1
         endif
     endfor
 
 endfunction
 
-"
+" Set autocmd to refresh sign when cursor holding
 autocmd CursorHold * if (s:refresh_signs_on_cursor_hold ) | call s:refresh_signs() | endif
