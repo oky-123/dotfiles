@@ -101,6 +101,3 @@ repo='simeji/winresizer'
 hook_add='''
 let g:winresizer_start_key = '<C-t>'
 '''
-
-[[plugins]]
-repo='jeetsukumaran/vim-markology'

@@ -154,18 +154,78 @@ function! s:remove_unnecessary_space()
 endfunction
 
 " vimscriptを再ロードする
-nnoremap <silent> <C-r> :source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
 
-" ファイルごとのマークリストを取得する
-function! s:get_mark_list_in_current_buffer()
-    let current_buf = bufnr('%')
-    let mark_list = getmarklist(current_buf)
-    for m in mark_list
-        echo m
+
+" ************************************************
+" * ファイルごとのマークリストを取得する
+" ************************************************
+" 表示させるMarkリスト
+let s:signs_lower_txt = 'abcdefghijklmnopqrstuvwxyz'
+let s:signs_upper_txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+" 表示するサインを定義する
+function! s:define_signs()
+    " 小文字 & text
+    let signs_lower_txt_list = []
+    for i in range(26)
+        call add(signs_lower_txt_list, { "name": "ShowMarks_" . s:signs_lower_txt[i] . "_txt",
+            \ "text": s:signs_lower_txt[i]})
     endfor
-    return []
+
+    " 大文字 & text
+    let signs_upper_txt_list = []
+    for i in range(26)
+        call add(signs_upper_txt_list, { "name": "ShowMarks_" . s:signs_upper_txt[i] . "_txt",
+            \ "text": s:signs_upper_txt[i] })
+    endfor
+
+    " 読み込み
+    call sign_define(signs_lower_txt_list)
+    call sign_define(signs_upper_txt_list)
+endfunction
+call s:define_signs()
+
+" 表示をリフレッシュさせる関数
+function! s:refresh_signs(timer)
+    " Current buffer
+    let current_buf = bufnr('%')
+
+    " Clear Signs
+    call sign_unplace('ShowMarks')
+
+    " Dict for placed sign
+    let lnum_sign_placed = {}
+
+    " Get global marks (high priority)
+    let global_mark_list = getmarklist()
+    call s:place_sign_from_existing_marks(current_buf, global_mark_list, lnum_sign_placed)
+
+    " Get local marks (low priority)
+    let local_mark_list = getmarklist(current_buf)
+    call s:place_sign_from_existing_marks(current_buf, local_mark_list, lnum_sign_placed)
 endfunction
 
-function! EchoMarkList()
-    echo s:get_mark_list_in_current_buffer()
+" サインの設置を実行する関数
+function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_placed)
+    " Set priority
+    let priority = 100
+
+    for m in a:mark_list
+        let mark = escape(m['mark'][1], '.') " escape '.'
+        let lnum = m['pos'][1]
+
+        " Check if the mark is included in the white lists
+        if matchstr(escape(s:signs_lower_txt, '.'), mark) == '' && matchstr(escape(s:signs_upper_txt, '.'), mark) == ''
+            continue
+        endif
+
+        " If no sign has placed at the lnum, place the sign
+        if !has_key(a:lnum_sign_placed, lnum)
+            call sign_place(0, 'ShowMarks', 'ShowMarks_' . mark . '_txt', a:current_buf, {'lnum' : lnum, 'priority': priority})
+            let a:lnum_sign_placed[lnum] = 1
+        endif
+    endfor
 endfunction
+
+call timer_start(1000, function("s:refresh_signs"), { 'repeat': -1 })
