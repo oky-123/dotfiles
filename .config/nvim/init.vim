@@ -5,7 +5,8 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set signcolumn=auto:5
+set signcolumn=yes:3
+set updatetime=100
 
 " 行数
 set number
@@ -160,35 +161,28 @@ nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
 " ************************************************
 " * ファイルごとのマークリストを取得する
 " ************************************************
-" 表示させるMarkリスト
-let s:signs_lower_txt = 'abcdefghijklmnopqrstuvwxyz'
-let s:signs_upper_txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let s:signs_to_show = "abcdefghijklmnopqrstuvwxyz.'<>^ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let s:sign_text_hl = 'Label'
+let s:refresh_signs_on_cursor_hold = 1
 
-" 表示するサインを定義する
+" Define signs used in ShowMarks
 function! s:define_signs()
-    " 小文字 & text
-    let signs_lower_txt_list = []
-    for i in range(26)
-        call add(signs_lower_txt_list, { "name": "ShowMarks_" . s:signs_lower_txt[i] . "_txt",
-            \ "text": s:signs_lower_txt[i]})
+    " White list letters
+    let sign_list = []
+    for i in range(len(s:signs_to_show))
+        call add(sign_list, { "name": "ShowMarks_" . s:signs_to_show[i] . "_txt",
+            \ "text": s:signs_to_show[i],
+            \ "texthl": s:sign_text_hl })
     endfor
 
-    " 大文字 & text
-    let signs_upper_txt_list = []
-    for i in range(26)
-        call add(signs_upper_txt_list, { "name": "ShowMarks_" . s:signs_upper_txt[i] . "_txt",
-            \ "text": s:signs_upper_txt[i] })
-    endfor
-
-    " 読み込み
-    call sign_define(signs_lower_txt_list)
-    call sign_define(signs_upper_txt_list)
+    " Define signs
+    call sign_define(sign_list)
 endfunction
 call s:define_signs()
 
-" 表示をリフレッシュさせる関数
-function! s:refresh_signs(timer)
-    " Current buffer
+" Refresh the display of signs
+function! s:refresh_signs()
+    " Get current buffer
     let current_buf = bufnr('%')
 
     " Clear Signs
@@ -199,24 +193,38 @@ function! s:refresh_signs(timer)
 
     " Get global marks (high priority)
     let global_mark_list = getmarklist()
-    call s:place_sign_from_existing_marks(current_buf, global_mark_list, lnum_sign_placed)
-
     " Get local marks (low priority)
     let local_mark_list = getmarklist(current_buf)
-    call s:place_sign_from_existing_marks(current_buf, local_mark_list, lnum_sign_placed)
+
+    call s:place_sign_from_existing_marks(current_buf, global_mark_list + local_mark_list, lnum_sign_placed)
 endfunction
 
-" サインの設置を実行する関数
+function! PrintMarkList()
+    let current_buf = bufnr('%')
+    let global_mark_list = getmarklist()
+    echo "global_mark_list: "
+    for m in global_mark_list
+        echo m
+    endfor
+
+    let local_mark_list = getmarklist(current_buf)
+    echo "local_mark_list: "
+    for m in local_mark_list
+        echo m
+    endfor
+endfunction
+
+" Place signs (Only marks defined in s:signs_to_show)
 function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_placed)
     " Set priority
-    let priority = 100
+    let priority = 0
 
     for m in a:mark_list
-        let mark = escape(m['mark'][1], '.') " escape '.'
+        let mark = m['mark'][1]
         let lnum = m['pos'][1]
 
         " Check if the mark is included in the white lists
-        if matchstr(escape(s:signs_lower_txt, '.'), mark) == '' && matchstr(escape(s:signs_upper_txt, '.'), mark) == ''
+        if matchstr(escape(s:signs_to_show, '.'), escape(mark, '.')) == ''
             continue
         endif
 
@@ -226,6 +234,8 @@ function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_pla
             let a:lnum_sign_placed[lnum] = 1
         endif
     endfor
+
 endfunction
 
-call timer_start(1000, function("s:refresh_signs"), { 'repeat': -1 })
+"
+autocmd CursorHold * if (s:refresh_signs_on_cursor_hold ) | call s:refresh_signs() | endif

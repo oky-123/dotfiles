@@ -43,7 +43,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 repo= 'airblade/vim-gitgutter'
 hook_source = '''
 let g:gitgutter_map_keys = 0
-set updatetime=250
 '''
 
 ## Git fugitive
