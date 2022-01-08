@@ -5,7 +5,7 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set signcolumn=yes:4
+set signcolumn=yes:3
 set updatetime=100
 
 " 行数
@@ -159,94 +159,3 @@ endfunction
 
 " vimscriptを再ロードする
 nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
-
-
-" ************************************************
-"  ファイルごとのマークリストを取得する
-" # 特徴
-" - 軽量
-" - 表示するマークを選べる
-" - 表示するマークの優先順位を決められる
-" - 表示するマークの個数を指定できる
-" ************************************************
-let s:signs_to_show = "abcdefghijklmnopqrstuvwxyz.'^ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let s:sign_text_hl = 'Label'
-let s:refresh_signs_on_cursor_hold = 1
-let s:signs_priority = 0
-
-" Define signs used in VisibleMark
-function! s:define_signs()
-    " White list letters
-    let sign_list = []
-    for i in range(len(s:signs_to_show))
-        call add(sign_list, { "name": "ShowMarks_" . s:signs_to_show[i] . "_txt",
-            \ "text": s:signs_to_show[i],
-            \ "texthl": s:sign_text_hl })
-    endfor
-
-    " Define signs
-    call sign_define(sign_list)
-endfunction
-call s:define_signs()
-
-" Refresh the display of signs
-function! s:refresh_signs()
-    " If current_buf is not writable, place no sign.
-    let writable_current_buffer = &modifiable && !&readonly
-    if !writable_current_buffer
-        return
-    endif
-
-    " Get current buffer
-    let current_buf = bufnr('%')
-
-    " Clear Signs
-    call sign_unplace('ShowMarks')
-
-    " Dict for placed sign
-    let lnum_sign_placed = {}
-
-    " Get marks
-    let global_mark_list = getmarklist()
-    let local_mark_list = getmarklist(current_buf)
-
-    call s:place_sign_from_existing_marks(current_buf, global_mark_list + local_mark_list, lnum_sign_placed)
-endfunction
-
-function! PrintMarkList()
-    let current_buf = bufnr('%')
-    let global_mark_list = getmarklist()
-    echo "global_mark_list: "
-    for m in global_mark_list
-        echo m
-    endfor
-
-    let local_mark_list = getmarklist(current_buf)
-    echo "local_mark_list: "
-    for m in local_mark_list
-        echo m
-    endfor
-endfunction
-
-" Place signs (Only marks defined in s:signs_to_show)
-function! s:place_sign_from_existing_marks(current_buf, mark_list, lnum_sign_placed)
-    for m in a:mark_list
-        let mark = m['mark'][1]
-        let lnum = m['pos'][1]
-
-        " Check if the mark is included in the white lists
-        if matchstr(escape(s:signs_to_show, '.'), escape(mark, '.')) == ''
-            continue
-        endif
-
-        " If no sign has placed at the lnum, place the sign
-        if !has_key(a:lnum_sign_placed, lnum)
-            call sign_place(0, 'ShowMarks', 'ShowMarks_' . mark . '_txt', a:current_buf, {'lnum' : lnum, 'priority': s:signs_priority})
-            let a:lnum_sign_placed[lnum] = 1
-        endif
-    endfor
-
-endfunction
-
-" Set autocmd to refresh sign when cursor holding
-autocmd CursorHold * if (s:refresh_signs_on_cursor_hold ) | call s:refresh_signs() | endif
