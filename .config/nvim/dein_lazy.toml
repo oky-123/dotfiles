@@ -16,7 +16,7 @@ let g:vim_markdown_new_list_item_indent = 0
 
 [[plugins]]
 repo = "puremourning/vimspector"
-on_ft='rust'
+on_ft=['rust', 'vim']
 build = "./install_gadget.py --enable-rust"
 hook_add='''
 nnoremap <Leader>vs :call vimspector#Launch()<CR>

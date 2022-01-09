@@ -1,4 +1,5 @@
 " エンコード
+"
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
@@ -34,8 +35,7 @@ let mapleader = "\<space>"
 
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
-inoremap <silent> kk <ESC>
-inoremap <silent> <C-k> k
+inoremap <silent> kk <ESC> inoremap <silent> <C-k> k
 
 " fzf
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -97,6 +97,7 @@ if has("autocmd")
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
 
+
   " plugin file types
   autocmd FileType nerdtree        setlocal signcolumn=no
 endif
@@ -157,28 +158,102 @@ function! s:remove_unnecessary_space()
    endwhile
 endfunction
 
+
 " vimscriptを再ロードする
 nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
 
-"
-function! s:sign_ruler()
-    let current_buf = bufnr('%')
-    let signs = sign_getplaced(current_buf, {'group': 'Marksign'})
+"======================================
+function! s:set_dict_signs_group_by_group(topline, botline)
+    " sign lnums grouped by group ({ group: {lnum: {'1': 1, '10': 3}, max_count: 3, priority: 10}})
+    let sign_dict = {}
+    let signs = s:signs()
+    echo signs
 
-    for sign in signs[0]['signs']
-        echo sign
+    for sign in signs
+        " first access to group, set dict {lnum: sign_count}
+        let group = sign['group']
+        if !has_key(sign_dict, group)
+            let sign_dict[group] = { 'lnum': {}, 'max_count': 0, 'priority': sign['priority'] }
+        endif
+
+        " skip if out of range of the window
+        let lnum = sign['lnum']
+        if lnum < a:topline || a:botline < lnum
+            continue
+        endif
+
+        let lnum_str = string(lnum)
+        " if exists groups[group][lnum], increment sign_count.
+        if has_key(sign_dict[group]['lnum'], lnum_str)
+            let sign_dict[group]['lnum'][lnum_str] += 1
+            if sign_dict[group]['max_count'] < sign_dict[group]['lnum'][lnum_str]
+                let sign_dict[group]['max_count'] = sign_dict[group]['lnum'][lnum_str]
+            endif
+        " if exists groups[group] but groups[group][lnum] not found
+        else
+            let sign_dict[group]['lnum'][lnum_str] = 1
+            if sign_dict[group]['max_count'] < 1
+                let sign_dict[group]['max_count'] = 1
+            endif
+        endif
     endfor
 
-    echo signs[0]['signs']
-    let lnum_signs = map(signs[0]['signs'], {v -> v['lnum']})
-    echo lnum_signs
-
-    for i in range(178)
-    endfor
-
-
-    " call sign_place(0, 'test', 'test_dummy_txt', current_buf,
-    "     \ {'lnum' : 0, 'priority': 0})
+    let s:sr_sign_dict = sign_dict
+    let s:sr_group = keys(sign_dict)
 endfunction
 
-call s:sign_ruler()
+function! s:signs()
+    let current_buf = bufnr('%')
+    " let signs = sign_getplaced(current_buf, {'group': '*'})[0]['signs']
+    let signs = sign_getplaced(current_buf, {'group': '*'})
+    if !len(signs)
+        return signs
+    endif
+
+    return filter(signs[0]['signs'], {val -> val['group'] !=# 'signruler'})
+endfunction
+
+" define sign
+if !len(sign_getdefined(''))
+    call sign_define('SignrulerDummySign', { 'text': '#', 'texthl': 'Label'})
+endif
+
+function! s:test_sign_ruler()
+    call sign_unplace('signruler')
+
+    " wininfo
+    let wininfo = getwininfo(win_getid())[0]
+    let topline = wininfo['topline']
+    let botline = wininfo['botline']
+
+    " set dicts
+    call s:set_dict_signs_group_by_group(topline, botline)
+    echo s:sr_sign_dict
+
+    let current_buf = bufnr('%')
+
+    " iterate groups
+    for group in s:sr_group
+        let sign_dict = s:sr_sign_dict[group]
+        let lnums = sign_dict['lnum']
+        let max_count = sign_dict['max_count']
+        let priority = sign_dict['priority']
+
+        " echo group
+
+        " place dummy sign
+        for lnum in range(topline, botline)
+            let lnum_str = string(lnum)
+            if !has_key(lnums, lnum_str)
+                for i in range(max_count)
+                    call sign_place(0, 'signruler', 'SignrulerDummySign', current_buf, {'lnum': lnum, 'priority': priority})
+                endfor
+            elseif lnums[lnum_str] < max_count
+                for i in range(max_count - lnums[lnum_str])
+                    call sign_place(0, 'signruler', 'SignrulerDummySign', current_buf, {'lnum': lnum, 'priority': priority})
+                endfor
+            endif
+        endfor
+    endfor
+endfunction
+call s:test_sign_ruler()
