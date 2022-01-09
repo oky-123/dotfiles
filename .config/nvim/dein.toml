@@ -106,7 +106,3 @@ repo = 'mattn/vim-maketable'
 
 [[plugins]]
 repo = 'oky-123/marksign.vim'
-hook_add='''
-set background=dark
-colorscheme hybrid
-'''

@@ -159,3 +159,26 @@ endfunction
 
 " vimscriptを再ロードする
 nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
+
+"
+function! s:sign_ruler()
+    let current_buf = bufnr('%')
+    let signs = sign_getplaced(current_buf, {'group': 'Marksign'})
+
+    for sign in signs[0]['signs']
+        echo sign
+    endfor
+
+    echo signs[0]['signs']
+    let lnum_signs = map(signs[0]['signs'], {v -> v['lnum']})
+    echo lnum_signs
+
+    for i in range(178)
+    endfor
+
+
+    " call sign_place(0, 'test', 'test_dummy_txt', current_buf,
+    "     \ {'lnum' : 0, 'priority': 0})
+endfunction
+
+call s:sign_ruler()
