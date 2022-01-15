@@ -41,8 +41,9 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 ## Git gutter
 [[plugins]]
 repo= 'airblade/vim-gitgutter'
-hook_source = '''
+hook_add = '''
 let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_priority = 1
 '''
 
 ## Git fugitive

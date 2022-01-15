@@ -1,5 +1,4 @@
 ### TERM設定
-# export TERM=screen-256color
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
@@ -77,6 +76,7 @@ SAVEHIST=100000
 
 ### Brew PATH
 export PATH=/opt/homebrew/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
 
 ### 補完
 fpath=(~/.config/zsh/completion $fpath)
@@ -258,7 +258,6 @@ ress() {
 
 # python
 export PATH="$HOME/.pyenv/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
 
 eval "$(pyenv init -)"
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"

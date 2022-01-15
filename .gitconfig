@@ -13,12 +13,12 @@
 	co = checkout
 	br = branch
 	st = status
+[url "git@github.com:"]
+       insteadOf = https://github.com/
 [color]
 	diff = auto
 	status = auto
 	branch = auto
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [ghq]
 	root = ~/go/src
 	root = ~/ghq
