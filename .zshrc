@@ -333,9 +333,7 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 # Ruby
-## rbenv
-# export PATH=${HOME}/.rbenv/bin:${PATH}
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 
 # golang
 export GOPATH=$HOME/go
@@ -350,7 +348,7 @@ export PG_OF_ROOT=$OF_ROOT
 alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
 
 # llvm
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # opam
 export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"

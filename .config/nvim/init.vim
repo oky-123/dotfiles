@@ -6,7 +6,7 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set signcolumn=yes:4
+set signcolumn=yes:5
 set updatetime=100
 
 " 行数
@@ -45,7 +45,6 @@ nnoremap <silent> <Leader>r :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
 
-let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
@@ -95,7 +94,6 @@ if has("autocmd")
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
-
 
   " plugin file types
   autocmd FileType nerdtree        setlocal signcolumn=no

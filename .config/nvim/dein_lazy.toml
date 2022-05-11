@@ -37,3 +37,7 @@ sign define vimspectorBPLog         text=◆ texthl=SpellRare
 sign define vimspectorBPDisabled    text=● texthl=LineNr
 sign define vimspectorPC            text=▶ texthl=MatchParen linehl=CursorLine
 '''
+
+[[plugins]]
+repo = "tpope/vim-endwise"
+on_ft = ['ruby']
