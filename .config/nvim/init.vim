@@ -1,11 +1,12 @@
 " エンコード
+"
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=single " □や○文字が崩れる問題を解決
-set signcolumn=yes:3
+set signcolumn=yes:5
 set updatetime=100
 
 " 行数
@@ -33,9 +34,7 @@ set so=999
 let mapleader = "\<space>"
 
 inoremap <silent> jj <ESC>
-inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
-inoremap <silent> <C-k> k
 
 " fzf
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -46,7 +45,6 @@ nnoremap <silent> <Leader>r :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
 
-let g:coquille_auto_move = 'true'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
@@ -149,12 +147,16 @@ endif
 " 空白削除
 autocmd BufWritePre * call s:remove_unnecessary_space()
 function! s:remove_unnecessary_space()
+    " record current cursor position
+   let pos = getpos(".")
    " delete last spaces
-   %s/\s\+$//ge
+   %s/\(\s\|　\)\+$//ge
    " delete last blank lines
    while getline('$') == "" && len(join(getline(0, '$')))
            $delete _
    endwhile
+   " move cursor position back to original position
+   call setpos('.', pos)
 endfunction
 
 " vimscriptを再ロードする

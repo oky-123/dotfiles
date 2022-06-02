@@ -1,26 +1,13 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": [
-                "compile_flags.txt",
-                "compile_commands.json"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ]
-        }
-    },
+    "languageserver": {},
     "coc.preferences.formatOnSaveFiletypes": [
-        "cpp",
         "json",
         "java",
         "rust",
         "html",
         "python",
+        "yaml",
+        "cpp",
         "ruby"
     ],
     "java.configuration.runtimes": [
@@ -33,5 +20,7 @@
             "path": "/opt/homebrew/Cellar/openjdk/17/libexec/openjdk.jdk/Contents/Home"
         }
     ],
-    "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar"
+    "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar",
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true
 }

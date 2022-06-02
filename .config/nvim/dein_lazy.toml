@@ -16,7 +16,7 @@ let g:vim_markdown_new_list_item_indent = 0
 
 [[plugins]]
 repo = "puremourning/vimspector"
-on_ft='rust'
+on_ft=['rust']
 build = "./install_gadget.py --enable-rust"
 hook_add='''
 nnoremap <Leader>vs :call vimspector#Launch()<CR>
@@ -30,4 +30,14 @@ nmap <Leader>J <Plug>VimspectorStepOver
 nmap <Leader>L <Plug>VimspectorStepIn
 nmap <Leader>H <Plug>VimspectorStepOut
 nmap <Leader>K <Plug>VimspectorBalloonEval
+
+sign define vimspectorBP            text=● texthl=WarningMsg
+sign define vimspectorBPCond        text=◆ texthl=WarningMsg
+sign define vimspectorBPLog         text=◆ texthl=SpellRare
+sign define vimspectorBPDisabled    text=● texthl=LineNr
+sign define vimspectorPC            text=▶ texthl=MatchParen linehl=CursorLine
 '''
+
+[[plugins]]
+repo = "tpope/vim-endwise"
+on_ft = ['ruby']
