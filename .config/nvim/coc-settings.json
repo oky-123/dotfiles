@@ -17,9 +17,11 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "cpp",
         "json",
-        "python",
         "java",
-        "rust"
+        "rust",
+        "html",
+        "python",
+        "ruby"
     ],
     "java.configuration.runtimes": [
         {

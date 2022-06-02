@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__MYSQL2: "--with-ldflags=-L\#{$ brew --prefix openssl}/lib --with-opt-dir=\#{$ brew --prefix zstd}"

@@ -400,3 +400,8 @@ export LLDB_DEBUGSERVER_PATH=/Library/Developer/CommandLineTools/Library/Private
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH=$PATH:/usr/local/CrossPack-AVR/bin/
+
+# ruby
+export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+eval "$(rbenv init -)"
