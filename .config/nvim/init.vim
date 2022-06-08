@@ -35,12 +35,15 @@ let mapleader = "\<space>"
 
 inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
+nnoremap <silent> <Leader>l :bnext<CR>
+nnoremap <silent> <Leader>h :bprev<CR>
 
 " fzf
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>e :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
-nnoremap <silent> <Leader>a :Ag<CR>
 nnoremap <silent> <Leader>r :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
@@ -65,6 +68,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.jb set filetype=ruby
   au BufRead,BufNewFile *.{tsx,jsx} set filetype=typescript
   au BufRead,BufNewFile *.kt set filetype=kotlin
+  au BufNewFile,BufRead *.slim setlocal filetype=slim
   "sw=softtabstop, sts=shiftwidth    , ts=tabstop, et=expandtabの略
   autocmd FileType c               setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp             source ~/.config/nvim/ftplugin/cpp.vim
@@ -75,7 +79,7 @@ if has("autocmd")
   autocmd FileType zsh             setlocal sw=4 sts=4 ts=4 et
   autocmd FileType python          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scala           setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType json            setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType json            setlocal sw=2 sts=2 ts=2 et
   autocmd FileType html            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType css             setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scss            setlocal sw=4 sts=4 ts=4 et
@@ -94,6 +98,8 @@ if has("autocmd")
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType slim            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType vue             setlocal sw=2 sts=2 ts=2 et
 
   " plugin file types
   autocmd FileType nerdtree        setlocal signcolumn=no

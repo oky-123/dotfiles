@@ -15,6 +15,10 @@ let g:vim_markdown_new_list_item_indent = 0
 '''
 
 [[plugins]]
+repo='slim-template/vim-slim'
+on_ft='slim'
+
+[[plugins]]
 repo = "puremourning/vimspector"
 on_ft=['rust']
 build = "./install_gadget.py --enable-rust"

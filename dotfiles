@@ -6,3 +6,4 @@
 .config
 .lsp
 .cargo
+.my.cnf
