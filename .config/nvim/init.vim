@@ -69,6 +69,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.{tsx,jsx} set filetype=typescript
   au BufRead,BufNewFile *.kt set filetype=kotlin
   au BufNewFile,BufRead *.slim setlocal filetype=slim
+  au BufNewFile,BufRead *.json.jbuilder set ft=ruby
   "sw=softtabstop, sts=shiftwidth    , ts=tabstop, et=expandtabの略
   autocmd FileType c               setlocal sw=4 sts=4 ts=4 et
   autocmd FileType cpp             source ~/.config/nvim/ftplugin/cpp.vim

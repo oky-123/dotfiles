@@ -11,7 +11,8 @@
     "ruby",
     "css",
     "vue",
-    "javascript"
+    "javascript",
+    "typescript"
   ],
   "java.configuration.runtimes": [
     {
@@ -28,5 +29,8 @@
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
 
-  "eslint.filetypes": ["javascript", "vue"]
+  "eslint.filetypes": ["javascript", "vue", "typescript"],
+
+  "volar.takeOverMode.enabled": true,
+  "tsserver.enable": false
 }
