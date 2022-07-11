@@ -339,9 +339,6 @@ eval "$(rbenv init -)"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# nodebrew
-# export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # of
 export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
