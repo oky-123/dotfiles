@@ -402,3 +402,9 @@ export PATH=$PATH:/usr/local/CrossPack-AVR/bin/
 export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 eval "$(rbenv init -)"
+
+# gh
+eval "$(gh completion -s zsh)"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
