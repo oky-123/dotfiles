@@ -44,6 +44,8 @@ nnoremap <silent> <Leader>a :Ag<CR>
 nnoremap <silent> <Leader>r :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--bind', 'change:top']}), <bang>0)
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -94,6 +96,7 @@ if has("autocmd")
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType nginx           setlocal sw=4 sts=4 ts=4 et
 
   " plugin file types
   autocmd FileType nerdtree        setlocal signcolumn=no

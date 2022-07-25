@@ -424,7 +424,7 @@
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
-            "selected": true,
+            "selected": false,
             "simple_modifications": [
                 {
                     "from": {
@@ -651,7 +651,7 @@
                         "product_id": 833,
                         "vendor_id": 1452
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 }
@@ -782,8 +782,19 @@
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
-            "selected": false,
-            "simple_modifications": [],
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": {
+                        "key_code": "caps_lock"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control"
+                        }
+                    ]
+                }
+            ],
             "virtual_hid_keyboard": {
                 "country_code": 45,
                 "indicate_sticky_modifier_keys_state": true,
