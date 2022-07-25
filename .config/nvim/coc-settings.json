@@ -7,14 +7,14 @@
     "python",
     "yaml",
     "cpp",
-
     "ruby",
     "css",
     "vue",
     "javascript",
     "typescript",
-    "sql"
+    "go"
   ],
+
   "java.configuration.runtimes": [
     {
       "name": "OpenJDK 11",
@@ -33,5 +33,8 @@
   "eslint.filetypes": ["javascript", "vue", "typescript"],
 
   "volar.takeOverMode.enabled": true,
-  "tsserver.enable": false
+
+  "tsserver.enable": false,
+
+  "solargraph.formatting": true
 }
