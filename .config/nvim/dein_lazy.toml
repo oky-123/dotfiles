@@ -45,3 +45,7 @@ sign define vimspectorPC            text=▶ texthl=MatchParen linehl=CursorLine
 [[plugins]]
 repo = "tpope/vim-endwise"
 on_ft = ['ruby']
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_ft = ['ruby', 'erb']

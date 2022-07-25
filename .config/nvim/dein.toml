@@ -119,3 +119,10 @@ repo = 'oky-123/marksign.vim'
 hook_add='''
 let g:marksign_marks_to_show = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 '''
+
+[[plugins]]
+repo = 'mattn/vim-sqlfmt'
+hook_add='''
+let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
+nmap <buffer><leader>fs <Plug>(sqlfmt)
+'''

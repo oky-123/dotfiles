@@ -13,6 +13,7 @@
 	co = checkout
 	br = branch
 	st = status
+	searchpr = "!f(){ git log --oneline --merges --reverse --ancestry-path $1..HEAD | grep \"Merge pull request\" | head -n 1 | cut -d\" \" -f 5;};f"
 [url "git@github.com:"]
        insteadOf = https://github.com/
 [color]

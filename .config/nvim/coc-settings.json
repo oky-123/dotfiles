@@ -12,7 +12,8 @@
     "css",
     "vue",
     "javascript",
-    "typescript"
+    "typescript",
+    "sql"
   ],
   "java.configuration.runtimes": [
     {
