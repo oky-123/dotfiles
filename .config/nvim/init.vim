@@ -40,7 +40,7 @@ nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Leader>l :bnext<CR>
 nnoremap <silent> <Leader>h :bprev<CR>
 
-" fzf
+" skim
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>e :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
@@ -171,3 +171,6 @@ endfunction
 
 " vimscriptを再ロードする
 nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
