@@ -2,6 +2,9 @@
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
+### FPATH
+export FPATH=$HOME/.zsh/autoload/:$FPATH
+
 ### vagrant設定
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
@@ -240,7 +243,7 @@ function open_ghq_with_sk() {
 alias -g openg="open_ghq_with_sk"
 
 ## Git checkout branch
-function git_cog() {
+function git_cof() {
   git branch | sort -r |
     sk --exit-0 --no-multi --preview-window="right,65%" --preview="echo {} | tr -d ' *' | xargs git lgn --color=always" |
     head -n 1 |

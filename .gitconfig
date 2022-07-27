@@ -15,20 +15,10 @@
 	br = branch
 	st = status
 	# CommitHashからPRを検索する
-	searchpr = "!f(){ \
-		git log --oneline --merges --reverse --ancestry-path $1..HEAD | \
-		grep \"Merge pull request\" | \
-		head -n 1 | \
-		cut -d\" \" -f 5; \
-	};f"
-	# Branchをfuzzyにcheckoutする
-	cof = "!f(){ \
-		local PREVIEW_COMMAND='echo {} | tr -d '\\'' *'\\'' | xargs git lgn --color=always'; \
-		echo "${PREVIEW_COMMAND}"; \
-		git branch | sort -r | \
-		sk --exit-0 --no-multi --preview-window='right,65%' --preview="${PREVIEW_COMMAND}" | \
-		head -n 1 | xargs git co; \
-	};f"
+	searchpr = !sh ~/.custom_shells/git_searchpr.sh
+	openpr = !sh ~/.custom_shells/git_openpr.sh
+	cof = !zsh ~/.custom_shells/git_cof.sh
+	cor = !zsh ~/.custom_shells/git_cor.sh
 
 [url "git@github.com:"]
        insteadOf = https://github.com/
