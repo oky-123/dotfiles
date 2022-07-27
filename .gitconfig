@@ -14,7 +14,22 @@
 	co = checkout
 	br = branch
 	st = status
-	searchpr = "!f(){ git log --oneline --merges --reverse --ancestry-path $1..HEAD | grep \"Merge pull request\" | head -n 1 | cut -d\" \" -f 5;};f"
+	# CommitHashからPRを検索する
+	searchpr = "!f(){ \
+		git log --oneline --merges --reverse --ancestry-path $1..HEAD | \
+		grep \"Merge pull request\" | \
+		head -n 1 | \
+		cut -d\" \" -f 5; \
+	};f"
+	# Branchをfuzzyにcheckoutする
+	cog = "!f(){ \
+		local PREVIEW_COMMAND='echo {} | tr -d '\\'' *'\\'' | xargs git lgn --color=always'; \
+		echo "${PREVIEW_COMMAND}"; \
+		git branch | sort -r | \
+		sk --exit-0 --no-multi --preview-window='right,65%' --preview="${PREVIEW_COMMAND}" | \
+		head -n 1 | xargs git co; \
+	};f"
+
 [url "git@github.com:"]
        insteadOf = https://github.com/
 [color]
