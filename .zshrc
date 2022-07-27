@@ -19,9 +19,9 @@ zplug check || zplug install
 ## cdr の設定 (zplug load 前に書かないと zaw-cdr がスキップされる)
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook is-at-least
 if is-at-least 4.3.10; then
-    add-zsh-hook chpwd chpwd_recent_dirs
-    zstyle ':chpwd:*' recent-dirs-max 5000
-    zstyle ':chpwd:*' recent-dirs-default yes
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':chpwd:*' recent-dirs-max 5000
+  zstyle ':chpwd:*' recent-dirs-default yes
 fi
 
 zplug load
@@ -42,17 +42,17 @@ zstyle ':vcs_info:*' formats '(%s)[%b] '
 zstyle ':vcs_info:*' actionformats '(%s)[%b|%a] '
 zstyle ':vcs_info:svn:*' branchformat '%b:r%r'
 precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
-    [[ -t 1 ]] || return
-    [ $EMACS ] && return
-    case $TERM in
-      *xterm*|rxvt|(dt|k|E)term)
-      print -Pn "\e]2;localhost\a"
-      ;;
-    esac
+  [[ -t 1 ]] || return
+  [ $EMACS ] && return
+  case $TERM in
+    *xterm*|rxvt|(dt|k|E)term)
+    print -Pn "\e]2;localhost\a"
+    ;;
+  esac
 }
 if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' check-for-changes true
@@ -62,9 +62,9 @@ if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' actionformats '(%s)[%b|%a]%c%u'
 fi
 function _update_vcs_info_msg() {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
 zstyle ':vcs_info:bzr:*' use-simple true
@@ -164,20 +164,20 @@ bindkey '^[g' zaw-git-branches
 bindkey '^[@' zaw-gitdir
 
 function zaw-src-gitdir () {
-    _dir=$(git rev-parse --show-cdup 2>/dev/null)
-    if [ $? -eq 0 ]
-    then
-        candidates=( $(git ls-files ${_dir} | perl -MFile::Basename -nle \
-                                                   '$a{dirname $_}++; END{delete $a{"."}; print for sort keys %a}') )
-    fi
+  _dir=$(git rev-parse --show-cdup 2>/dev/null)
+  if [ $? -eq 0 ]
+  then
+    candidates=( $(git ls-files ${_dir} | perl -MFile::Basename -nle \
+     '$a{dirname $_}++; END{delete $a{"."}; print for sort keys %a}') )
+  fi
 
-    actions=("zaw-src-gitdir-cd")
-    act_descriptions=("change directory in git repos")
+  actions=("zaw-src-gitdir-cd")
+  act_descriptions=("change directory in git repos")
 }
 
 function zaw-src-gitdir-cd () {
-    BUFFER="cd $1"
-    zle accept-line
+  BUFFER="cd $1"
+  zle accept-line
 }
 
 zaw-register-src -n gitdir zaw-src-gitdir
@@ -208,9 +208,9 @@ alias vi='nvim'
 # Functions using skim
 ## Command history finder
 function sk-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | sk`
-    CURSOR=$#BUFFER
-    zle reset-prompt
+  BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | sk`
+  CURSOR=$#BUFFER
+  zle reset-prompt
 }
 zle -N sk-history-selection
 bindkey 'hh' sk-history-selection
@@ -219,11 +219,11 @@ bindkey 'hh' sk-history-selection
 ### change directory with find
 alias -g cdf="cd \"\$(find . -type d | sk)\""
 function sk_cdr() {
-    target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | sk`
-    target_dir=`echo ${target_dir/\~/$HOME}`
-    if [ -n "$target_dir" ]; then
-        cd $target_dir
-    fi
+  target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | sk`
+  target_dir=`echo ${target_dir/\~/$HOME}`
+  if [ -n "$target_dir" ]; then
+    cd $target_dir
+  fi
 }
 ### change directory from history
 alias -g cdh="sk_cdr"
@@ -232,12 +232,16 @@ alias -g cdg="cd \"\$(ghq list -p | sk)\""
 
 ## Open github repository
 function open_ghq_with_sk() {
-    selected_repo="$(ghq list | sk)"
-    if [ -n "$selected_repo" ]; then
-      open https://${selected_repo}
-    fi
+  selected_repo="$(ghq list | sk)"
+  if [ -n "$selected_repo" ]; then
+    open https://${selected_repo}
+  fi
 }
 alias -g openg="open_ghq_with_sk"
+
+## Git checkout branch
+function checkout_branch_sk() {
+}
 
 # python
 export PATH="$HOME/.pyenv/bin:$PATH"
@@ -263,55 +267,55 @@ function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
 
 function tmux_automatically_attach_session()
 {
-    if is_screen_or_tmux_running; then
-        ! is_exists 'tmux' && return 1
+  if is_screen_or_tmux_running; then
+    ! is_exists 'tmux' && return 1
 
-        if is_tmux_runnning; then
-            echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
-            echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
-            echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
-            echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
-            echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
-        elif is_screen_running; then
-            echo "This is on screen."
-        fi
-    else
-        if shell_has_started_interactively && ! is_ssh_running; then
-            if ! is_exists 'tmux'; then
-                echo 'Error: tmux command not found' 2>&1
-                return 1
-            fi
-
-            if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
-                # detached session exists
-                tmux list-sessions
-                echo -n "Tmux: attach? (y/N/num) "
-                read
-                if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
-                    tmux attach-session
-                    if [ $? -eq 0 ]; then
-                        echo "$(tmux -V) attached session"
-                        return 0
-                    fi
-                elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
-                    tmux attach -t "$REPLY"
-                    if [ $? -eq 0 ]; then
-                        echo "$(tmux -V) attached session"
-                        return 0
-                    fi
-                fi
-            fi
-
-            if is_osx && is_exists 'reattach-to-user-namespace'; then
-                # on OS X force tmux's default command
-                # to spawn a shell in the user's namespace
-                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-                t -u -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
-            else
-                t new-session && echo "tmux created new session"
-            fi
-        fi
+    if is_tmux_runnning; then
+      echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
+      echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
+      echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
+      echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
+      echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
+    elif is_screen_running; then
+      echo "This is on screen."
     fi
+  else
+    if shell_has_started_interactively && ! is_ssh_running; then
+      if ! is_exists 'tmux'; then
+        echo 'Error: tmux command not found' 2>&1
+        return 1
+      fi
+
+      if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
+        # detached session exists
+        tmux list-sessions
+        echo -n "Tmux: attach? (y/N/num) "
+        read
+        if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+          tmux attach-session
+          if [ $? -eq 0 ]; then
+            echo "$(tmux -V) attached session"
+            return 0
+          fi
+        elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+          tmux attach -t "$REPLY"
+          if [ $? -eq 0 ]; then
+            echo "$(tmux -V) attached session"
+            return 0
+          fi
+        fi
+      fi
+
+      if is_osx && is_exists 'reattach-to-user-namespace'; then
+        # on OS X force tmux's default command
+        # to spawn a shell in the user's namespace
+        tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+        t -u -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+      else
+        t new-session && echo "tmux created new session"
+      fi
+    fi
+  fi
 }
 tmux_automatically_attach_session
 
@@ -349,15 +353,15 @@ eval "$(pyenv init -)"
 
 # AWS MFA認証
 aws_mfa() {
-    if [ "${1}" = "" ]; then
-        echo "Give arguments"
-        return 0
-    fi
-    SERIAL_NUMBER=`aws iam list-mfa-devices --query "MFADevices[0].SerialNumber" --output text`
-    TOKEN=`aws sts get-session-token --serial-number $SERIAL_NUMBER --token-code $1 --duration-seconds 129600`
-    export AWS_ACCESS_KEY_ID=`echo $TOKEN | jq -r '.Credentials.AccessKeyId'`
-    export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
-    export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
+  if [ "${1}" = "" ]; then
+    echo "Give arguments"
+    return 0
+  fi
+  SERIAL_NUMBER=`aws iam list-mfa-devices --query "MFADevices[0].SerialNumber" --output text`
+  TOKEN=`aws sts get-session-token --serial-number $SERIAL_NUMBER --token-code $1 --duration-seconds 129600`
+  export AWS_ACCESS_KEY_ID=`echo $TOKEN | jq -r '.Credentials.AccessKeyId'`
+  export AWS_SECRET_ACCESS_KEY=`echo $TOKEN | jq -r '.Credentials.SecretAccessKey'`
+  export AWS_SESSION_TOKEN=`echo $TOKEN | jq -r '.Credentials.SessionToken'`
 }
 
 # java
