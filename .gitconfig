@@ -22,7 +22,7 @@
 		cut -d\" \" -f 5; \
 	};f"
 	# Branchをfuzzyにcheckoutする
-	cog = "!f(){ \
+	cof = "!f(){ \
 		local PREVIEW_COMMAND='echo {} | tr -d '\\'' *'\\'' | xargs git lgn --color=always'; \
 		echo "${PREVIEW_COMMAND}"; \
 		git branch | sort -r | \
