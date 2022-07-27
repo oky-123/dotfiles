@@ -240,7 +240,12 @@ function open_ghq_with_sk() {
 alias -g openg="open_ghq_with_sk"
 
 ## Git checkout branch
-function checkout_branch_sk() {
+function git_cog() {
+  git branch | sort -r |
+    sk --exit-0 --no-multi --preview-window="right,65%" --preview="echo {} | tr -d ' *' | xargs git lgn --color=always" |
+    head -n 1 |
+    perl -pe "s/\s//g; s/\*//g; s/remotes\/origin\///g" |
+    xargs git co
 }
 
 # python
