@@ -126,3 +126,6 @@ hook_add='''
 let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
 nmap <buffer><leader>fs <Plug>(sqlfmt)
 '''
+
+[[plugins]]
+repo='tpope/vim-rails'
