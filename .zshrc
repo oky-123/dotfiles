@@ -184,6 +184,7 @@ zaw-register-src -n gitdir zaw-src-gitdir
 
 ## Aliases replacement of Unix commands
 alias ls='exa'
+alias la='exa -a'
 
 ## Aliases
 alias '..'='cd ..'
@@ -201,6 +202,11 @@ alias -g C='| cat'
 alias -g F='| sk'
 alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
+
+alias vi='nvim'
+
+# Functions using skim
+## Command history finder
 function sk-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | sk`
     CURSOR=$#BUFFER
@@ -208,8 +214,10 @@ function sk-history-selection() {
 }
 zle -N sk-history-selection
 bindkey 'hh' sk-history-selection
+
+## Move directory
+### change directory with find
 alias -g cdf="cd \"\$(find . -type d | sk)\""
-alias -g cdl="cd \"\$(ls -d */ | sk)\""
 function sk_cdr() {
     target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | sk`
     target_dir=`echo ${target_dir/\~/$HOME}`
@@ -217,10 +225,12 @@ function sk_cdr() {
         cd $target_dir
     fi
 }
+### change directory from history
 alias -g cdh="sk_cdr"
-alias la='exa -a'
-alias vi='nvim'
+### change directory from ghq
 alias -g cdg="cd \"\$(ghq list -p | sk)\""
+
+## Open github repository
 function open_ghq_with_sk() {
     selected_repo="$(ghq list | sk)"
     if [ -n "$selected_repo" ]; then
@@ -228,33 +238,6 @@ function open_ghq_with_sk() {
     fi
 }
 alias -g openg="open_ghq_with_sk"
-
-# Open google chrome from history
-function ch {
-  cols=$(( COLUMNS / 3 ))
-  sep='{::}'
-
-  cp -p $HOME/Library/Application\ Support/Google/Chrome/Default/History /tmp/chrome_history
-
-  local c=`sqlite3 -separator $sep /tmp/chrome_history \
-    "select substr(title, 1, $cols), url
-     from urls order by last_visit_time desc" |
-  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  sk | sed 's#.*\(https*://\)#\1#'`
-  if [ -n "$c" ]; then
-    open -a '/Applications/Google Chrome.app' "$c"
-  fi
-}
-
-# markdownをw3mで見る
-ress() {
-    FILENAME=$1
-    if [ $# -lt 1 ]; then
-        echo "Usage: $0 FILENAME"
-    else
-        showdown makehtml -m -i $FILENAME -o | w3m -T text/html
-    fi
-  }
 
 # python
 export PATH="$HOME/.pyenv/bin:$PATH"
@@ -408,5 +391,6 @@ export NVM_DIR="$HOME/.nvm"
 # gh
 eval "$(gh completion -s zsh)"
 
+# GOPATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
