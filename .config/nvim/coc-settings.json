@@ -27,14 +27,12 @@
   ],
   "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar",
 
-  "solargraph.diagnostics": true,
-  "solargraph.formatting": true,
-
   "eslint.filetypes": ["javascript", "vue", "typescript"],
 
   "volar.takeOverMode.enabled": true,
 
-  "tsserver.enable": false,
+  "tsserver.enable": true,
 
-  "solargraph.formatting": true
+  "solargraph.formatting": true,
+  "solargraph.diagnostics": true
 }
