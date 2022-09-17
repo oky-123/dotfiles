@@ -26,6 +26,7 @@ set wrapscan
 " 外観
 set ruler
 set showmatch
+hi! Conceal guibg=#6c6c6c
 
 " Scroll Out
 set so=999

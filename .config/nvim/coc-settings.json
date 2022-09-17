@@ -1,18 +1,20 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "json",
     "java",
     "rust",
-    "html",
     "python",
-    "yaml",
     "cpp",
     "ruby",
+    "go",
+
+    "html",
     "css",
     "vue",
     "javascript",
     "typescript",
-    "go"
+
+    "yaml",
+    "json"
   ],
 
   "java.configuration.runtimes": [
@@ -28,11 +30,22 @@
   "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar",
 
   "eslint.filetypes": ["javascript", "vue", "typescript"],
+  "eslint.autoFixOnSave": true,
 
   "volar.takeOverMode.enabled": true,
 
   "tsserver.enable": true,
 
   "solargraph.formatting": true,
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
+
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": ["black"]
+  },
+  "diagnostic-languageserver.formatters": {
+    "black": {
+      "command": "black",
+      "args": ["-q", "-"]
+    }
+  }
 }
