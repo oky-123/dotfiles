@@ -188,6 +188,7 @@ zaw-register-src -n gitdir zaw-src-gitdir
 ## Aliases replacement of Unix commands
 alias ls='exa'
 alias la='exa -a'
+alias cat='bat'
 
 ## Aliases
 alias '..'='cd ..'
@@ -261,6 +262,8 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 # PATH Rust
 export PAHT="$HOME/.cargo/bin"
+source "$HOME/.cargo/env"
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # tmux
 alias t="tmux -u"
@@ -414,7 +417,8 @@ export PATH=$PATH:$GOPATH/bin
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Proxy for burp
+# http_proxy=http://localhost:8080
+# https_proxy=$http_proxy
+# export HTTP_PROXY=$http_proxy
+# export HTTPS_PROXY=$http_proxy

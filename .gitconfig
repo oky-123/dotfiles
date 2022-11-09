@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Yuya Okino
+	name = oky-123
 	email = oky123.ia@gmail.com
 [core]
 	editor = nvim
@@ -34,3 +34,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[log]
+	date = local
