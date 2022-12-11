@@ -29,7 +29,6 @@ let g:lightline = {
 \ }
 '''
 
-# Indent
 [[plugins]]
 repo='nathanaelkane/vim-indent-guides'
 hook_source='''
@@ -142,3 +141,24 @@ nmap <buffer><leader>fs <Plug>(sqlfmt)
 
 [[plugins]]
 repo='tpope/vim-rails'
+
+[[plugins]]
+repo='junegunn/fzf'
+build="./install --all"
+merged=0
+
+[[plugins]]
+repo='junegunn/fzf.vim'
+depends='fzf'
+hook_add='''
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>e :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>r :Rg<CR>
+let g:fzf_buffers_jump = 1
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--bind', 'change:top']}), <bang>0)
+'''
+
+[[plugins]]
+repo='antoinemadec/coc-fzf'

@@ -38,22 +38,8 @@ inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
-nnoremap <silent> <Leader>l :bnext<CR>
-nnoremap <silent> <Leader>h :bprev<CR>
-
-" skim
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>e :Files<CR>
-nnoremap <silent> <Leader>g :GFiles<CR>
-nnoremap <silent> <Leader>r :Rg<CR>
-let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'down': '~40%' }
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--bind', 'change:top']}), <bang>0)
-
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [b :bprev<CR>
 
 " python extension
 let g:python3_host_prog = expand('/opt/homebrew/bin/python3')
@@ -102,7 +88,7 @@ if has("autocmd")
   autocmd FileType xml             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType kotlin          setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType vim             setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vim             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType slim            setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue             setlocal sw=2 sts=2 ts=2 et
   autocmd FileType nginx           setlocal sw=4 sts=4 ts=4 et
@@ -144,10 +130,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  " fzf
-  call dein#add('lotabout/skim', { 'dir': '~/.skim', 'do': './install' })
-  call dein#add('lotabout/skim.vim')
-
   call dein#end()
   call dein#save_state()
 endif
@@ -174,6 +156,3 @@ endfunction
 
 " vimscriptを再ロードする
 nnoremap <Leader>. :source ~/.config/nvim/init.vim<CR>
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
