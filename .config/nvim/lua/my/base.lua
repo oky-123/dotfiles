@@ -19,3 +19,11 @@ autocmd("BufReadPost", {
 		vim.api.nvim_exec('silent! normal! g`"zv', false)
   end,
 })
+
+-- Terminal mode auto insert
+autocmd({"WinEnter", "BufEnter"}, {
+	pattern = "*",
+  command = "if &buftype ==# 'terminal' | startinsert | endif",
+})
+
+-- TODO: ÒÔÓをWindowサイズの調整に割り当てる
