@@ -1,0 +1,8 @@
+require("my.base")
+require("my.options")
+require("my.keymaps")
+require("my.filetypes")
+require("my.plugins")
+require("my.colorscheme")
+
+require("plugins.lualine")
