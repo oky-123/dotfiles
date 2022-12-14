@@ -30,9 +30,9 @@ fi
 zplug load
 
 ### キーバインド
-bindkey -v
-bindkey -a '^[[3~' delete-char
-bindkey -M viins 'jj' vi-cmd-mode
+# bindkey -v
+# bindkey -a '^[[3~' delete-char
+# bindkey -M viins 'jj' vi-cmd-mode
 
 ### 色付けで色の名前が使えたりとか
 autoload -Uz add-zsh-hook
