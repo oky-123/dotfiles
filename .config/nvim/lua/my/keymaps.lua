@@ -25,10 +25,10 @@ end
 -- Basic keymappings
 keymap_i("jj", "<Esc>")
 keymap_i("kk", "<Esc>")
-keymap_n("<Space>l", "$")
-keymap_n("<Space>h", "^")
-keymap_v("<Space>l", "$")
-keymap_v("<Space>h", "^")
+keymap_n("L", "$")
+keymap_n("H", "^")
+keymap_v("L", "$")
+keymap_v("H", "^")
 
 -- Terminal mode
 keymap_t("<Esc>", "<C-\\><C-n>")

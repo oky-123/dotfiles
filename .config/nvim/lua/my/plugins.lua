@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
   use "nvim-tree/nvim-web-devicons"
   use "nvim-lua/plenary.nvim"
   use "EdenEast/nightfox.nvim"
+  use "kkharji/sqlite.lua"
 
   -- Treesitter
   use {
@@ -29,6 +30,13 @@ return require("packer").startup(function(use)
   -- Fuzzy finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = 'nvim-lua/plenary.nvim'
+    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
+  }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require"telescope".load_extension("frecency")
+    end,
+    requires = {"kkharji/sqlite.lua"}
   }
 end)
