@@ -25,6 +25,8 @@ end
 -- Basic keymappings
 keymap_i("jj", "<Esc>")
 keymap_i("kk", "<Esc>")
+keymap_t("jj", "<C-\\><C-n>")
+keymap_t("kk", "<C-\\><C-n>")
 keymap_n("L", "$")
 keymap_n("H", "^")
 keymap_v("L", "$")
