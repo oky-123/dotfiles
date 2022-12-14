@@ -6,3 +6,5 @@ require("my.plugins")
 require("my.colorscheme")
 
 require("plugins.lualine")
+require("plugins.bufferline")
+require("plugins.telescope")
