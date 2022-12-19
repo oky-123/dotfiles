@@ -2,7 +2,6 @@ return require("packer").startup(function(use)
   -- Base
   use "wbthomason/packer.nvim"
   use "nvim-tree/nvim-web-devicons"
-  use "nvim-lua/plenary.nvim"
   use "EdenEast/nightfox.nvim"
   use "kkharji/sqlite.lua"
 
@@ -18,18 +17,18 @@ return require("packer").startup(function(use)
     requires = "nvim-treesitter/nvim-treesitter"
   }
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', 'SmiteshP/nvim-gps' }
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-gps" }
   }
   use {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
     tag = "v3.*",
-    requires = 'nvim-tree/nvim-web-devicons'
+    requires = "nvim-tree/nvim-web-devicons"
   }
 
   -- Fuzzy finder
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    "nvim-telescope/telescope.nvim", tag = "0.1.0",
     requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
   }
   use {
@@ -38,5 +37,16 @@ return require("packer").startup(function(use)
       require"telescope".load_extension("frecency")
     end,
     requires = {"kkharji/sqlite.lua"}
+  }
+
+  -- Filer
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
   }
 end)
