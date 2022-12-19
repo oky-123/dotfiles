@@ -61,4 +61,10 @@ return require("packer").startup(function(use)
   use {
     "lukas-reineke/indent-blankline.nvim"
   }
+
+  -- Teminal extension
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+  }
 end)
