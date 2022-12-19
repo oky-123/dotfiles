@@ -39,6 +39,12 @@ return require("packer").startup(function(use)
     requires = {"kkharji/sqlite.lua"}
   }
 
+  -- Window picker
+  use {
+    "s1n7ax/nvim-window-picker",
+    tag = "v1.*",
+  }
+
   -- Filer
   use {
     "nvim-neo-tree/neo-tree.nvim",
