@@ -1,4 +1,4 @@
-require("neo-tree").setup({
+require("neo-tree").setup {
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
@@ -196,6 +196,6 @@ require("neo-tree").setup({
       }
     }
   }
-})
+}
 
 vim.cmd([[nnoremap <C-e> :Neotree toggle<cr>]])

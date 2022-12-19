@@ -53,6 +53,12 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+      "s1n7ax/nvim-window-picker",
     }
+  }
+
+  -- Indent guide
+  use {
+    "lukas-reineke/indent-blankline.nvim"
   }
 end)

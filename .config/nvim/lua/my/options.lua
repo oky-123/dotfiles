@@ -42,6 +42,8 @@ local options = {
   splitright = true,
   hidden = true,
   laststatus = 0,
+  list = true,
+  listchars = {tab='>-', trail='*', nbsp='+', eol='↴'}
 }
 
 vim.opt.shortmess:append("c")
