@@ -1,9 +1,7 @@
 return require("packer").startup(function(use)
   -- Base
   use "wbthomason/packer.nvim"
-  use "nvim-tree/nvim-web-devicons"
   use "EdenEast/nightfox.nvim"
-  use "kkharji/sqlite.lua"
 
   -- Treesitter
   use {
@@ -36,7 +34,7 @@ return require("packer").startup(function(use)
     config = function()
       require("telescope").load_extension("frecency")
     end,
-    requires = {"kkharji/sqlite.lua"}
+    requires = "kkharji/sqlite.lua"
   }
 
   -- Window picker
@@ -65,15 +63,15 @@ return require("packer").startup(function(use)
   -- Teminal extension
   use {
     "akinsho/toggleterm.nvim",
-    tag = '*',
+    tag = "*",
   }
 
   -- Scrollbar
-  use { "petertriho/nvim-scrollbar" }
+  use "petertriho/nvim-scrollbar"
   use {
     "kevinhwang91/nvim-hlslens",
     config = function()
-      require('hlslens').setup {}
+      require("hlslens").setup {}
     end,
   }
 end)
