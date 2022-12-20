@@ -21,9 +21,9 @@ autocmd("BufReadPost", {
 })
 
 -- Terminal mode auto insert
-autocmd({"WinEnter", "BufEnter"}, {
-	pattern = "*",
-  command = "if &buftype ==# 'terminal' | startinsert | endif",
-})
+-- autocmd({"WinEnter", "BufEnter"}, {
+-- 	pattern = "*",
+--   command = "if &buftype ==# 'terminal' | startinsert | endif",
+-- })
 
 -- TODO: ÒÔÓをWindowサイズの調整に割り当てる

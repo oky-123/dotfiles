@@ -74,4 +74,29 @@ return require("packer").startup(function(use)
       require("hlslens").setup {}
     end,
   }
+
+  -- Github
+  use {
+    "pwntester/octo.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = function ()
+      require"octo".setup()
+    end
+  }
+  use "tyru/open-browser.vim"
+  use "tyru/open-browser-github.vim"
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+
+  -- Completion Source
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/vim-vsnip"
 end)
