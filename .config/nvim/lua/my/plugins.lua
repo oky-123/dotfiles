@@ -97,11 +97,16 @@ return require("packer").startup(function(use)
 
   -- nvim-cmp
   use {
+    "hrsh7th/nvim-cmp",
+    "onsails/lspkind.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
     "hrsh7th/vim-vsnip",
+    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot-cmp",
   }
 end)
