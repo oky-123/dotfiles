@@ -75,6 +75,7 @@ return require("packer").startup(function(use)
   -- Git
   use {
     "TimUntersberger/neogit",
+    "sindrets/diffview.nvim",
   }
 
   -- Github
