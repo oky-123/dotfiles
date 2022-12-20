@@ -72,6 +72,14 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- Git
+  use {
+    "TimUntersberger/neogit",
+    config = function()
+      require("neogit").setup {}
+    end,
+  }
+
   -- Github
   use {
     "pwntester/octo.nvim",
@@ -80,8 +88,8 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope.nvim",
       "kyazdani42/nvim-web-devicons",
     },
-    config = function ()
-      require"octo".setup()
+    config = function()
+      require "octo".setup()
     end
   }
   use "tyru/open-browser.vim"
