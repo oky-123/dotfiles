@@ -75,9 +75,6 @@ return require("packer").startup(function(use)
   -- Git
   use {
     "TimUntersberger/neogit",
-    config = function()
-      require("neogit").setup {}
-    end,
   }
 
   -- Github
