@@ -6,19 +6,19 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-function keymap_i(lhs, rhs)
+local function keymap_i(lhs, rhs)
   keymap("i", lhs, rhs, opts)
 end
 
-function keymap_n(lhs, rhs)
+local function keymap_n(lhs, rhs)
   keymap("n", lhs, rhs, opts)
 end
 
-function keymap_v(lhs, rhs)
+local function keymap_v(lhs, rhs)
   keymap("v", lhs, rhs, opts)
 end
 
-function keymap_t(lhs, rhs)
+local function keymap_t(lhs, rhs)
   keymap("t", lhs, rhs, opts)
 end
 

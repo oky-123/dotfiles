@@ -2,7 +2,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup_handlers({ function(server)
   local opt = {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     )
   }
@@ -19,12 +19,24 @@ end })
 
 -- Required
 require('mason-lspconfig').setup({
-  ensure_installed = { "sumneko_lua", "ruby-lsp", "rust_analyzer" }
+  ensure_installed = {
+    "sumneko_lua",
+    "ruby_ls",
+    "rust_analyzer",
+    "dockerls",
+    "volar",
+    "tsserver",
+    "html",
+    "cssls",
+    "jsonls",
+    "yamlls",
+    "bashls",
+  }
 })
 
 -- Keymappings
 local opts = { noremap = true, silent = true }
-function keymap_n(lhs, rhs)
+local function keymap_n(lhs, rhs)
   vim.api.nvim_set_keymap("n", lhs, rhs, opts)
 end
 

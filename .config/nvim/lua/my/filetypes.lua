@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- FileTypes
-function register_filetype(pattern, filetype)
+local function register_filetype(pattern, filetype)
   autocmd({"BufRead", "BufNewFile"}, {
     pattern = pattern,
     command = "set filetype=" .. filetype
@@ -16,7 +16,7 @@ register_filetype("*.slim", "slim")
 register_filetype("*.{jb,json.jbulder}", "ruby")
 
 -- sw, sts, ts, et
-function register_indent(filetype, command)
+local function register_indent(filetype, command)
   autocmd("FileType", {
     pattern = filetype,
     command = command
