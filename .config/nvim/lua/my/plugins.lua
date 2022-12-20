@@ -95,8 +95,13 @@ return require("packer").startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
-  -- Completion Source
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/vim-vsnip"
+  -- nvim-cmp
+  use {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/vim-vsnip",
+  }
 end)
