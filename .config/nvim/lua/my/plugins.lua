@@ -31,9 +31,6 @@ return require("packer").startup(function(use)
   }
   use {
     "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require("telescope").load_extension("frecency")
-    end,
     requires = "kkharji/sqlite.lua"
   }
 
@@ -94,6 +91,13 @@ return require("packer").startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+
+  -- LSP UI extension
+  use {
+    "j-hui/fidget.nvim",
+    "folke/trouble.nvim",
+    "kkharji/lspsaga.nvim",
+  }
 
   -- nvim-cmp
   use {
