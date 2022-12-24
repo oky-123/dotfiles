@@ -76,6 +76,7 @@ return require("packer").startup(function(use)
   use {
     "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
+    "tpope/vim-fugitive",
   }
 
   -- Github
@@ -97,6 +98,7 @@ return require("packer").startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- LSP UI extension
   use {
@@ -119,4 +121,7 @@ return require("packer").startup(function(use)
     "zbirenbaum/copilot.lua",
     "zbirenbaum/copilot-cmp",
   }
+
+  -- Ruby, slim
+  use "slim-template/vim-slim"
 end)
