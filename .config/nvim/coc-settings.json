@@ -25,33 +25,19 @@
     }
   ],
   "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar",
-  "eslint.filetypes": [
-    "javascript",
-    "vue",
-    "typescript"
-  ],
+  "eslint.filetypes": ["javascript", "vue", "typescript"],
   "eslint.autoFixOnSave": false,
   "volar.takeOverMode.enabled": true,
   "tsserver.enable": true,
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
-  // "solargraph.transport": "external",
-  // "solargraph.externalServer": {
-  //   "host": "localhost",
-  //   "port": 7659
-  // },
   "diagnostic-languageserver.formatFiletypes": {
-    "python": [
-      "black"
-    ]
+    "python": ["black"]
   },
   "diagnostic-languageserver.formatters": {
     "black": {
       "command": "black",
-      "args": [
-        "-q",
-        "-"
-      ]
+      "args": ["-q", "-"]
     }
   }
 }
