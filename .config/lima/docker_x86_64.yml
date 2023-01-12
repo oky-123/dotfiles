@@ -26,8 +26,10 @@ images:
 - location: "https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-arm64.img"
   arch: "aarch64"
 
+mountType: 9p
 mounts:
 - location: "~"
+  writable: true
 - location: "/tmp/lima"
   writable: true
 # containerd is managed by Docker, not by Lima, so the values are set to false here.
