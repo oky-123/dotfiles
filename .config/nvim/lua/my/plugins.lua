@@ -2,6 +2,7 @@ return require("packer").startup(function(use)
   -- Base
   use "wbthomason/packer.nvim"
   use "EdenEast/nightfox.nvim"
+  use "tpope/vim-surround"
 
   -- Treesitter
   use {
@@ -127,4 +128,7 @@ return require("packer").startup(function(use)
 
   -- Binary
   use "Shougo/vinarise.vim"
+
+  -- Cursor
+  use "ggandor/lightspeed.nvim"
 end)

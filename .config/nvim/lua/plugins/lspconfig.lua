@@ -34,6 +34,12 @@ require('mason-lspconfig').setup_handlers({ function(server)
         diagnostics = true
       }
     }
+  elseif server == "sqlls" then
+    opts.root_dir = require('lspconfig/util').root_pattern(".git")
+  elseif server == "sql-formatter" then
+    opts.filetypes = {
+      'sql'
+    }
   end
 
   require('lspconfig')[server].setup(opts)
@@ -52,7 +58,6 @@ require('mason-lspconfig').setup({
     "html",
     "cssls",
     "jsonls",
-    "yamlls",
     "bashls",
   }
 })
@@ -63,7 +68,7 @@ require("fidget").setup {}
 -- Trouble(Lsp UI for Telescope)
 require("trouble").setup {
   auto_open = true, -- automatically open the list when you have diagnostics
-  auto_close = true, -- automatically close the list when you have no diagnostics
+  auto_close = false, -- automatically close the list when you have no diagnostics
 }
 
 -- Keymappings
