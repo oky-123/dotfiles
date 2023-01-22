@@ -426,3 +426,6 @@ export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
 
 #
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+
+# Pyenv
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'

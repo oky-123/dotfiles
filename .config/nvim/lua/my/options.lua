@@ -9,6 +9,7 @@ local options = {
   conceallevel = 0,
   hlsearch = true,
   incsearch = true,
+  ignorecase = true,
   mouse = "a",
   pumheight = 16,
   showmode = false,
@@ -43,13 +44,13 @@ local options = {
   hidden = true,
   laststatus = 0,
   list = true,
-  listchars = {tab='>-', trail='*', nbsp='+', eol='↴'}
+  listchars = { tab = '>-', trail = '*', nbsp = '+', eol = '↴' }
 }
 
 vim.opt.shortmess:append("c")
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+  vim.opt[k] = v
 end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
