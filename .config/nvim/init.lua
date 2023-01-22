@@ -4,6 +4,7 @@ require("my.keymaps")
 require("my.filetypes")
 require("my.plugins")
 require("my.colorscheme")
+require("my.binary")
 
 require("plugins.lualine")
 require("plugins.bufferline")

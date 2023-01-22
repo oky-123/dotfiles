@@ -126,6 +126,9 @@ return require("packer").startup(function(use)
   -- Ruby, slim
   use "slim-template/vim-slim"
 
+  -- Binary
+  use "Shougo/vinarise.vim"
+
   -- Cursor
   use "ggandor/lightspeed.nvim"
 end)
