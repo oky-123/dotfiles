@@ -188,6 +188,7 @@ zaw-register-src -n gitdir zaw-src-gitdir
 ## Aliases replacement of Unix commands
 alias ls='exa'
 alias la='exa -a'
+alias cat='bat'
 
 ## Aliases
 alias '..'='cd ..'
@@ -261,6 +262,8 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 # PATH Rust
 export PAHT="$HOME/.cargo/bin"
+source "$HOME/.cargo/env"
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # tmux
 alias t="tmux -u"
@@ -432,3 +435,4 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 # mkfs
 export PATH=$PATH:/opt/homebrew/Cellar/dosfstools/4.2/sbin
+

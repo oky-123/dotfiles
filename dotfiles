@@ -8,3 +8,4 @@
 .cargo
 .my.cnf
 .custom_shells
+.curlrc
