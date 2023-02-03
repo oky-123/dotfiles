@@ -420,8 +420,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # docker_x86_64
-export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
-# export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
+# export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
+export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
 export LIMA_INSTANCE=docker_x86_64
 
 #
