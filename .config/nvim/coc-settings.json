@@ -6,17 +6,14 @@
     "cpp",
     "ruby",
     "go",
-
     "html",
     "css",
     "vue",
     "javascript",
     "typescript",
-
     "yaml",
     "json"
   ],
-
   "java.configuration.runtimes": [
     {
       "name": "OpenJDK 11",
@@ -28,17 +25,12 @@
     }
   ],
   "java.jdt.ls.vmargs": "-javaagent:/Users/oky123/.lsp/lombok.jar -Xbootclasspath/a:/Users/oky123/.lsp/lombok.jar",
-
   "eslint.filetypes": ["javascript", "vue", "typescript"],
-  "eslint.autoFixOnSave": true,
-
+  "eslint.autoFixOnSave": false,
   "volar.takeOverMode.enabled": true,
-
   "tsserver.enable": true,
-
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
-
   "diagnostic-languageserver.formatFiletypes": {
     "python": ["black"]
   },

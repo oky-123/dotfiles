@@ -30,9 +30,9 @@ fi
 zplug load
 
 ### キーバインド
-bindkey -v
-bindkey -a '^[[3~' delete-char
-bindkey -M viins 'jj' vi-cmd-mode
+# bindkey -v
+# bindkey -a '^[[3~' delete-char
+# bindkey -M viins 'jj' vi-cmd-mode
 
 ### 色付けで色の名前が使えたりとか
 autoload -Uz add-zsh-hook
@@ -328,14 +328,14 @@ function tmux_automatically_attach_session()
     fi
   fi
 }
-tmux_automatically_attach_session
+# tmux_automatically_attach_session
 
 # Ruby
 eval "$(rbenv init -)"
 
 # golang
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+# export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
 
 # of
 export OF_ROOT=$HOME/of
@@ -417,8 +417,22 @@ export PATH=$PATH:$GOPATH/bin
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Proxy for burp
-# http_proxy=http://localhost:8080
-# https_proxy=$http_proxy
-# export HTTP_PROXY=$http_proxy
-# export HTTPS_PROXY=$http_proxy
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# docker_x86_64
+# export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
+export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
+export LIMA_INSTANCE=docker_x86_64
+
+#
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+
+# Pyenv
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
+# mkfs
+export PATH=$PATH:/opt/homebrew/Cellar/dosfstools/4.2/sbin
+
