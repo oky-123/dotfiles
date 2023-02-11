@@ -1,7 +1,7 @@
 vim.scriptencoding = 'utf-8'
 
 local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
+-- local augroup = vim.api.nvim_create_augroup
 
 -- Remove whitespaces
 autocmd("BufWritePre", {
@@ -22,12 +22,12 @@ autocmd("BufReadPost", {
 })
 
 -- Auto format
-autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.format { async = false }
-  end
-})
+-- autocmd("BufWritePre", {
+--   pattern = "*",
+--   callback = function()
+--     vim.lsp.buf.format { async = false }
+--   end
+-- })
 
 -- Terminal mode auto insert
 -- autocmd({"WinEnter", "BufEnter"}, {
