@@ -1,4 +1,4 @@
-  require("toggleterm").setup {}
+require("toggleterm").setup {}
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }

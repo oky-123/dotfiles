@@ -2,9 +2,9 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- FileTypes
 local function register_filetype(pattern, filetype)
-  autocmd({"BufRead", "BufNewFile"}, {
-    pattern = pattern,
-    command = "set filetype=" .. filetype
+  autocmd({ "BufRead", "BufNewFile" }, {
+      pattern = pattern,
+      command = "set filetype=" .. filetype
   })
 end
 
@@ -18,8 +18,8 @@ register_filetype("*.{jb,json.jbulder}", "ruby")
 -- sw, sts, ts, et
 local function register_indent(filetype, command)
   autocmd("FileType", {
-    pattern = filetype,
-    command = command
+      pattern = filetype,
+      command = command
   })
 end
 

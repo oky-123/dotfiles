@@ -17,18 +17,6 @@ require('mason-lspconfig').setup_handlers({ function(server)
     }
     opts.root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json',
             'vue.config.js', '.git')
-    -- Ruby
-    -- elseif server == "solargraph" then
-    --   opts.root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git")
-    --   opts.initial_options = {
-    --       formatting = true,
-    --   }
-    --   opts.settings = {
-    --       solargraph = {
-    --           diagnostics = true
-    --       }
-    --   }
-    -- SQL
   elseif server == "sqlls" then
     opts.root_dir = require('lspconfig/util').root_pattern(".git")
     --

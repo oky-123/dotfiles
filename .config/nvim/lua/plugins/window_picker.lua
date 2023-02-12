@@ -1,16 +1,16 @@
 require('window-picker').setup({
-  autoselect_one = true,
-  include_current = false,
-  filter_rules = {
-    -- filter using buffer options
-    bo = {
-      -- if the file type is one of following, the window will be ignored
-      filetype = { "neo-tree-popup", "notify" },
-      -- if the buffer type is one of following, the window will be ignored
-      buftype = { "quickfix" },
+    autoselect_one = true,
+    include_current = false,
+    filter_rules = {
+        -- filter using buffer options
+        bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "neo-tree-popup", "notify" },
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { "quickfix" },
+        },
     },
-  },
-  other_win_hl_color = '#e35e4f',
+    other_win_hl_color = '#e35e4f',
 })
 
 vim.keymap.set("n", "<C-w>", function()
