@@ -1,6 +1,10 @@
 -- LSP Server management
 local lspconfig = require('lspconfig')
 require('mason').setup()
+local disable_formatting = function(client)
+  client.server_capabilities.document_formatting = false
+end
+
 require('mason-lspconfig').setup_handlers({ function(server)
   local opts = {}
   opts.capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -38,7 +42,8 @@ lspconfig.solargraph.setup({
         solargraph = {
             diagnostics = true
         }
-    }
+    },
+    on_attach = disable_formatting
 })
 
 -- Required packages
