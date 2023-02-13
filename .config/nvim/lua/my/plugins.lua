@@ -10,10 +10,6 @@ return require("packer").startup(function(use)
           run = ":TSUpdate"
       }
 
-      use {
-          "RRethy/vim-illuminate"
-      }
-
       -- Status/Bufferline
       use {
           "SmiteshP/nvim-gps",
@@ -27,6 +23,10 @@ return require("packer").startup(function(use)
           "akinsho/bufferline.nvim",
           tag = "v3.*",
           requires = "nvim-tree/nvim-web-devicons"
+      }
+      use {
+          "RRethy/vim-illuminate",
+          requires = "nvim-treesitter/nvim-treesitter"
       }
 
       -- Fuzzy finder
