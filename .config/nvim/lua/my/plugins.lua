@@ -10,6 +10,10 @@ return require("packer").startup(function(use)
           run = ":TSUpdate"
       }
 
+      use {
+          "RRethy/vim-illuminate"
+      }
+
       -- Status/Bufferline
       use {
           "SmiteshP/nvim-gps",

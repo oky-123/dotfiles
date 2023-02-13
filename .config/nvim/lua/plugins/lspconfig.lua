@@ -37,6 +37,7 @@ end })
 lspconfig.solargraph.setup({
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby" },
+    -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
     root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git"),
     settings = {
         solargraph = {
