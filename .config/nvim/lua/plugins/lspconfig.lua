@@ -12,21 +12,25 @@ require('mason-lspconfig').setup_handlers({ function(server)
   -- Lua
   if server == "sumneko_lua" then
     opts.settings = {
-        Lua = { diagnostics = { globals = { "vim" } } }
+      Lua = { diagnostics = { globals = { "vim" } } }
     }
     -- Vue
   elseif server == "volar" then
     opts.filetypes = {
-        'typescript', 'javascript', 'vue', 'json',
+      'typescript', 'javascript', 'vue', 'json',
     }
     opts.root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json',
-            'vue.config.js', '.git')
+      'vue.config.js', '.git')
   elseif server == "sqlls" then
     opts.root_dir = require('lspconfig/util').root_pattern(".git")
     --
   elseif server == "sql-formatter" then
     opts.filetypes = {
-        'sql'
+      'sql'
+    }
+  elseif server == "html" then
+    opts.filetypes = {
+      'html', 'eruby'
     }
   end
 
@@ -35,32 +39,32 @@ end })
 
 -- Ruby(without Mason)
 lspconfig.solargraph.setup({
-    cmd = { "solargraph", "stdio" },
-    filetypes = { "ruby" },
-    -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git"),
-    settings = {
-        solargraph = {
-            diagnostics = true
-        }
-    },
-    on_attach = disable_formatting
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git"),
+  settings = {
+    solargraph = {
+      diagnostics = true
+    }
+  },
+  on_attach = disable_formatting
 })
 
 -- Required packages
 require('mason-lspconfig').setup({
-    ensure_installed = {
-        "sumneko_lua",
-        "rust_analyzer",
-        "dockerls",
-        "volar",
-        "tsserver",
-        "eslint",
-        "html",
-        "cssls",
-        "jsonls",
-        "bashls",
-    }
+  ensure_installed = {
+    "sumneko_lua",
+    "rust_analyzer",
+    "dockerls",
+    "volar",
+    "tsserver",
+    "eslint",
+    "html",
+    "cssls",
+    "jsonls",
+    "bashls",
+  }
 })
 
 -- UI
@@ -68,8 +72,8 @@ require("fidget").setup {}
 
 -- Trouble(Lsp UI for Telescope)
 require("trouble").setup {
-    auto_open = true, -- automatically open the list when you have diagnostics
-    auto_close = false, -- automatically close the list when you have no diagnostics
+  auto_open = true, -- automatically open the list when you have diagnostics
+  auto_close = false, -- automatically close the list when you have no diagnostics
 }
 
 -- Keymappings
