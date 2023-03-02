@@ -27,7 +27,7 @@ keymap_i("jj", "<Esc>")
 keymap_i("kk", "<Esc>")
 keymap_n("L", "$")
 keymap_n("H", "^")
-keymap_v("L", "$")
+keymap_v("L", "$h")
 keymap_v("H", "^")
 
 -- Terminal mode
