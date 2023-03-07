@@ -10,6 +10,5 @@ null_ls.setup({
               return utils.root_has_file({ ".rubocop.yml" })
             end
         }),
-        require('null-ls').builtins.completion.spell,
     },
 })
