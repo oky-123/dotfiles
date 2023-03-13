@@ -6,22 +6,20 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "nvim_lsp",                priority = 8 },
-    { name = "buffer",                  priority = 8 },
-    { name = "path",                    priority = 7 },
-    { name = "cmdline" },
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp_document_symbol" },
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
-    ['<C-l>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    },
+    ["<C-b>"] = cmp.mapping.scroll_docs( -4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-l>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
   }),
   experimental = {
     ghost_text = true,
@@ -65,6 +63,10 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-    { name = 'cmdline' }
+    { name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
   })
 })
