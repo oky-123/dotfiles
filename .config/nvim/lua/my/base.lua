@@ -3,7 +3,7 @@ vim.scriptencoding = 'utf-8'
 local autocmd = vim.api.nvim_create_autocmd
 -- local augroup = vim.api.nvim_create_augroup
 
--- Remove whitespaces
+-- -- Remove whitespaces
 autocmd("BufWritePre", {
     pattern = "*",
     callback = function()

@@ -34,11 +34,11 @@ keymap_v("H", "^")
 keymap_t("<Esc>", "<C-\\><C-n>")
 
 -- Utils
-keymap_n("<Leader>.", ":source ~/.config/nvim/init.lua<CR>")
+keymap_n("<Leader>.", ":<C-u>source ~/.config/nvim/init.lua<CR>")
 
 -- Buffers
-keymap_n("]b", ":bnext<CR>")
-keymap_n("[b", ":bprev<CR>")
+keymap_n("]b", ":<C-u>bnext<CR>")
+keymap_n("[b", ":<C-u>bprev<CR>")
 
 -- Window navigations
 keymap_i("∆", "<Esc><C-w>j")
