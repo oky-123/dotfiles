@@ -425,7 +425,7 @@ export NVM_DIR="$HOME/.nvm"
 # docker_x86_64
 # export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
 export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
-export LIMA_INSTANCE=docker_x86_64
+# export LIMA_INSTANCE=docker_x86_64
 
 #
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'

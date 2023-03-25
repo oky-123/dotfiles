@@ -9,13 +9,8 @@ require('mason-lspconfig').setup_handlers({ function(server)
   local opts = {}
   opts.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-  -- Lua
-  if server == "sumneko_lua" then
-    opts.settings = {
-      Lua = { diagnostics = { globals = { "vim" } } }
-    }
-    -- Vue
-  elseif server == "volar" then
+  -- Vue
+  if server == "volar" then
     opts.filetypes = {
       'typescript', 'javascript', 'vue', 'json',
     }
@@ -23,11 +18,6 @@ require('mason-lspconfig').setup_handlers({ function(server)
       'vue.config.js', '.git')
   elseif server == "sqlls" then
     opts.root_dir = require('lspconfig/util').root_pattern(".git")
-    --
-  elseif server == "sql-formatter" then
-    opts.filetypes = {
-      'sql'
-    }
   elseif server == "html" then
     opts.filetypes = {
       'html', 'eruby'
@@ -54,10 +44,10 @@ lspconfig.solargraph.setup({
 -- Required packages
 require('mason-lspconfig').setup({
   ensure_installed = {
-    "sumneko_lua",
     "rust_analyzer",
     "dockerls",
     "volar",
+    -- "sqlls",
     -- "tsserver",
     "eslint",
     "html",
@@ -66,14 +56,13 @@ require('mason-lspconfig').setup({
     "bashls",
   }
 })
-
 -- UI
 require("fidget").setup {}
 
 -- Trouble(Lsp UI for Telescope)
 require("trouble").setup {
-  auto_open = true, -- automatically open the list when you have diagnostics
-  auto_close = false, -- automatically close the list when you have no diagnostics
+  auto_open = false, -- automatically open the list when you have diagnostics
+  auto_close = true, -- automatically close the list when you have no diagnostics
 }
 
 -- Keymappings
