@@ -1,138 +1,140 @@
 return require("packer").startup(function(use)
-      -- Base
-      use "wbthomason/packer.nvim"
-      use "EdenEast/nightfox.nvim"
-      use "tpope/vim-surround"
+  -- Base
+  use "wbthomason/packer.nvim"
+  use "EdenEast/nightfox.nvim"
+  use "tpope/vim-surround"
 
-      -- Treesitter
-      use {
-          "nvim-treesitter/nvim-treesitter",
-          run = ":TSUpdate"
-      }
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
+  }
 
-      -- Status/Bufferline
-      use {
-          "SmiteshP/nvim-gps",
-          requires = "nvim-treesitter/nvim-treesitter"
-      }
-      use {
-          "nvim-lualine/lualine.nvim",
-          requires = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-gps" }
-      }
-      use {
-          "akinsho/bufferline.nvim",
-          tag = "v3.*",
-          requires = "nvim-tree/nvim-web-devicons"
-      }
-      use {
-          "RRethy/vim-illuminate",
-          requires = "nvim-treesitter/nvim-treesitter"
-      }
+  use 'nvim-treesitter/playground'
 
-      -- Fuzzy finder
-      use {
-          "nvim-telescope/telescope.nvim", tag = "0.1.0",
-          requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
-      }
-      use {
-          "nvim-telescope/telescope-frecency.nvim",
-          requires = "kkharji/sqlite.lua"
-      }
+  -- Status/Bufferline
+  use {
+    "SmiteshP/nvim-gps",
+    requires = "nvim-treesitter/nvim-treesitter"
+  }
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-gps" }
+  }
+  use {
+    "akinsho/bufferline.nvim",
+    tag = "v3.*",
+    requires = "nvim-tree/nvim-web-devicons"
+  }
+  use {
+    "RRethy/vim-illuminate",
+    requires = "nvim-treesitter/nvim-treesitter"
+  }
 
-      -- Window picker
-      use {
-          "s1n7ax/nvim-window-picker",
-          tag = "v1.*",
-      }
+  -- Fuzzy finder
+  use {
+    "nvim-telescope/telescope.nvim", tag = "0.1.0",
+    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
+  }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = "kkharji/sqlite.lua"
+  }
 
-      -- Filer
-      use {
-          "nvim-neo-tree/neo-tree.nvim",
-          branch = "v2.x",
-          requires = {
-              "nvim-lua/plenary.nvim",
-              "nvim-tree/nvim-web-devicons",
-              "MunifTanjim/nui.nvim",
-              "s1n7ax/nvim-window-picker",
-          }
-      }
+  -- Window picker
+  use {
+    "s1n7ax/nvim-window-picker",
+    tag = "v1.*",
+  }
 
-      -- Indent guide
-      use {
-          "lukas-reineke/indent-blankline.nvim"
-      }
+  -- Filer
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+      "s1n7ax/nvim-window-picker",
+    }
+  }
 
-      -- Teminal extension
-      use {
-          "akinsho/toggleterm.nvim",
-          tag = "*",
-      }
+  -- Indent guide
+  use {
+    "lukas-reineke/indent-blankline.nvim"
+  }
 
-      -- Scrollbar
-      use "petertriho/nvim-scrollbar"
-      use {
-          "kevinhwang91/nvim-hlslens",
-          config = function()
-            require("hlslens").setup {}
-          end,
-      }
+  -- Teminal extension
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = "*",
+  }
 
-      -- Git
-      use {
-          "TimUntersberger/neogit",
-          "sindrets/diffview.nvim",
-          "tpope/vim-fugitive",
-      }
+  -- Scrollbar
+  use "petertriho/nvim-scrollbar"
+  use {
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("hlslens").setup {}
+    end,
+  }
 
-      -- Github
-      use {
-          "pwntester/octo.nvim",
-          requires = {
-              "nvim-lua/plenary.nvim",
-              "nvim-telescope/telescope.nvim",
-              "kyazdani42/nvim-web-devicons",
-          },
-          config = function()
-            require "octo".setup()
-          end
-      }
-      use "tyru/open-browser.vim"
-      use "tyru/open-browser-github.vim"
+  -- Git
+  use {
+    "TimUntersberger/neogit",
+    "sindrets/diffview.nvim",
+    "tpope/vim-fugitive",
+  }
 
-      -- LSP
-      use 'neovim/nvim-lspconfig'
-      use 'williamboman/mason.nvim'
-      use 'williamboman/mason-lspconfig.nvim'
-      use 'jose-elias-alvarez/null-ls.nvim'
+  -- Github
+  use {
+    "pwntester/octo.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = function()
+      require "octo".setup()
+    end
+  }
+  use "tyru/open-browser.vim"
+  use "tyru/open-browser-github.vim"
 
-      -- LSP UI extension
-      use {
-          "j-hui/fidget.nvim",
-          "folke/trouble.nvim",
-          "kkharji/lspsaga.nvim",
-      }
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
-      -- nvim-cmp
-      use {
-          "hrsh7th/nvim-cmp",
-          "onsails/lspkind.nvim",
-          "hrsh7th/cmp-nvim-lsp",
-          "hrsh7th/cmp-nvim-lsp-signature-help",
-          "hrsh7th/cmp-nvim-lsp-document-symbol",
-          "hrsh7th/cmp-buffer",
-          "hrsh7th/cmp-path",
-          "hrsh7th/cmp-cmdline",
-          "hrsh7th/vim-vsnip",
-          "zbirenbaum/copilot.lua",
-          "zbirenbaum/copilot-cmp",
-      }
+  -- LSP UI extension
+  use {
+    "j-hui/fidget.nvim",
+    "folke/trouble.nvim",
+    "kkharji/lspsaga.nvim",
+  }
 
-      -- Ruby, slim
-      use "slim-template/vim-slim"
+  -- nvim-cmp
+  use {
+    "hrsh7th/nvim-cmp",
+    "onsails/lspkind.nvim",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/vim-vsnip",
+    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot-cmp",
+  }
 
-      -- Binary
-      use "Shougo/vinarise.vim"
+  -- Ruby, slim
+  use "slim-template/vim-slim"
 
-      -- Cursor
-      use "ggandor/lightspeed.nvim"
-    end)
+  -- Binary
+  use "Shougo/vinarise.vim"
+
+  -- Cursor
+  use "ggandor/lightspeed.nvim"
+end)

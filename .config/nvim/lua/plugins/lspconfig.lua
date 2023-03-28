@@ -54,6 +54,7 @@ require('mason-lspconfig').setup({
     "cssls",
     "jsonls",
     "bashls",
+    "prisma-language-server",
   }
 })
 -- UI
