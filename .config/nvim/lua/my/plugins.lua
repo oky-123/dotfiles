@@ -137,4 +137,7 @@ return require("packer").startup(function(use)
 
   -- Cursor
   use "ggandor/lightspeed.nvim"
+
+  -- Markdown Table
+  use "mattn/vim-maketable"
 end)

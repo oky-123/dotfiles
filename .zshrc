@@ -376,8 +376,8 @@ aws_mfa() {
 }
 
 # java
-# 15, 11, 1.8
-JAVA_VERSION=11
+# 17, 15, 11, 1.8
+JAVA_VERSION=17
 export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
 
