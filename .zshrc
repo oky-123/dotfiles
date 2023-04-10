@@ -434,5 +434,5 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 # mkfs
-export PATH=$PATH:/opt/homebrew/Cellar/dosfstools/4.2/sbin
+# export PATH=$PATH:/opt/homebrew/Cellar/dosfstools/4.2/sbin
 
