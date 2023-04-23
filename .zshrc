@@ -436,3 +436,10 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 # mkfs
 # export PATH=$PATH:/opt/homebrew/Cellar/dosfstools/4.2/sbin
 
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
+
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
