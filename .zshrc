@@ -427,7 +427,6 @@ export NVM_DIR="$HOME/.nvm"
 export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
 # export LIMA_INSTANCE=docker_x86_64
 
-#
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 # Pyenv
