@@ -166,8 +166,17 @@ require("neo-tree").setup {
         ["<c-x>"] = "clear_filter",
         ["[g"] = "prev_git_modified",
         ["]g"] = "next_git_modified",
+        ["<leader>p"] = "image_wezterm",
       }
-    }
+    },
+    commands = {
+      image_wezterm = function(state)
+        local node = state.tree:get_node()
+        if node.type == "file" then
+          require("image_preview").PreviewImage(node.path)
+        end
+      end,
+    },
   },
   buffers = {
     follow_current_file = true, -- This will find and focus the file in the active buffer every

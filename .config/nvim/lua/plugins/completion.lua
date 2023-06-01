@@ -1,4 +1,10 @@
 local cmp = require("cmp")
+require("copilot").setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+})
+require("copilot_cmp").setup()
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -6,6 +12,7 @@ cmp.setup({
     end,
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },

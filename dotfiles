@@ -9,3 +9,4 @@
 .my.cnf
 .custom_shells
 .curlrc
+.wezterm.lua

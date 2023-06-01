@@ -114,6 +114,9 @@ return require("packer").startup(function(use)
     "kkharji/lspsaga.nvim",
   }
 
+  -- Copilot
+  use "github/copilot.vim"
+
   -- nvim-cmp
   use {
     "hrsh7th/nvim-cmp",
@@ -140,4 +143,12 @@ return require("packer").startup(function(use)
 
   -- Markdown Table
   use "mattn/vim-maketable"
+
+  -- Image Preview
+  use {
+    "adelarsq/image_preview.nvim",
+    config = function()
+        require("image_preview").setup()
+    end
+  }
 end)
