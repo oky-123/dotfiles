@@ -1,7 +1,6 @@
 local wezterm = require 'wezterm'
 
 local config = {}
-
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
@@ -184,6 +183,22 @@ config.keys = {
     key = 'J',
     action = wezterm.action.AdjustPaneSize { 'Down', 2 },
   },
+
+  -- Open link by QuickSelect
+  {
+    key = "p",
+    mods = "CMD",
+    action = wezterm.action { QuickSelectArgs = {
+      patterns = {
+        "https?://\\S+"
+      },
+      action = wezterm.action_callback(function(window, pane)
+        local url = window:get_selection_text_for_pane(pane)
+        wezterm.log_info("opening: " .. url)
+        wezterm.open_with(url)
+      end)
+    } }
+  }
 }
 
 return config
