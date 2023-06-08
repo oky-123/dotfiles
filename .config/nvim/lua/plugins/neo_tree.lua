@@ -166,7 +166,7 @@ require("neo-tree").setup {
         ["<c-x>"] = "clear_filter",
         ["[g"] = "prev_git_modified",
         ["]g"] = "next_git_modified",
-        ["<leader>p"] = "image_wezterm",
+        ["p"] = "image_wezterm",
       }
     },
     commands = {

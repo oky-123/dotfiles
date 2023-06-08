@@ -115,7 +115,18 @@ return require("packer").startup(function(use)
   }
 
   -- Copilot
-  use "github/copilot.vim"
+  use {
+    "github/copilot.vim",
+    config = function()
+      vim.cmd([[
+        let g:copilot_filetypes = {
+          \ 'gitcommit': v:true,
+          \ 'markdown': v:true,
+          \ 'yaml': v:true
+          \ }
+      ]])
+    end
+  }
 
   -- nvim-cmp
   use {
@@ -148,7 +159,7 @@ return require("packer").startup(function(use)
   use {
     "adelarsq/image_preview.nvim",
     config = function()
-        require("image_preview").setup()
+      require("image_preview").setup()
     end
   }
 end)
