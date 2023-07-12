@@ -210,6 +210,7 @@ alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
 
 alias vi='nvim'
+alias vim='nvim'
 
 # Functions using skim
 ## Command history finder
@@ -447,3 +448,5 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+export EDITOR=vim
