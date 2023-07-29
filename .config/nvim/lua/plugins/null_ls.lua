@@ -10,8 +10,6 @@ null_ls.setup({
         return utils.root_has_file({ ".rubocop.yml" })
       end
     }),
-    null_ls.builtins.formatting.sql_formatter.with({
-      extra_args = { "-l", "postgresql" }, -- change to your dialect
-    }),
+    null_ls.builtins.formatting.sql_formatter
   },
 })

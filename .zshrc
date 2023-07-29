@@ -210,6 +210,7 @@ alias -g h="history | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
 
 alias vi='nvim'
+alias vim='nvim'
 
 # Functions using skim
 ## Command history finder
@@ -449,3 +450,4 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export EDITOR=vim
