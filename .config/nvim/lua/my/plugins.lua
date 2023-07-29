@@ -162,4 +162,10 @@ return require("packer").startup(function(use)
       require("image_preview").setup()
     end
   }
+
+  -- Autopairs
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 end)
