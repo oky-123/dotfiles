@@ -22,15 +22,9 @@ autocmd("BufReadPost", {
 })
 
 -- Auto format
--- autocmd("BufWritePre", {
---   pattern = "*",
---   callback = function()
---     vim.lsp.buf.format { async = false }
---   end
--- })
-
--- -- Terminal mode auto insert
--- autocmd({ "WinEnter", "BufEnter" }, {
---   pattern = "*",
---   command = "if &buftype ==# 'terminal' | startinsert | endif",
--- })
+autocmd("BufWritePre", {
+  pattern = "*.rb,*.ts",
+  callback = function()
+    vim.lsp.buf.format { async = false }
+  end
+})

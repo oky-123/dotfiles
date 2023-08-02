@@ -49,7 +49,6 @@ local options = {
 
 vim.opt.shortmess:append("c")
 
----@diagnostic disable-next-line: undefined-global
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
