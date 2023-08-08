@@ -82,8 +82,16 @@ return require("packer").startup(function(use)
   -- Git
   use {
     "TimUntersberger/neogit",
-    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    }
+  }
+  use {
     "tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
+    "sindrets/diffview.nvim",
   }
 
   -- Github
