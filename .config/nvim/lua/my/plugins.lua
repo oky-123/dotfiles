@@ -90,6 +90,7 @@ return require("packer").startup(function(use)
   }
   use {
     "tpope/vim-fugitive",
+    "f-person/git-blame.nvim",
     "lewis6991/gitsigns.nvim",
     "sindrets/diffview.nvim",
   }

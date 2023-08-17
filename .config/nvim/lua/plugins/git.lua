@@ -1,10 +1,8 @@
--- require("neogit").setup {
---   integrations = {
---     diffview = true,
---   },
--- }
-
-require("neogit").setup()
+require("neogit").setup {
+  integrations = {
+    diffview = true,
+  },
+}
 
 -- Keymappings
 local opts = { noremap = true, silent = true }
