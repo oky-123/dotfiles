@@ -22,7 +22,7 @@ autocmd("BufReadPost", {
 
 -- Auto format
 autocmd("BufWritePre", {
-  pattern = "*.rb,*.ts,*.vue",
+  pattern = "*.rb,*.ts,*.vue,*.go",
   callback = function()
     vim.lsp.buf.format { async = false }
   end
