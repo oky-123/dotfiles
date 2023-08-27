@@ -212,6 +212,8 @@ alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias vi='nvim'
 alias vim='nvim'
 
+alias dc='docker-compose'
+
 # Functions using skim
 ## Command history finder
 function sk-history-selection() {

@@ -159,7 +159,13 @@ return require("packer").startup(function(use)
   use "Shougo/vinarise.vim"
 
   -- Cursor
-  use "ggandor/lightspeed.nvim"
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      require 'hop'.setup {}
+    end
+  }
 
   -- Markdown Table
   use "mattn/vim-maketable"
