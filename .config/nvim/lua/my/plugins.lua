@@ -182,4 +182,12 @@ return require("packer").startup(function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
+
+  -- Marksign
+  use {
+    "~/ghq/github.com/oky-123/marksign.nvim",
+    config = function()
+      require("")
+    end
+  }
 end)
