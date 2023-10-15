@@ -14,7 +14,7 @@ config.window_decorations = 'RESIZE'
 -- Fonts
 config.font = wezterm.font('Menlo')
 config.font_size = 12.0
--- config.line_height = 1.1
+config.line_height = 0.9
 
 -- Keybindings
 config.disable_default_key_bindings = true
