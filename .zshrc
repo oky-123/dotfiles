@@ -450,3 +450,5 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export EDITOR=vim
+
+export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
