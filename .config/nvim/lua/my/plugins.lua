@@ -184,10 +184,10 @@ return require("packer").startup(function(use)
   }
 
   -- Marksign
-  use {
-    "~/ghq/github.com/oky-123/marksign.nvim",
-    config = function()
-      require("")
-    end
-  }
+  -- use {
+  --   "~/ghq/github.com/oky-123/marksign.nvim",
+  --   config = function()
+  --     require("")
+  --   end
+  -- }
 end)
