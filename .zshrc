@@ -213,6 +213,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias dc='docker-compose'
+alias ngtest='sh ~/.custom_shells/nginx_check.sh'
 
 # Functions using skim
 ## Command history finder
