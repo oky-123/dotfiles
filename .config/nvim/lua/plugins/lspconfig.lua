@@ -54,9 +54,10 @@ require('mason-lspconfig').setup({
     "cssls",
     "jsonls",
     "bashls",
-    "prisma-language-server",
+    "prismals",
   }
 })
+
 -- UI
 require("fidget").setup {}
 
