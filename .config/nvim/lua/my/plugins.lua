@@ -132,7 +132,7 @@ return require("packer").startup(function(use)
           \ 'markdown': v:true,
           \ 'yaml': v:true
           \ }
-        let g:copilot_node_command = "/Users/oky123/.nvm/versions/node/v18.18.2/bin/node"
+        let g:copilot_node_command = "~/.nvm/versions/node/v18.18.2/bin/node"
       ]])
     end
   }
