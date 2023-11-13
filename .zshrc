@@ -339,10 +339,6 @@ function tmux_automatically_attach_session()
 # Ruby
 eval "$(rbenv init -)"
 
-# golang
-# export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin
-
 # of
 export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
@@ -359,9 +355,6 @@ export PATH=/Users/admin/.nimble/bin:$PATH
 
 # gnu-sed
 export PATH="/usr/local/Cellar/gnu-sed/4.8/bin:$PATH"
-
-# go-mod
-export GO111MODULE=on
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -413,8 +406,8 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(gh completion -s zsh)"
 
 # GOPATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOROOT=$(go1.21.4 env GOROOT)
+export PATH=$GOROOT/bin:$PATH
 
 # bun completions
 [ -s "/Users/oky123/.bun/_bun" ] && source "/Users/oky123/.bun/_bun"
