@@ -12,7 +12,6 @@ fi
 function run_tbls_on_docker() {
   NAME=test-db-$RANDOM
   ~/.custom_shells/docker_run_db.sh $NAME ${2:-8}
-  # sleep 20
 
   # mysql pingを利用して起動を待つ
   for i in `seq 1 30`;
