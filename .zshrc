@@ -212,8 +212,10 @@ alias -g ha="history -n 1 | sort -r | awk '{\$1=\"\"; print \$0}'"
 alias vi='nvim'
 alias vim='nvim'
 
-alias dc='docker-compose'
-alias ngtest='sh ~/.custom_shells/nginx_test.sh'
+alias dc='docker-compose' alias ngtest='sh ~/.custom_shells/nginx_test.sh'
+
+alias dcrundb="~/.custom_shells/docker_run_db.sh"
+alias tblsdc="~/.custom_shells/run_tbls.sh"
 
 # Functions using skim
 ## Command history finder
