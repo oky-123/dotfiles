@@ -14,8 +14,7 @@ function run_tbls_on_docker() {
   ~/.custom_shells/docker_run_db.sh $NAME ${2:-8}
   mysql -uroot -ppassword -h127.0.0.1 -P3307 test < $1
 
-  # dsn: postgres://dbuser:dbpass@localhost:5432/dbname
-  # dsn: root:password@tcp(localhost:3306)/?charset=utf8&parseTime=true
+  # dsn: postgres://root:password@127.0.0.1:5432/test
   tbls --dsn mysql://root:password@127.0.0.1:3307/test doc --force
   docker stop $NAME
 }
