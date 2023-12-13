@@ -174,15 +174,18 @@ return require("packer").startup(function(use)
   -- Image Preview
   use {
     "adelarsq/image_preview.nvim",
-    config = function()
-      require("image_preview").setup()
-    end
+    config = function() require("image_preview").setup() end
   }
 
   -- Autopairs
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    "brenoprata10/nvim-highlight-colors",
+    config = function() require("nvim-highlight-colors").setup {} end
   }
 
   -- Marksign
