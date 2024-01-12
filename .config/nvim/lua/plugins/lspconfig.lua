@@ -55,6 +55,7 @@ require('mason-lspconfig').setup({
     "jsonls",
     "bashls",
     "prismals",
+    "tailwindcss",
   }
 })
 
