@@ -408,7 +408,7 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(gh completion -s zsh)"
 
 # GOPATH
-export GOROOT=$(go1.21.4 env GOROOT)
+export GOROOT=$(go env GOROOT)
 export PATH=$GOROOT/bin:$PATH
 
 # bun completions
