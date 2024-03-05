@@ -7,6 +7,9 @@ export LC_ALL=ja_JP.UTF-8
 ### FPATH
 export FPATH=$HOME/.zsh/autoload/:$FPATH
 
+### EDITOR
+export EDITOR=vim
+
 ### vagrant設定
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
@@ -425,21 +428,20 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 # Pyenv
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
+# export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
 
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export EDITOR=vim
-
-export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+#
+# # Fig post block. Keep at the bottom of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+#
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+#
+# export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
 ## Ruby 2.7 ~ 3.2インストール用
 # # ref. https://techracho.bpsinc.jp/hachi8833/2023_04_07/128506
@@ -455,3 +457,8 @@ export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 # export optflags=""
 # export OPENSSL_CFLAGS=""
 # export RUBY_CONFIGURE_OPTS=""
+
+## bundle install時にffiでコケる場合
+# export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
