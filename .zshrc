@@ -346,9 +346,6 @@ export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
 alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
 
-# llvm
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
 # opam
 export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 
@@ -418,11 +415,6 @@ export PATH=$GOROOT/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # docker_x86_64
 # export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
 export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
@@ -448,3 +440,18 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export EDITOR=vim
 
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+
+## Ruby 2.7 ~ 3.2インストール用
+# # ref. https://techracho.bpsinc.jp/hachi8833/2023_04_07/128506
+# # あえてbrew shellenvのevalを現在のshでのみ再実行する
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# # 現在のbashでのみbisonパスを設定する
+# export PATH="$HOMEBREW_PREFIX/opt/bison/bin:$PATH"
+# # 現在のbashでのみLDFLAGSを上書きする
+# export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+#
+# # 邪魔になりそうな環境変数を現在のbashでのみクリアする
+# export CPPFLAGS=""
+# export optflags=""
+# export OPENSSL_CFLAGS=""
+# export RUBY_CONFIGURE_OPTS=""
