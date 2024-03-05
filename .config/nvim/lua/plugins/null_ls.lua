@@ -11,7 +11,7 @@ null_ls.setup({
     null_ls.builtins.formatting.sql_formatter,
     null_ls.builtins.diagnostics.cfn_lint,
     null_ls.builtins.diagnostics.rubocop.with({
-      command = "/Users/yuya_okino/.rbenv/shims/rubocop",
+      command = vim.env.HOME .. "/.rbenv/shims/rubocop",
       condition = function(utils)
         return utils.root_has_file({ ".rubocop.yml" })
       end
