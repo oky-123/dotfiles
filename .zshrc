@@ -428,7 +428,7 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 # Pyenv
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-# export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 # export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
 # export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"

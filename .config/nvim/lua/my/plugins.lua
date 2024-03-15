@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
 
   -- Fuzzy finder
   use {
-    "nvim-telescope/telescope.nvim", tag = "0.1.0",
+    "nvim-telescope/telescope.nvim", tag = "0.1.5",
     requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
   }
   use {
@@ -103,7 +103,13 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons",
     },
     config = function()
-      require "octo".setup()
+      require "octo".setup(
+        {
+          suppress_missing_scope = {
+            project_v2 = true,
+          }
+        }
+      )
     end
   }
   use "tyru/open-browser.vim"
