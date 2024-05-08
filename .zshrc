@@ -191,8 +191,8 @@ function zaw-src-gitdir-cd () {
 zaw-register-src -n gitdir zaw-src-gitdir
 
 ## Aliases replacement of Unix commands
-alias ls='exa'
-alias la='exa -a'
+alias ls='eza'
+alias la='eza -a'
 alias cat='bat'
 
 ## Aliases
@@ -444,15 +444,15 @@ export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 # export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
 ## Ruby 2.7 ~ 3.2インストール用
-# # ref. https://techracho.bpsinc.jp/hachi8833/2023_04_07/128506
-# # あえてbrew shellenvのevalを現在のshでのみ再実行する
+# ref. https://techracho.bpsinc.jp/hachi8833/2023_04_07/128506
+# あえてbrew shellenvのevalを現在のshでのみ再実行する
 # eval "$(/opt/homebrew/bin/brew shellenv)"
-# # 現在のbashでのみbisonパスを設定する
+# 現在のbashでのみbisonパスを設定する
 # export PATH="$HOMEBREW_PREFIX/opt/bison/bin:$PATH"
-# # 現在のbashでのみLDFLAGSを上書きする
+# 現在のbashでのみLDFLAGSを上書きする
 # export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
-#
-# # 邪魔になりそうな環境変数を現在のbashでのみクリアする
+
+# 邪魔になりそうな環境変数を現在のbashでのみクリアする
 # export CPPFLAGS=""
 # export optflags=""
 # export OPENSSL_CFLAGS=""
