@@ -13,6 +13,7 @@ register_filetype("*.{md,mdwn,mkd,mkdn}", "markdown")
 register_filetype("*.kt", "kotlin")
 register_filetype("*.slim", "slim")
 register_filetype("*.{jb,json.jbulder}", "ruby")
+register_filetype("*.env.{local,development,test,production}", "sh")
 
 -- sw, sts, ts, et
 local function register_indent(filetype, command)

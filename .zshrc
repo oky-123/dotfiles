@@ -448,3 +448,9 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export EDITOR=vim
 
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/oky123/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/oky123/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/oky123/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/oky123/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

@@ -195,4 +195,6 @@ return require("packer").startup(function(use)
   --     require("")
   --   end
   -- }
+
+  use "prisma/vim-prisma"
 end)
