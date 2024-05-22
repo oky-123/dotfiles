@@ -10,6 +10,12 @@ return require("packer").startup(function(use)
     run = ":TSUpdate"
   }
 
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
   use 'nvim-treesitter/playground'
 
   -- Status/Bufferline
@@ -139,7 +145,6 @@ return require("packer").startup(function(use)
           \ 'markdown': v:true,
           \ 'yaml': v:true
           \ }
-        let g:copilot_node_command = "~/.nvm/versions/node/v18.18.2/bin/node"
       ]])
     end
   }
