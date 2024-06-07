@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
   }
   use {
     "akinsho/bufferline.nvim",
-    tag = "v3.*",
+    -- tag = "v3.*",
     requires = "nvim-tree/nvim-web-devicons"
   }
   use {
@@ -86,12 +86,14 @@ return require("packer").startup(function(use)
 
   -- Git
   use {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
-    }
+      "ibhagwan/fzf-lua",
+    },
+    config = true
   }
   use {
     "tpope/vim-fugitive",
@@ -132,7 +134,10 @@ return require("packer").startup(function(use)
   use {
     "j-hui/fidget.nvim",
     "folke/trouble.nvim",
-    "kkharji/lspsaga.nvim",
+  }
+
+  use {
+    'nvimdev/lspsaga.nvim',
   }
 
   -- Copilot
@@ -208,4 +213,6 @@ return require("packer").startup(function(use)
   -- }
 
   use "chrisbra/csv.vim"
+
+  use "prisma/vim-prisma"
 end)

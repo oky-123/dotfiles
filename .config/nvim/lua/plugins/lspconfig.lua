@@ -78,6 +78,9 @@ local function keymap_x(lhs, rhs)
   vim.api.nvim_set_keymap("x", lhs, rhs, opts)
 end
 
+
+require('lspsaga').setup({})
+
 keymap_n('gK', "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 keymap_n("]g", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 keymap_n("[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
