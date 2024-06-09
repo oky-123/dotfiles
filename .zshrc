@@ -7,6 +7,9 @@ export LC_ALL=ja_JP.UTF-8
 ### FPATH
 export FPATH=$HOME/.zsh/autoload/:$FPATH
 
+### EDITOR
+export EDITOR=vim
+
 ### vagrant設定
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
@@ -188,8 +191,8 @@ function zaw-src-gitdir-cd () {
 zaw-register-src -n gitdir zaw-src-gitdir
 
 ## Aliases replacement of Unix commands
-alias ls='exa'
-alias la='exa -a'
+alias ls='eza'
+alias la='eza -a'
 alias cat='bat'
 
 ## Aliases
@@ -346,9 +349,6 @@ export OF_ROOT=$HOME/of
 export PG_OF_ROOT=$OF_ROOT
 alias projectGenerator=/Users/admin/of/projectGenerator/projectGenerator.app/Contents/MacOS/Electron
 
-# llvm
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
 # opam
 export PATH="/Applications/CoqIDE_8.8.1.app/Contents/Resources/bin:$PATH"
 
@@ -418,11 +418,6 @@ export PATH=$GOROOT/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # docker_x86_64
 # export DOCKER_HOST=unix://${HOME}/.lima/docker_x86_64/sock/docker.sock
 export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
@@ -433,21 +428,44 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 # Pyenv
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
+# export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/mysql@8.0/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/mysql@8.0/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@8.0/lib/pkgconfig"
 
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+#
+# # Fig post block. Keep at the bottom of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+#
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+#
+# export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+## Ruby 2.7 ~ 3.2インストール用
+# ref. https://techracho.bpsinc.jp/hachi8833/2023_04_07/128506
+# あえてbrew shellenvのevalを現在のshでのみ再実行する
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# 現在のbashでのみbisonパスを設定する
+# export PATH="$HOMEBREW_PREFIX/opt/bison/bin:$PATH"
+# 現在のbashでのみLDFLAGSを上書きする
+# export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export EDITOR=vim
+# 邪魔になりそうな環境変数を現在のbashでのみクリアする
+# export CPPFLAGS=""
+# export optflags=""
+# export OPENSSL_CFLAGS=""
+# export RUBY_CONFIGURE_OPTS=""
 
-export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+## bundle install時にffiでコケる場合
+# export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/oky123/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/oky123/Downloads/google-cloud-sdk/path.zsh.inc'; fi

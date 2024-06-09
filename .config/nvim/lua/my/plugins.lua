@@ -10,6 +10,12 @@ return require("packer").startup(function(use)
     run = ":TSUpdate"
   }
 
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
   use 'nvim-treesitter/playground'
 
   -- Status/Bufferline
@@ -23,7 +29,7 @@ return require("packer").startup(function(use)
   }
   use {
     "akinsho/bufferline.nvim",
-    tag = "v3.*",
+    -- tag = "v3.*",
     requires = "nvim-tree/nvim-web-devicons"
   }
   use {
@@ -33,7 +39,7 @@ return require("packer").startup(function(use)
 
   -- Fuzzy finder
   use {
-    "nvim-telescope/telescope.nvim", tag = "0.1.0",
+    "nvim-telescope/telescope.nvim", tag = "0.1.5",
     requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
   }
   use {
@@ -80,12 +86,14 @@ return require("packer").startup(function(use)
 
   -- Git
   use {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
-    }
+      "ibhagwan/fzf-lua",
+    },
+    config = true
   }
   use {
     "tpope/vim-fugitive",
@@ -103,7 +111,13 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons",
     },
     config = function()
-      require "octo".setup()
+      require "octo".setup(
+        {
+          suppress_missing_scope = {
+            project_v2 = true,
+          }
+        }
+      )
     end
   }
   use "tyru/open-browser.vim"
@@ -120,7 +134,10 @@ return require("packer").startup(function(use)
   use {
     "j-hui/fidget.nvim",
     "folke/trouble.nvim",
-    "kkharji/lspsaga.nvim",
+  }
+
+  use {
+    'nvimdev/lspsaga.nvim',
   }
 
   -- Copilot
@@ -133,7 +150,6 @@ return require("packer").startup(function(use)
           \ 'markdown': v:true,
           \ 'yaml': v:true
           \ }
-        let g:copilot_node_command = "~/.nvm/versions/node/v18.18.2/bin/node"
       ]])
     end
   }
@@ -195,6 +211,8 @@ return require("packer").startup(function(use)
   --     require("")
   --   end
   -- }
+
+  use "chrisbra/csv.vim"
 
   use "prisma/vim-prisma"
 end)
