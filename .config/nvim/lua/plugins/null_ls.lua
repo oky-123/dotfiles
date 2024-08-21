@@ -1,6 +1,6 @@
 -- mason-null-ls
 require("mason-null-ls").setup({
-  ensure_installed = { "prettier", "jq", "sql_formatter", "cfn_lint", "rubocop" }
+  ensure_installed = { "prettier", "jq", "sql_formatter", "cfn_lint" }
 })
 
 -- null-ls

@@ -267,9 +267,9 @@ function git_cof() {
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 eval "$(pyenv init -)"
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+# export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 # PATH Rust
 export PAHT="$HOME/.cargo/bin"
@@ -383,9 +383,9 @@ export JAVA_HOME=`/usr/libexec/java_home -v "$JAVA_VERSION"`
 PATH=${JAVA_HOME}/bin:${PATH}
 
 # llvm@8
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # debugserver for llvm(ref: https://codehex.hateblo.jp/entry/2020/04/29/191555)
 export LLDB_DEBUGSERVER_PATH=/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/Current/Resources/debugserver
@@ -432,10 +432,10 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 # export LDFLAGS="-L/opt/homebrew/opt/mysql@5.7/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/mysql@5.7/include"
 # export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig"
-export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/mysql@8.0/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/mysql@8.0/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@8.0/lib/pkgconfig"
+# export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/mysql@8.0/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/mysql@8.0/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@8.0/lib/pkgconfig"
 
 # export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
