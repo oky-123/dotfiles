@@ -1,9 +1,6 @@
 -- LSP Server management
 local lspconfig = require('lspconfig')
 require('mason').setup()
-local disable_formatting = function(client)
-  client.server_capabilities.document_formatting = false
-end
 
 require('mason-lspconfig').setup_handlers({ function(server)
   local opts = {}
@@ -28,18 +25,18 @@ require('mason-lspconfig').setup_handlers({ function(server)
 end })
 
 -- Ruby(without Mason)
-lspconfig.solargraph.setup({
-  cmd = { "solargraph", "stdio" },
-  filetypes = { "ruby" },
-  -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
-  root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git"),
-  settings = {
-    solargraph = {
-      diagnostics = true
-    }
-  },
-  on_attach = disable_formatting
-})
+-- lspconfig.solargraph.setup({
+--   cmd = { "solargraph", "stdio" },
+--   filetypes = { "ruby" },
+--   -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--   root_dir = require('lspconfig/util').root_pattern("Gemfile", ".git"),
+--   settings = {
+--     solargraph = {
+--       diagnostics = true
+--     }
+--   },
+--   on_attach = disable_formatting
+-- })
 
 -- Required packages
 require('mason-lspconfig').setup({
@@ -48,7 +45,6 @@ require('mason-lspconfig').setup({
     "dockerls",
     "volar",
     "tsserver",
-    "python-lsp-server",
     "eslint",
     "html",
     "cssls",
@@ -56,6 +52,7 @@ require('mason-lspconfig').setup({
     "bashls",
     "prismals",
     "tailwindcss",
+    "ruby_lsp",
   }
 })
 
@@ -94,4 +91,4 @@ keymap_n('<Leader>r', "<cmd>lua vim.lsp.buf.rename()<CR>")
 keymap_n('<Leader>ca', "<cmd>Lspsaga code_action<CR>")
 keymap_x('<Leader>ca', ":<C-u>Lspsaga range_code_action<CR>")
 keymap_n('gG', "<cmd>TroubleToggle<CR>")
-keymap_n('<Leader>f', "<cmd>lua vim.lsp.buf.format { async = false, timeout = 5000 }<CR>")
+keymap_n('<Leader>f', "<cmd>lua vim.lsp.buf.format { async = false, timeout = 10000 }<CR>")
