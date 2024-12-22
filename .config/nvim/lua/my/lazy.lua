@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -64,7 +64,8 @@ local plugins = {
 
   -- Fuzzy finder
   {
-    "nvim-telescope/telescope.nvim", tag = "0.1.5",
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-github.nvim" },
   },
   {
