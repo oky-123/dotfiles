@@ -135,7 +135,10 @@ local plugins = {
     end
   },
   "tyru/open-browser.vim",
-  "tyru/open-browser-github.vim",
+  {
+    "tyru/open-browser-github.vim",
+    dependencies = "tyru/open-browser.vim"
+  },
 
   -- LSP
   'neovim/nvim-lspconfig',
@@ -234,7 +237,8 @@ local plugins = {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      providers = "copilot",
+      provider = "copilot",
+      auto_suggestions_provider = "copilot",
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

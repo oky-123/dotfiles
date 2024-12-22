@@ -44,7 +44,7 @@ require('mason-lspconfig').setup({
     "rust_analyzer",
     "dockerls",
     "volar",
-    "tsserver",
+    "ts_ls",
     "eslint",
     "html",
     "cssls",
