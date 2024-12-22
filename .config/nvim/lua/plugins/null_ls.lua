@@ -15,13 +15,13 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.sql_formatter,
     null_ls.builtins.diagnostics.cfn_lint,
-    conditional(function(utils)
-      return utils.root_has_file("Gemfile")
-          and null_ls.builtins.formatting.rubocop.with({
-            command = "bundle",
-            args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.formatting.rubocop._opts.args),
-          })
-          or null_ls.builtins.formatting.rubocop
-    end),
+    -- conditional(function(utils)
+    --   return utils.root_has_file("Gemfile")
+    --       and null_ls.builtins.formatting.rubocop.with({
+    --         command = "bundle",
+    --         args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.formatting.rubocop._opts.args),
+    --       })
+    --       or null_ls.builtins.formatting.rubocop
+    -- end),
   },
 })

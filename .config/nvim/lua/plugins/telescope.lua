@@ -13,6 +13,6 @@ keymap("n", "<leader>g", builtin.live_grep, {})
 keymap("n", "<leader>m", builtin.marks, {})
 keymap("n", "<leader>c", builtin.commands, {})
 keymap("n", "<leader>K", builtin.grep_string)
-keymap("n", "<leader>a", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>",
-  { noremap = true, silent = true })
+-- keymap("n", "<leader>a", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>",
+--   { noremap = true, silent = true })
 keymap("n", "<leader>B", "<Cmd>Telescope git_branches<CR>", { noremap = true, silent = true })

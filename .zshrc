@@ -472,3 +472,7 @@ if [ -f '/Users/oky123/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/oky123/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/oky123/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export BUNDLE_RUBYGEMS__PKG__GITHUB__COM=`cat ~/GH_TOKEN`

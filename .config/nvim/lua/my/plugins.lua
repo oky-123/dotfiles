@@ -178,10 +178,7 @@ return require("packer").startup(function(use)
   -- Cursor
   use {
     'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = function()
-      require 'hop'.setup {}
-    end
+    branch = 'v2',
   }
 
   -- Markdown Table
@@ -215,4 +212,25 @@ return require("packer").startup(function(use)
   use "chrisbra/csv.vim"
 
   use "prisma/vim-prisma"
+
+  use "jparise/vim-graphql"
+
+  use {
+    "yetone/avante.nvim",
+    build = "make BUILD_FROM_SOURCE=true",
+    lazy = false,
+    version = false,
+    BUILD_FROM_SOURCE = true,
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "HakonHarnes/img-clip.nvim",
+    },
+  }
 end)
