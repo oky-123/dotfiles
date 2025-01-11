@@ -1,0 +1,18 @@
+{
+  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 100,
+  "editor.cursorSurroundingLinesStyle": "all",
+  "window.commandCenter": 1,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "git.suggestSmartCommit": false,
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      "command": "vscode-neovim.escape"
+    },
+    "kk": {
+      "command": "vscode-neovim.escape"
+    }
+  }
+}

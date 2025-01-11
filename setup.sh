@@ -133,3 +133,16 @@ IFS=$OLDIFS
 # echo "Setup finidhed."
 #
 # # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#
+#
+# MEMO: copy vscode, cursor user settings
+# CURSOR: ~/Library/Application Support/Cursor/User
+# VSCODE: ~/Library/Application Support/Code/User
+BASE_DIR=~/ghq/github.com/oky-123/dotfiles
+CURSOR_USER_DIR=~/Library/Application\ Support/Cursor/User
+if [ -d $CURSOR_USER_DIR ]; then
+  rm $CURSOR_USER_DIR/settings.json
+  rm $CURSOR_USER_DIR/keybindings.json
+fi
+ln -fs $BASE_DIR/code/user/settings.json $CURSOR_USER_DIR/settings.json
+ln -fs $BASE_DIR/code/user/keybindings.json $CURSOR_USER_DIR/keybindings.json

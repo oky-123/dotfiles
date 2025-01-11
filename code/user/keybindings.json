@@ -1,0 +1,64 @@
+[
+  {
+    "key": "ctrl+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "space n",
+    "command": "runCommands",
+    "args": {
+      "commands": ["workbench.scm.focus"]
+    },
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "space n",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "focusedView == 'workbench.scm'"
+  },
+  {
+    "key": "s",
+    "command": "git.stage",
+    "when": "focusedView == 'workbench.scm'"
+  },
+  {
+    "key": "c",
+    "command": "git.commitStaged",
+    "when": "focusedView == 'workbench.scm'"
+  },
+  {
+    "key": "shift+p",
+    "command": "git.push",
+    "when": "focusedView == 'workbench.scm'"
+  },
+  {
+    "key": "u",
+    "command": "git.unstage",
+    "when": "focusedView == 'workbench.scm'"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "space g",
+    "command": "workbench.action.quickTextSearch",
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "space f",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  }
+]
