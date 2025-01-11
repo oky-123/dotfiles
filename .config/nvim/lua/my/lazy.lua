@@ -22,32 +22,32 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local common_plugins = {
+  -- Base
+  "tpope/vim-surround",
+  "EdenEast/nightfox.nvim",
   {
-    -- Base
-    "tpope/vim-surround",
-    "EdenEast/nightfox.nvim",
-    {
-      "RRethy/vim-illuminate",
-      dependencies = "nvim-treesitter/nvim-treesitter"
-    },
+    "RRethy/vim-illuminate",
+    dependencies = "nvim-treesitter/nvim-treesitter"
+  },
 
-    -- Treesitter
-    {
-      "nvim-treesitter/nvim-treesitter",
-      build = ":TSUpdate"
-    },
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate"
+  },
 
-    {
-      "folke/flash.nvim",
-      event = "VeryLazy",
-      ---@type Flash.Config
-      opts = {},
-      -- stylua: ignore
-      keys = {
-        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      }
-    },
-  }
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    }
+  },
+
+  "prisma/vim-prisma",
 }
 
 local plugins = {}
@@ -226,8 +226,6 @@ if not vim.g.vscode then
     },
 
     "chrisbra/csv.vim",
-
-    "prisma/vim-prisma",
 
     {
       "yetone/avante.nvim",

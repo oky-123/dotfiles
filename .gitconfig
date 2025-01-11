@@ -36,3 +36,5 @@
 	required = true
 [log]
 	date = local
+[pull]
+	rebase = false
