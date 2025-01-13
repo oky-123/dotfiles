@@ -2,7 +2,7 @@
   "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 100,
   "editor.cursorSurroundingLinesStyle": "all",
-  "window.commandCenter": 1,
+  "window.commandCenter": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -26,6 +26,16 @@
   "cursor.composer.agentLoopOnLints": false,
   "git.autofetch": true,
   "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "notebook.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
